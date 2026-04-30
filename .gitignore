@@ -1,1 +1,32 @@
-Nothing should be ignored based on the provided file changes. The only added file is a Jupyter notebook (.ipynb), which is a source file that should be tracked in version control. No build artifacts, dependencies, or temporary files are present in the changes.
+```
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+.ENV.local
+.env
+.env.local
+.env.*
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints*
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+```
