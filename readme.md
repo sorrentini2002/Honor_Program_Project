@@ -1,117 +1,116 @@
-# Documentazione Tecnica: Simulazione di Gestione Crisi Idrica
+# Technical Documentation: Water Crisis Management Simulation
 
-Questo documento descrive in dettaglio le classi e le funzioni implementate nel notebook `main.ipynb`. Il progetto mira a simulare un sistema cyber-fisico in cui una rete idrica è monitorata e controllata tramite una rete di sensori LoRaWAN, sotto la gestione di un agente intelligente.
-
----
-
-## 1. Importazione Moduli e Configurazione (Cella 3)
-
-In questa sezione vengono importate le librerie fondamentali per il progetto:
-- **WNTR (mwntr)**: Per la modellazione e simulazione idraulica della rete.
-- **LoRaSim**: Moduli personalizzati per la simulazione del protocollo LoRaWAN.
-- **Standard Library**: `os`, `sys`, `random`, `math`, `subprocess` per la gestione del sistema e calcoli matematici.
-- **Data Handling**: `numpy` e `pandas` per la manipolazione dei dati e delle statistiche.
-
-Viene inoltre configurato il sistema di percorsi (*path*) per garantire che i moduli personalizzati (`Dyn-WNTR` e `LoRaSim`) siano accessibili all'interprete Python e viene eseguita la compilazione dei componenti C++ nativi necessari per il simulatore idraulico interattivo.
+This document describes in detail the classes and functions implemented in the `main.ipynb` notebook. The project aims to simulate a cyber-physical system where a water network is monitored and controlled through a LoRaWAN sensor network, under the management of an intelligent agent.
 
 ---
 
-## 2. LoRaSystem (Integrazione LoRaSim)
+## 1. Module Import and Configuration (Cell 3)
 
-La classe `LoRaSystem` gestisce lo strato di comunicazione LoRaWAN.
+In this section, the fundamental libraries for the project are imported:
+- **WNTR (mwntr)**: For hydraulic modeling and simulation of the network.
+- **LoRaSim**: Custom modules for simulating the LoRaWAN protocol.
+- **Standard Library**: `os`, `sys`, `random`, `math`, `subprocess` for system management and mathematical calculations.
+- **Data Handling**: `numpy` and `pandas` for data and statistics manipulation.
 
-### Funzioni di LoRaSystem:
+The path system is also configured to ensure that custom modules (`Dyn-WNTR` and `LoRaSim`) are accessible to the Python interpreter, and the native C++ components required for the interactive hydraulic simulator are compiled.
+
+---
+
+## 2. LoRaSystem (LoRaSim Integration)
+
+The `LoRaSystem` class manages the LoRaWAN communication layer.
+
+### LoRaSystem Functions:
 
 #### `__init__(self)`
-- **Cosa**: Inizializza l'ambiente di simulazione delle comunicazioni.
-- **Come**: Crea un registro dei sensori (`self.sensors`), inizializza i contatori di collisione e imposta l'intervallo di trasmissione predefinito (`3600s`).
-- **Perché**: Fornisce una base per tracciare le statistiche di rete e lo stato di ogni nodo sensore durante la simulazione.
+- **What**: Initializes the communication simulation environment.
+- **How**: Creates a sensor registry (`self.sensors`), initializes collision counters, and sets the default transmission interval (`3600s`).
+- **Why**: Provides a basis for tracking network statistics and the state of each sensor node during the simulation.
 
 #### `_get_best_model(self, distance_km, sf)`
-- **Cosa**: Seleziona il modello statistico di Markov più appropriato per un nodo.
-- **Come**: Analizza i file `.ini` disponibili nella cartella `Models`, scegliendo quello che meglio approssima la distanza del sensore e lo Spreading Factor (SF) indicato.
-- **Perché**: La perdita di pacchetti non è casuale ma dipende dalle condizioni fisiche; questa funzione garantisce che la simulazione sia scientificamente valida.
+- **What**: Selects the most appropriate Markov statistical model for a node.
+- **How**: Analyzes the `.ini` files available in the `Models` folder, choosing the one that best approximates the sensor distance and the specified Spreading Factor (SF).
+- **Why**: Packet loss is not random but depends on physical conditions; this function ensures the simulation is scientifically valid.
 
 #### `register_sensor(self, sensor_id, distance_km, sf)`
-- **Cosa**: Registra un nuovo dispositivo IoT nel sistema.
-- **Come**: Configura il sensore con il suo modello di perdita specifico e inizializza lo stato della catena di Markov a "1" (buona ricezione).
-- **Perché**: Permette di definire una topologia di rete sensoristica dinamica, dove ogni valvola o serbatoio può avere un sensore con caratteristiche di segnale diverse.
+- **What**: Registers a new IoT device in the system.
+- **How**: Configures the sensor with its specific loss model and initializes the Markov chain state to "1" (good reception).
+- **Why**: Allows for defining a dynamic sensor network topology, where each valve or tank can have a sensor with different signal characteristics.
 
 #### `update_sensor_data(self, sensor_id, pressure, level, is_open)`
-- **Cosa**: Aggiorna i dati pronti per essere inviati dal sensore.
-- **Come**: Memorizza i valori idraulici correnti nel buffer interno del sensore specifico.
-- **Perché**: Separa il momento del campionamento dei dati dal momento della trasmissione effettiva, rispecchiando il comportamento reale dei dispositivi IoT.
+- **What**: Updates the data ready to be sent by the sensor.
+- **How**: Stores the current hydraulic values in the internal buffer of the specific sensor.
+- **Why**: Decouples the data sampling moment from the actual transmission moment, reflecting the real behavior of IoT devices.
 
 #### `step(self, current_time, timestep_s)`
-- **Cosa**: Esegue la logica di trasmissione per l'istante temporale corrente.
-- **Come**: Per ogni sensore, verifica se è il momento di trasmettere. Se sì, usa le probabilità del modello di Markov per decidere se il pacchetto viene perso (stato 0) o ricevuto (stato 1).
-- **Perché**: È il motore che genera il fenomeno della perdita di pacchetti, influenzando la visibilità dell'agente sullo stato della rete.
+- **What**: Executes the transmission logic for the current time step.
+- **How**: For each sensor, it checks if it is time to transmit. If so, it uses the Markov model probabilities to decide if the packet is lost (state 0) or received (state 1).
+- **Why**: It is the engine that generates the packet loss phenomenon, influencing the agent's visibility of the network state.
 
 ---
 
-## 3. Gestione della Rete Idrica
+## 3. Water Network Management
 
 ### 3.1 TankConfig
-- **Cosa**: Struttura dati per le specifiche tecniche dei serbatoi.
-- **Come**: Memorizza parametri fisici (diametri, livelli critici) in un oggetto compatto.
-- **Perché**: Evita di dover passare numerosi parametri ogni volta che si aggiunge un serbatoio, garantendo coerenza tra i diversi profili (`Small`, `Medium`, `Large`).
+- **What**: Data structure for tank technical specifications.
+- **How**: Stores physical parameters (diameters, critical levels) in a compact object.
+- **Why**: Avoids having to pass numerous parameters every time a tank is added, ensuring consistency across different profiles (`Small`, `Medium`, `Large`).
 
 ### 3.2 WaterNetworkManager
-Questa classe manipola la topologia e lo stato della rete idraulica.
+This class manipulates the topology and state of the hydraulic network.
 
 #### `__init__(self, wn_model)`
-- **Cosa**: Carica il modello della rete idrica.
-- **Come**: Accetta un file `.inp` o un oggetto `WaterNetworkModel` esistente.
-- **Perché**: Centralizza l'accesso al grafo della rete per tutte le operazioni successive.
+- **What**: Loads the water network model.
+- **How**: Accepts an `.inp` file or an existing `WaterNetworkModel` object.
+- **Why**: Centralizes access to the network graph for all subsequent operations.
 
 #### `remove_existing_tanks(self)`
-- **Cosa**: Rimuove i serbatoi pre-esistenti nel file di input.
-- **Come**: Itera su tutti i nodi di tipo `Tank` e li elimina, rimuovendo anche i controlli associati.
-- **Perché**: Permette di testare l'efficacia dei soli serbatoi IoT aggiunti dinamicamente, senza interferenze da infrastrutture pregresse.
+- **What**: Removes pre-existing tanks in the input file.
+- **How**: Iterates over all nodes of type `Tank` and deletes them, also removing associated controls.
+- **Why**: Allows for testing the effectiveness of only the dynamically added IoT tanks, without interference from previous infrastructure.
 
 #### `add_iot_tanks(self, n_tanks)`
-- **Cosa**: Installa i serbatoi di emergenza nella rete.
-- **Come**: Seleziona giunzioni casuali, aggiunge un serbatoio in quota e lo collega tramite una tubazione che funge da valvola (`IoT_Valve`).
-- **Perché**: Crea i "punti di intervento" che l'agente può attivare per risolvere la crisi idrica.
+- **What**: Installs emergency tanks in the network.
+- **How**: Selects random junctions, adds an elevated tank, and connects it via a pipe that acts as a valve (`IoT_Valve`).
+- **Why**: Creates the "intervention points" that the agent can activate to resolve the water crisis.
 
 #### `trigger_blackout(self, head_multiplier)`
-- **Cosa**: Simula l'inizio di una crisi idrica.
-- **Come**: Riduce la pressione (head) dei reservoir principali della rete applicando il moltiplicatore indicato.
-- **Perché**: Rappresenta lo stress-test del sistema, simulando ad esempio un guasto elettrico massivo alle stazioni di pompaggio.
+- **What**: Simulates the start of a water crisis.
+- **How**: Reduces the pressure (head) of the main network reservoirs by applying the specified multiplier.
+- **Why**: Represents the system stress-test, simulating, for example, a massive electrical failure at the pumping stations.
 
 #### `set_simulation_options(self, timestep_s)`
-- **Cosa**: Configura i parametri tecnici del solutore idraulico.
-- **Come**: Imposta la durata, i passi temporali e attiva il modello PDA (*Pressure Driven Analysis*).
-- **Perché**: Il modello PDA è indispensabile durante una crisi (pressioni basse) perché calcola la portata effettivamente erogata in base alla pressione disponibile, a differenza del modello DDA standard.
+- **What**: Configures the technical parameters of the hydraulic solver.
+- **How**: Sets the duration, time steps, and activates the PDA (*Pressure Driven Analysis*) model.
+- **Why**: The PDA model is indispensable during a crisis (low pressures) because it calculates the actual flow delivered based on the available pressure, unlike the standard DDA model.
 
 ---
 
-## 4. CrisisManagementAgent (Agente Intelligente)
+## 4. CrisisManagementAgent (Intelligent Agent)
 
-L'agente ottimizza la risposta alla crisi unendo i domini idrici e sensoristici tramite la funzione obiettivo:
+The agent optimizes the response to the crisis by merging the water and sensor domains through the objective function:
 $$ F(a) = (\alpha \cdot \Delta S) - (\beta \cdot T_{resp}) - (\gamma \cdot PL_f) $$
 
-- **Focus**: La funzione obiettivo bilancia il miglioramento della pressione idraulica ($\Delta S$) con la rapidità di intervento ($T_{resp}$) e la qualità della comunicazione ($PL_f$).
+- **Focus**: The objective function balances the improvement in hydraulic pressure ($\Delta S$) with the speed of intervention ($T_{resp}$) and communication quality ($PL_f$).
 
 ---
 
-## 5. CoSimulationEngine (Motore di Co-Simulazione)
+## 5. CoSimulationEngine (Co-Simulation Engine)
 
-L'orchestratore che sincronizza l'intero esperimento.
+The orchestrator that synchronizes the entire experiment.
 
 #### `__init__(self, network_file, duration_hours, step_min)`
-- **Cosa**: Configura l'intero scenario di prova.
-- **Come**: Istanzia il `WaterNetworkManager`, il `LoRaSystem`, l'agente e il simulatore interattivo.
-- **Perché**: Prepara tutti i componenti affinché siano pronti a scambiarsi dati in modo coerente.
+- **What**: Configures the entire test scenario.
+- **How**: Instantiates the `WaterNetworkManager`, the `LoRaSystem`, the agent, and the interactive simulator.
+- **Why**: Prepares all components so they are ready to exchange data consistently.
 
 #### `run_simulation(self)`
-- **Cosa**: Esegue il ciclo di vita della simulazione.
-- **Come**:
-    1.  Cicla su ogni step temporale.
-    2.  Raccoglie i dati dai sensori (simulando la latenza/perdita LoRa).
-    3.  Chiede all'agente di agire se la pressione è bassa.
-    4.  Applica le manovre alle valvole.
-    5.  Aumenta la frequenza di trasmissione dei sensori se viene aperta una valvola (frequenza di emergenza).
-    6.  Avanza entrambi i simulatori.
-- **Perché**: Permette di osservare come le decisioni cyber (agente/sensori) influenzano direttamente la realtà fisica (acqua) e viceversa.
-
+- **What**: Executes the simulation lifecycle.
+- **How**:
+    1.  Loops over each time step.
+    2.  Collects data from sensors (simulating LoRa latency/loss).
+    3.  Asks the agent to act if the pressure is low.
+    4.  Applies maneuvers to the valves.
+    5.  Increases sensor transmission frequency if a valve is opened (emergency frequency).
+    6.  Advances both simulators.
+- **Why**: Allows observing how cyber decisions (agent/sensors) directly influence the physical reality (water) and vice versa.
