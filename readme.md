@@ -4,7 +4,7 @@ This document describes in detail the classes and functions implemented in the `
 
 ---
 
-## 1. Module Import and Configuration (Cell 3)
+## 1. Module Import and Configuration
 
 In this section, the fundamental libraries for the project are imported:
 - **WNTR (mwntr)**: For hydraulic modeling and simulation of the network.
@@ -89,7 +89,10 @@ This class manipulates the topology and state of the hydraulic network.
 ## 4. CrisisManagementAgent (Intelligent Agent)
 
 The agent optimizes the response to the crisis by merging the water and sensor domains through the objective function:
-$$ F(a) = (\alpha \cdot \Delta S) - (\beta \cdot T_{resp}) - (\gamma \cdot PL_f) $$
+
+$$
+F(a) = (\alpha \cdot \Delta S) - (\beta \cdot T_{resp}) - (\gamma \cdot PL_f) 
+$$
 
 - **Focus**: The objective function balances the improvement in hydraulic pressure ($\Delta S$) with the speed of intervention ($T_{resp}$) and communication quality ($PL_f$).
 
