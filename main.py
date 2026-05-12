@@ -505,7 +505,7 @@ class WaterNetworkManager:
                           diameter=link.diameter, 
                           valve_type='TCV', 
                           initial_setting=1000.0,
-                          initial_status='OPEN')
+                          initial_status='CLOSED')
 
     def apply_crisis_reduction(self, sim, ratio, step, mode='flow', log_filename="crisis_status.txt"):
         """Applies ratio and logs the physical drop for both pressure and flow modes."""

@@ -21,16 +21,6 @@ class BaseAgent:
                     sat = act / exp
                     vals.append(sat)
                     
-                    # --- TRUCCO DA DETECTIVE ---
-                    # Stampiamo a schermo chi sta soffrendo prima della crisi (es. nei primi 15 step)
-                    current_step = len(res['expected_demand'][j])
-                    if sat < 0.95 and current_step < 15:
-                        node = sim._wn.get_node(j)
-                        # Calcoliamo la pressione reale (Head - Elevazione)
-                        press_m = res['head'][j][-1] - node.elevation
-                        print(f"[ALLARME NODO {j}] Step {current_step} -> Pressione: {press_m:.2f}m, Soddisfazione: {sat*100:.1f}%")
-                    # ---------------------------
-
             return sum(vals) / len(vals) if vals else 1.0
 
     def compute_objective(self, s, tx_interval):
