@@ -38,4 +38,6 @@ env/
 Thumbs.db
 
 Log_review/
-setup.py/
+setup.py
+Dyn-WNTR/
+LoRaSim-master/
