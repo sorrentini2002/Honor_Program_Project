@@ -1,119 +1,124 @@
-# Technical Documentation: Water Crisis Management Simulation
+# Water Crisis Management Co-Simulation Framework
 
-This document describes in detail the classes and functions implemented in the `main.ipynb` notebook. The project aims to simulate a cyber-physical system where a water network is monitored and controlled through a LoRaWAN sensor network, under the management of an intelligent agent.
-
----
-
-## 1. Module Import and Configuration
-
-In this section, the fundamental libraries for the project are imported:
-- **WNTR (mwntr)**: For hydraulic modeling and simulation of the network.
-- **LoRaSim**: Custom modules for simulating the LoRaWAN protocol.
-- **Standard Library**: `os`, `sys`, `random`, `math`, `subprocess` for system management and mathematical calculations.
-- **Data Handling**: `numpy` and `pandas` for data and statistics manipulation.
-
-The path system is also configured to ensure that custom modules (`Dyn-WNTR` and `LoRaSim`) are accessible to the Python interpreter, and the native C++ components required for the interactive hydraulic simulator are compiled.
+Questo repository contiene un framework avanzato di co-simulazione cyber-fisica per reti di distribuzione idrica. Permette di modellare l'insorgenza di crisi idriche (es. rotture di tubature, calo di pressione delle fonti) e di valutare strategie di mitigazione attive tramite l'impiego di agenti intelligenti, hardware IoT (serbatoi smart, valvole e pompe controllate da remoto) e protocolli di comunicazione wireless (LoRaWAN).
 
 ---
 
-## 2. LoRaSystem (LoRaSim Integration)
+## Architettura del Progetto
 
-The `LoRaSystem` class manages the LoRaWAN communication layer.
+Il progetto è modulare ed è suddiviso nei seguenti componenti e cartelle principali:
 
-### LoRaSystem Functions:
+### 1. `main.py` (ex `main_up copy.ipynb`)
+Questo file rappresenta il nucleo operativo (Orchestratore) che avvia, sincronizza e monitora la simulazione cyber-fisica. Al suo interno sono definite tre classi portanti e una funzione di supporto, ciascuna con compiti estremamente specifici:
 
-#### `__init__(self)`
-- **What**: Initializes the communication simulation environment.
-- **How**: Creates a sensor registry (`self.sensors`), initializes collision counters, and sets the default transmission interval (`3600s`).
-- **Why**: Provides a basis for tracking network statistics and the state of each sensor node during the simulation.
+#### A. Classe `LoRaSystem`
+Gestisce e simula il livello di comunicazione wireless LoRaWAN, avvalendosi di modelli di catene di Markov.
+- **`__init__(self, models_dir, log_filename, config_params)`**: Inizializza le metriche globali (trasmissioni, collisioni) e prepara i file di log su disco per tracciare ogni invio radio. Lo fa per permettere una revisione post-simulazione certosina della telemetria.
+- **`_log(self, message, level)`**: Funzione di utilità per scrivere in tempo reale i messaggi di debug sul file fisico. Lo fa per centralizzare la gestione dei log ed evitare perdite di dati in caso di crash improvvisi.
+- **`setup_gateway(self, pos)`**: Imposta le coordinate spaziali `(x, y)` del gateway ricevente. È essenziale perché la distanza tra i nodi e il gateway determinerà la qualità del segnale (Spreading Factor).
+- **`_get_best_model(self, dist_km, sf)`**: Seleziona il miglior modello Markoviano pre-addestrato (file `.ini` estrapolato da LoRaSim) basandosi sulla distanza in km e sullo Spreading Factor. Lo fa perché il *packet loss rate* (PLR) reale di LoRaWAN varia drasticamente, e non linearmente, in base a questi due fattori fisici e ambientali.
+- **`register_iot_sensors(self, valves, wn, mode, sf_mode, fixed_sf)`**: Registra ogni valvola/serbatoio come nodo IoT. Ne calcola la distanza esatta dal gateway, assegna lo Spreading Factor (fisso, casuale o dipendente dalla distanza) e instanzia la rotta logica di rete (singolo hop diretto o multi-hop). Lo fa per creare la "rete virtuale" specchio e sovrapposta a quella idraulica.
+- **`get_packet_loss_rate(self)`**: Restituisce la percentuale globale dei pacchetti perduti a causa di collisioni o distanza. Lo fa per fornire questa fondamentale metrica all'agente intelligente, che la userà per ricalibrare la sua aggressività (Funzione Obiettivo).
+- **`step(self, current_time, timestep_s)`**: Simula l'avanzamento temporale del network radio. Per ogni sensore, valuta se è giunto il momento di trasmettere in base all'intervallo deciso dall'Agente. Se sì, estrae la probabilità di successo/fallimento attraversando le catene di Markov (sfruttando le probabilità di transizione di stato `p01` e `p10`). Lo fa per generare in modo realistico il flusso di dati asincrono. Restituisce un log di chi ha trasmesso e chi ha fallito.
 
-#### `_get_best_model(self, distance_km, sf)`
-- **What**: Selects the most appropriate Markov statistical model for a node.
-- **How**: Analyzes the `.ini` files available in the `Models` folder, choosing the one that best approximates the sensor distance and the specified Spreading Factor (SF).
-- **Why**: Packet loss is not random but depends on physical conditions; this function ensures the simulation is scientifically valid.
+#### B. Classe `WaterNetworkManager`
+È l'interfaccia fisica con il motore matematico idraulico WNTR. Modella e altera la rete infrastrutturale, inserendovi gli elementi cyber-fisici (sensori, pompe, serbatoi smart).
+- **`__init__(self, wn_model)`**: Inizializza la topologia "nuda" base leggendola dal file `.inp` usando la libreria iterativa `mwntr`.
+- **`activate_network_demands(self, ...)`**: Applica distribuzioni stocastiche (es. Normale, Lognormale, Uniforme) per alterare in modo casuale i consumi base (Base Demand) dei singoli giunti idrici. Lo fa per aggiungere realismo, rumore e incertezza alle simulazioni, invece di fare affidamento su consumi fissi o teorici, stressando la validità dell'agente.
+- **`remove_existing_tanks(self, ...)`**: Elimina completamente dalla rete eventuali serbatoi preesistenti e le tubature a essi connesse. Lo fa per permettere la generazione di un ambiente sperimentale puro ("naked topolgy") su cui testare algoritmi liberi da vincoli architettonici legacy.
+- **`instrument_existing_tanks(self, ...)`**: Analizza i serbatoi *già presenti* nel file `.inp` e li "retrofitta". Lo fa rimpiazzando i loro collegamenti passivi con valvole attive (TCV) e pompe (se richieste), tramutandoli di fatto in nodi attivi e controllabili a distanza dall'Intelligenza Artificiale.
+- **`add_iot_tanks(self, n_tanks, strategy_name, ...)`**: Aggiunge del tutto *nuovi* serbatoi di emergenza nei punti calcolati dalle Strategie euristiche (Random, Demand, Pressure). Genera il nodo serbatoio, ne calcola l'elevazione idraulica forzando un `min_boost` necessario a contrastare la pressione della rete, e lo collega ad essa usando link IoT.
+- **`fix_reservoir_head(self, target_head, ...)`**: Impone una pressione statica fissa (Head) alla sorgente primaria della città (Reservoir), ripulendo le serie storiche/pattern preesistenti. Lo fa per pulire la base di partenza e garantire che la crisi avvenga esattamente secondo i ritmi da noi dettati nel motore.
+- **`get_main_link(self, ...)`**: Esplora il grafo WNTR e identifica la tubatura col diametro maggiore o principale collegata al Reservoir. Serve all'algoritmo per capire dove applicare la "strozzatura" che mima la crisi.
+- **`instrument_source_with_valve(self)`**: Cancella fisicamente dal grafo la tubatura principale identificata precedentemente e la rimpiazza con una valvola a farfalla (Throttle Control Valve - TCV). Lo fa perché in WNTR il modo matematicamente più solido per simulare una caduta modulabile e dinamica della portata in modalità Pressure-Dependent (PDA) è agire sul Loss Coefficient di una valvola piuttosto che sul carico dei bacini idrici.
+- **`apply_crisis_reduction(self, sim, ratio, step, mode, ...)`**: Inietta il tasso di riduzione generato dai modelli di crisi (Crises Folder) nel simulatore dinamico. Crea dinamicamente regole fisiche istantanee (Control Actions) in WNTR per chiudere proporzionalmente la TCV sorgente, simulando con precisione il progredire della rottura o carenza.
+- **`_add_iot_control_to_tank(self, ...)`**: (Funzione Helper) Responsabile della costruzione fisica dei link cyber-fisici. Crea la Valvola di scarico d'emergenza e l'eventuale Pompa per la ricarica del serbatoio (costruendo le curve di potenza idraulica associate).
+- **`set_simulation_options(self, timestep_s)`**: Configura profondamente le opzioni di solver di EPANET/WNTR per usare tassativamente il modello PDA (Pressure-Driven Analysis), vitale per ottenere perdite di carico realistiche.
 
-#### `register_sensor(self, sensor_id, distance_km, sf)`
-- **What**: Registers a new IoT device in the system.
-- **How**: Configures the sensor with its specific loss model and initializes the Markov chain state to "1" (good reception).
-- **Why**: Allows for defining a dynamic sensor network topology, where each valve or tank can have a sensor with different signal characteristics.
+#### C. Funzione `calculate_gateway_pos`
+- **Cosa fa**: Estrapola le coordinate geografiche `(x, y)` dove posizionare il Gateway LoRaWAN.
+- **Come lo fa**: Analizza tutti i nodi e, se richiesto il `mode='center'`, fa una media geometrica calcolando il centroide. Altrimenti piazza a distanza con raggio `random_offset` o su un nodo `random`.
+- **Perché lo fa**: Il posizionamento topologico del Gateway altera drammaticamente il tasso di collisione e perdita di segnale radio. Modificarlo è essenziale per studiare come l'agente reagisce a perdite di pacchetti radio differenziate (Cyber-robustness).
 
-#### `update_sensor_data(self, sensor_id, pressure, level, is_open)`
-- **What**: Updates the data ready to be sent by the sensor.
-- **How**: Stores the current hydraulic values in the internal buffer of the specific sensor.
-- **Why**: Decouples the data sampling moment from the actual transmission moment, reflecting the real behavior of IoT devices.
+#### D. Classe `CoSimulationEngine`
+È l'orchestratore ("Direttore dei lavori") che unisce lo strato idraulico (WNTR) e quello cibernetico (LoRa + Agente).
+- **`__init__(self, ...)`**: Riceve l'input configurativo massiccio. In sequenza innesca: la preparazione idrica (`WaterNetworkManager`), seleziona e instanzia la matematica della crisi (`CRISIS_MAP`), prepara il layer radio (`LoRaSystem` e `calculate_gateway_pos`), instanzia l'esecutore dinamico step-by-step (`MWNTRInteractiveSimulator`) unendolo al cervello virtuale (`AGENT_MAP`). Crea inoltre tutti gli stack in memoria in cui salvare la storicità della telemetria per il plot finale.
+- **`run_simulation(self)`**: Il cuore pulsante (Ciclo While/For) dell'intera simulazione. L'algoritmo esegue in loop questi step critici:
+  1. *Inizializzazione & Soft Start (Step 0)*: Per prevenire un noto errore matematico dei solver idraulici al tempo T=0 (Singular Jacobian/Matrix error) in caso di crisi, disabilita temporaneamente le "demand" fisiche dei nodi, le registra e apre del tutto le valvole. 
+  2. *Ripristino e Progressione (Step > 0)*: Restituisce ai nodi le loro vere curve di domanda pre-calcolate e avanza il timer di simulazione `t` dell'intervallo prescelto `step_min`.
+  3. *Iniezione Crisi*: Appena si sorpassa il `crisis_start_step`, preleva al volo il moltiplicatore dal modello di decadimento prescelto e "soffoca" la sorgente tramite `apply_crisis_reduction`.
+  4. *Pulizia Cache Controlli*: Pulisce sistematicamente i vecchi controlli di rete degli step passati per prevenire overflow di memoria in WNTR e conflitti idraulici irrisolvibili.
+  5. *Cyber-Physical Loop (Agente)*: Usa `sim.node_res` per scansionare istantaneamente il gap fra domanda idrica aspettata ed erogata (Satisfation `s_current`). Verifica quante collisioni LoRa sono avvenute (`pl`). Chiama l'agente tramite `agent.decide_action(...)` facendogli valutare i dati ed estrae le azioni da svolgere. Infine, tramite `agent.apply_mitigation(...)` traduce queste azioni logiche in modifiche idrauliche fisiche per il passo corrente (accensione pompe, scarico valvole serbatoi).
+  6. *Salvataggio & Calcolo WNTR*: Archivia le metriche (Expected Demand vs Actual Demand vs Packet Loss) sui log CSV preposti, lancia un comando di calcolo puro della rete `sim.step_sim()` che risolve la matrice Pressione/Flusso, e re-itera il ciclo fino ad esaurimento ore. Restituisce tutti i dataframe simulati completi alla fine per graficarli.
 
-#### `step(self, current_time, timestep_s)`
-- **What**: Executes the transmission logic for the current time step.
-- **How**: For each sensor, it checks if it is time to transmit. If so, it uses the Markov model probabilities to decide if the packet is lost (state 0) or received (state 1).
-- **Why**: It is the engine that generates the packet loss phenomenon, influencing the agent's visibility of the network state.
+### 2. Cartella `Crises`
+Contiene la logica e i modelli che simulano il calo di prestazioni della rete, generando la crisi vera e propria. Modella come l'erogazione si riduce nel tempo partendo dall'ora di inizio crisi.
+- **`base_crisis.py`** (`BaseCrisis`): Classe astratta da cui tutti i modelli ereditano. Definisce il costruttore di base col parametro `decay_rate` (tasso di decadimento).
+- **`deterministic_crises.py`**:
+  - `LinearCrisis`: Riduce proporzionalmente in modo lineare la portata/pressione a ogni step fino a raggiungere un `min_ratio`.
+  - `ExponentialCrisis`: Causa una caduta molto ripida che si smorza via via (esponenziale), ottima per modellare perdite rapide ma non istantanee.
+  - `InstantCrisis`: Riduce tutto il valore immediatamente al `min_ratio` al momento di inizio crisi (rottura catastrofica del tubo).
+  - `LogarithmicCrisis`: Produce una decrescita dolce logaritmica.
+- **`Ornstein_Uhlenbeck.py`** (`OrnsteinUhlenbeck`): Implementa un modello stocastico avanzato (Mean-Reverting Process). Simula una crisi che fluttua e tende a stabilizzarsi in modo erratico verso un valore target (`mu` o `min_ratio`), introdotto da shock casuali (`volatility`). Offre le dinamiche più realistiche in presenza di piccole variazioni o instabilità della fonte primaria.
+
+### 3. Cartella `Strategies`
+Indirizza il problema di posizionamento spaziale ottimale dei nuovi serbatoi di emergenza all'interno della rete (Tank Deployment).
+- **`base_strategy.py`** (`BasePlacementStrategy`): Classe astratta base. Impone il metodo `get_nodes(n_tanks)` che restituisce gli ID dei nodi dove piazzare i serbatoi.
+- **`demand_strategy.py`** (`DemandStrategy`): Restituisce i nodi che presentano storicamente (o a livello base) la *domanda idrica più alta*. Cerca di mettere le scorte d'acqua vicino a chi ne consuma di più.
+- **`pressure_strategy.py`** (`PressureStrategy`): Valuta i nodi più deboli strutturalmente, ossia quelli con la pressione media storica inferiore, e vi piazza serbatoi per rinforzare le zone marginali della rete.
+- **`random_strategy.py`** (`RandomStrategy`): Posizionamento puramente casuale. Utilizzato per test comparativi o baseline.
+
+### 4. Cartella `Agents`
+Rappresenta l'"Intelligenza Artificiale" (o Cyber-Controller) del sistema. Questo strato legge la telemetria idraulica della rete, calcola le discrepanze (errori) rispetto ai target ottimali di erogazione e invia comandi correttivi in tempo reale verso l'hardware IoT (valvole e pompe) e verso il layer radio (frequenza dei messaggi).
+
+#### A. `base_agent.py` (`BaseAgent`)
+È la superclasse astratta e architetturale da cui ogni agente futuro dovrà ereditare.
+- **`__init__(self, water_net, lora_net, threshold, aggression, alpha)`**: Inizializza le variabili essenziali di memoria dell'agente. Definisce la `threshold` (soglia di soddisfazione minima che l'agente deve difendere), l'`aggression` (il peso della reattività) e il fattore `alpha` (il peso percentuale attribuito al risparmio idrico rispetto al risparmio radio/batteria `gamma`).
+- **`calculate_current_satisfaction(self, sim)`**: Scansiona la totalità dei nodi della simulazione al tempo `t`. Confronta matematicamente l'`expected_demand` (il fabbisogno teorico) con la `demand` (il fabbisogno reale erogato). 
+  - *Come lo fa*: Estrae i valori tramite `sim.node_res.expected_demand` e fa una media ponderata globale calcolando un ratio `[0, 1]`. Inoltre, possiede una routine di debug integrata che, nei primi 15 step di simulazione, avverte se trova nodi cronicamente insoddisfatti prima della crisi, utilissimo per correggere le topologie base fallate.
+- **`compute_objective(self, s, tx_interval)`**: Calcola il "Reward" (Punteggio di Performance Obiettivo) dell'Agente.
+  - *Come lo fa*: Applica una funzione multi-obiettivo pesata. Il punteggio sale con l'alta soddisfazione idrica (pesata da `alpha`) ma scende drasticamente se la rete di comunicazione radio viene inondata di pacchetti, comportando un alto `frequency_cost` (calcolato inversamente all'intervallo, pesato da `gamma = 1 - alpha`).
+- **`decide_action(self, step, t, s)` e `apply_mitigation(self, action, sim, lora_net, t)`**: Metodi vuoti e obbligatori per il polimorfismo. Qualsiasi classe figlia deve sovrascriverli per implementare la propria logica (es. Reinforcement Learning, o un algoritmo Euristico).
+
+#### B. `heuristic_agent.py` (`HeuristicAgent`)
+È un vero e proprio **Controllore PI (Proporzionale-Integrale)** disegnato su misura per le dinamiche cyber-fisiche WNTR-LoRa. Analizza l'entità della crisi idrica e modula dinamicamente le difese fisiche (serbatoi) e quelle cibernetiche (radio).
+- **`__init__(self, ...)`**: Oltre a chiamare l'`__init__` padre, precalcola matematicamente le costanti del controller. Genera il coefficiente Proporzionale (`Kp`) e quello Integrale (`Ki`) direttamente come derivati dal parametro `aggression`. Inizializza i file di log per stampare il differenziale previsto/effettivo ad ogni step.
+- **`decide_action(self, step, t, s)`**: Il cuore decisionale della logica.
+  - *Cosa fa*: Calcola lo scarto (errore istantaneo) tra il target ottimale (`threshold`) e la realtà (`s`). Ritorna l'azione (Apertura Valvole e Frequenza Radio).
+  - *Come lo fa (Idraulica)*: Applica un integrale accumulato per prevenire il "steady-state error" (se la rete è poco in crisi da molto tempo, l'azione aumenta lo stesso). Calcola l'output PI e lo taglia fra 0 e 1. Usa uno "smoothing" esponenziale (`0.7 * current + 0.3 * target`) per evitare l'apertura brusca (prevenendo il letale "Colpo di Ariete" e il crash del solutore WNTR). Se non c'è crisi e c'è eccedenza (errore negativo), ordina l'accensione delle pompe (`pump_speed = 1.0` di notte, `0.3` di giorno) per ricaricare attivamente i serbatoi d'emergenza prelevando acqua dalla strada.
+  - *Come lo fa (Cyber)*: Modula dinamicamente l'intervallo di trasmissione LoRaWAN (il "silenzio radio"). Se l'agente non sta intervenendo idraulicamente ed è tutto pacifico, fa spegnere le radio quasi totalmente (`tx_interval = 3600s`), ma durante lo stato di allerta apre la banda permettendo ai sensori di parlare ogni 5 minuti (`300s`), abbassando la latenza ma saturando l'etere di collisioni.
+- **`apply_mitigation(self, action, sim, lora_net, t)`**: L'esecutore armato delle decisioni prese. Prende l'azione logica astratta [0, 1] e la materializza sull'hardware virtuale in WNTR e in LoRa.
+  - *Cosa/Come lo fa*: Imposta l'intervallo deciso al modulo LoRa. Legge l'output di livello calcolato prima, lo moltiplica per i serbatoi totali `n_tanks` e decide **quanti** aprirne fisicamente. Usando le API di WNTR (`ControlAction` e `SimTimeCondition`), disattiva la configurazione base delle `TCV` dei serbatoi e forza istantaneamente su `Open` i primi `target_open` serbatoi, chiudendo gli altri. Applica un concetto identico alle pompe: se il `pump_speed` è zero spegne il macchinario in tronco, altrimenti imposta la potenza della curva idraulica al valore di setpoint calcolato.
 
 ---
 
-## 3. Water Network Management
+## Parametri di Inizializzazione della Co-Simulazione (CoSimulationEngine)
 
-### 3.1 TankConfig
-- **What**: Data structure for tank technical specifications.
-- **How**: Stores physical parameters (diameters, critical levels) in a compact object.
-- **Why**: Avoids having to pass numerous parameters every time a tank is added, ensuring consistency across different profiles (`Small`, `Medium`, `Large`).
+Il passaggio centrale per modellare il comportamento desiderato è istanziare il simulatore tramite i corretti parametri del dizionario. Ecco l'analisi minuziosa dei parametri della chiamata a `CoSimulationEngine`:
 
-### 3.2 WaterNetworkManager
-This class manipulates the topology and state of the hydraulic network.
-
-#### `__init__(self, wn_model)`
-- **What**: Loads the water network model.
-- **How**: Accepts an `.inp` file or an existing `WaterNetworkModel` object.
-- **Why**: Centralizes access to the network graph for all subsequent operations.
-
-#### `remove_existing_tanks(self)`
-- **What**: Removes pre-existing tanks in the input file.
-- **How**: Iterates over all nodes of type `Tank` and deletes them, also removing associated controls.
-- **Why**: Allows for testing the effectiveness of only the dynamically added IoT tanks, without interference from previous infrastructure.
-
-#### `add_iot_tanks(self, n_tanks)`
-- **What**: Installs emergency tanks in the network.
-- **How**: Selects random junctions, adds an elevated tank, and connects it via a pipe that acts as a valve (`IoT_Valve`).
-- **Why**: Creates the "intervention points" that the agent can activate to resolve the water crisis.
-
-#### `trigger_blackout(self, head_multiplier)`
-- **What**: Simulates the start of a water crisis.
-- **How**: Reduces the pressure (head) of the main network reservoirs by applying the specified multiplier.
-- **Why**: Represents the system stress-test, simulating, for example, a massive electrical failure at the pumping stations.
-
-#### `set_simulation_options(self, timestep_s)`
-- **What**: Configures the technical parameters of the hydraulic solver.
-- **How**: Sets the duration, time steps, and activates the PDA (*Pressure Driven Analysis*) model.
-- **Why**: The PDA model is indispensable during a crisis (low pressures) because it calculates the actual flow delivered based on the available pressure, unlike the standard DDA model.
-
----
-
-## 4. CrisisManagementAgent (Intelligent Agent)
-
-The agent optimizes the response to the crisis by merging the water and sensor domains through the objective function:
-
-$$
-F(a) = (\alpha \cdot \Delta S) - (\beta \cdot T_{resp}) - (\gamma \cdot PL_f) 
-$$
-
-- **Focus**: The objective function balances the improvement in hydraulic pressure ($\Delta S$) with the speed of intervention ($T_{resp}$) and communication quality ($PL_f$).
-
----
-
-## 5. CoSimulationEngine (Co-Simulation Engine)
-
-The orchestrator that synchronizes the entire experiment.
-
-#### `__init__(self, network_file, duration_hours, step_min)`
-- **What**: Configures the entire test scenario.
-- **How**: Instantiates the `WaterNetworkManager`, the `LoRaSystem`, the agent, and the interactive simulator.
-- **Why**: Prepares all components so they are ready to exchange data consistently.
-
-#### `run_simulation(self)`
-- **What**: Executes the simulation lifecycle.
-- **How**:
-    1.  Loops over each time step.
-    2.  Collects data from sensors (simulating LoRa latency/loss).
-    3.  Asks the agent to act if the pressure is low.
-    4.  Applies maneuvers to the valves.
-    5.  Increases sensor transmission frequency if a valve is opened (emergency frequency).
-    6.  Advances both simulators.
-- **Why**: Allows observing how cyber decisions (agent/sensors) directly influence the physical reality (water) and vice versa.
+| Parametro | Descrizione e Come Cambiarlo |
+|---|---|
+| `network_file` | Percorso e file del modello della rete idrica (es. `.inp` formato EPANET). Indica la topologia base. |
+| `duration_hours` | (Int) Durata complessiva in ore della simulazione. Aumentarlo per analisi lunghe, abbassarlo per test veloci (es. 24, 72). |
+| `step_min` | (Float) Risoluzione temporale di aggiornamento in minuti (es. 2.5 min = 150s). Cambialo per determinare quanto spesso Agente e WNTR si scambiano i dati (più piccolo = più precisione e carico CPU). |
+| `remove_tanks` | (Bool) Se `True`, elimina tutti i serbatoi originariamente modellati nel file `.inp`. Ottimo per studiare una rete "naked" (pura). |
+| `crisis_mode` | (Str) `'flow'` o `'pressure'`. Nel caso flow chiude la portata di una Throttle Control Valve fittizia al source. Nel caso pressure cambia il carico base della sorgente (usare `'flow'` per il miglior supporto dinamico WNTR). |
+| `decay_type` | (Str) Decide il tipo di decadimento tra `'linear'`, `'exponential'`, `'instant'`, `'logarithmic'`, `'ornstein_uhlenbeck'`. Cambialo per emulare crisi diverse. |
+| `crisis_params` | (Dict) Parametri specifici del tipo di crisi scelto.<br>- `min_ratio` o `mu`: il valore percentuale minimo finale della fonte (es: `0.5` = la rete perde il 50% di potenza idrica).<br>- `reversion_speed` e `volatility`: usati da `ornstein_uhlenbeck` per intensità di oscillazione. |
+| `avg_demand` | (Float) Moltiplicatore o Base Demand media in GPM / LPS, se la distribuzione della domanda non usa i valori nativi dell' `.inp`. |
+| `dist_type` | (Str) `'original'`, `'normal'`, `'lognormal'`, `'uniform'`. Modifica il modo in cui le domande iniziali base sono popolate per i nodi, generando scenari incerti. |
+| `pattern_mode` | (Str) `'random'`, `'sequential'`, `'single'`. Regola i pattern di consumo estratti per i singoli nodi se non originali. |
+| `min_boost` | (Float) Se retrofittati o nuovi, i serbatoi vengono elevati di questo dislivello (in metri) rispetto al nodo, per assicurare spinta e pressione minima sufficiente quando aperti. |
+| `n_tanks` | (Int) Numero di nuovi IoT Tanks da piazzare nella rete. Regola il buffer capacitivo di emergenza dell'agente. |
+| `strategy_name` | (Str) `'random'`, `'demand'`, `'pressure'`. La strategia usata per posizionare gli `n_tanks` nuovi serbatoi scelti al punto precedente. |
+| `crisis_start_hour` | (Float) Ora di innesco della crisi (es. `1.0` = dopo 1 ora la sorgente principale inizia a cedere). |
+| `agent_name` | (Str) Tipo di agente. Attualmente `'heuristic'`. |
+| `agent_threshold` | (Float) Valore di soddisfazione percentuale sotto la quale l'agente inizia a reagire (es. `0.99` significa che appena la rete scende sotto il 99% di richiesta idrica servita l'agente interviene). |
+| `agent_aggression` | (Float) Il moltiplicatore proporzionale della reazione dell'agente. Impostarlo alto (es. 5.0 - 10.0) fa svuotare e usare serbatoi repentinamente. Basso per svuotamento dolce. |
+| `agent_alpha` | (Float) Definisce l'equilibrio nella funzione di Reward. `0.9` significa che dare acqua (90%) è ben più importante che risparmiare batteria / pacchetti radio (10%). |
+| `enable_pumps` | (Bool) Se `True` viene simulata ed eretta fisicamente una Pompa che spinge l'acqua del tubo dentro al serbatoio IoT per ricaricarlo quando non in uso. |
+| `gateway_mode` | (Str) Decide dove sta la torre radio LoRaWAN. `'center'`, `'random_offset'`, `'random'`. |
+| `lora_mode` | (Str) Protocollo: `'simple'` (calcolo diretto basato su 2 modelli Markov distanti) o `'multihop'` (applica più perdite successive in base alla distanza, degradando esponenzialmente il PLR). |
+| `sf_mode` | (Str) Spreading Factor della rete LoRa: `'fixed'`, `'sequential'`, `'random'`, `'distance'`. Cambia la robustezza dei pacchetti alle collisioni. |
+| `fixed_sf` | (Int) Valore del LoRa Spreading Factor (tra 7 e 12) per i sensori, usato solo se `sf_mode='fixed'`. `12` massimizza il raggio ma aumenta i tempi d'aria e riduce frequenza e batteria. |
+| `target_head` | (Float) Forza la pressione statica / carico (Head) alla fonte Reservoir all'inizio della simulazione prima della crisi. Impatta violentemente tutta l'idraulica di rete. |

@@ -1,0 +1,23 @@
+{
+    "Small": {
+        "tank_diameter": 10.0,
+        "pipe_diameter": 200.0,
+        "init_level": 4.0,
+        "min_level": 0.5,
+        "max_level": 5.0
+    },
+    "Medium": {
+        "tank_diameter": 15.0,
+        "pipe_diameter": 300.0,
+        "init_level": 6.0,
+        "min_level": 1.0,
+        "max_level": 8.0
+    },
+    "Large": {
+        "tank_diameter": 20.0,
+        "pipe_diameter": 400.0,
+        "init_level": 8.0,
+        "min_level": 1.5,
+        "max_level": 10.0
+    }
+}
