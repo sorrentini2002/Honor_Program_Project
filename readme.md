@@ -11,15 +11,20 @@ Il progetto è modulare ed è suddiviso nei seguenti componenti e cartelle princ
 ### 1. `main.py` (ex `main_up copy.ipynb`)
 Questo file rappresenta il nucleo operativo (Orchestratore) che avvia, sincronizza e monitora la simulazione cyber-fisica. Al suo interno sono definite tre classi portanti e una funzione di supporto, ciascuna con compiti estremamente specifici:
 
-#### A. Classe `LoRaSystem`
-Gestisce e simula il livello di comunicazione wireless LoRaWAN, avvalendosi di modelli di catene di Markov.
-- **`__init__(self, models_dir, log_filename, config_params)`**: Inizializza le metriche globali (trasmissioni, collisioni) e prepara i file di log su disco per tracciare ogni invio radio. Lo fa per permettere una revisione post-simulazione certosina della telemetria.
-- **`_log(self, message, level)`**: Funzione di utilità per scrivere in tempo reale i messaggi di debug sul file fisico. Lo fa per centralizzare la gestione dei log ed evitare perdite di dati in caso di crash improvvisi.
-- **`setup_gateway(self, pos)`**: Imposta le coordinate spaziali `(x, y)` del gateway ricevente. È essenziale perché la distanza tra i nodi e il gateway determinerà la qualità del segnale (Spreading Factor).
-- **`_get_best_model(self, dist_km, sf)`**: Seleziona il miglior modello Markoviano pre-addestrato (file `.ini` estrapolato da LoRaSim) basandosi sulla distanza in km e sullo Spreading Factor. Lo fa perché il *packet loss rate* (PLR) reale di LoRaWAN varia drasticamente, e non linearmente, in base a questi due fattori fisici e ambientali.
-- **`register_iot_sensors(self, valves, wn, mode, sf_mode, fixed_sf)`**: Registra ogni valvola/serbatoio come nodo IoT. Ne calcola la distanza esatta dal gateway, assegna lo Spreading Factor (fisso, casuale o dipendente dalla distanza) e instanzia la rotta logica di rete (singolo hop diretto o multi-hop). Lo fa per creare la "rete virtuale" specchio e sovrapposta a quella idraulica.
-- **`get_packet_loss_rate(self)`**: Restituisce la percentuale globale dei pacchetti perduti a causa di collisioni o distanza. Lo fa per fornire questa fondamentale metrica all'agente intelligente, che la userà per ricalibrare la sua aggressività (Funzione Obiettivo).
-- **`step(self, current_time, timestep_s)`**: Simula l'avanzamento temporale del network radio. Per ogni sensore, valuta se è giunto il momento di trasmettere in base all'intervallo deciso dall'Agente. Se sì, estrae la probabilità di successo/fallimento attraversando le catene di Markov (sfruttando le probabilità di transizione di stato `p01` e `p10`). Lo fa per generare in modo realistico il flusso di dati asincrono. Restituisce un log di chi ha trasmesso e chi ha fallito.
+#### A. Classe `LoRaSystem` (Powered by LoRaSimPlus physics)
+Gestisce e simula il livello di comunicazione wireless LoRaWAN, utilizzando modelli fisici realistici di propagazione del segnale e rilevamento delle collisioni.
+- **`__init__(self, log_filename, config_params, ...)`**: Inizializza le metriche globali, configura i parametri radio (Bandwidth, Payload Size, Coding Rate, TX Power) e prepara i file di log. Mantiene ora una lista persistente di pacchetti "in volo" per gestire collisioni che attraversano i confini temporali degli step di simulazione.
+- **`_log(self, message, level)`**: Centralizza la gestione dei log su file fisico per tracciare la telemetria radio e le cause di perdita (SNR, collisioni).
+- **`setup_gateway(self, pos)`**: Definisce la posizione spaziale del Gateway, fondamentale per il calcolo del Path Loss basato sulla distanza.
+- **Modello Fisico (`RSSI/SNR`)**: Calcola la potenza ricevuta (RSSI) tramite un modello di decadimento log-distanza (`Log-distance Path Loss`) con ombreggiamento log-normale (`Shadowing`). Determina la ricevibilità verificando che l'RSSI sia superiore alla sensibilità del ricevitore e che il rapporto segnale-rumore (SNR) sia superiore alla soglia di demodulazione per lo Spreading Factor utilizzato.
+- **Gestione Collisioni Avanzata**: Implementa un algoritmo di rilevamento collisioni completo che considera:
+  - **Sovrapposizione in Frequenza**: In base alla larghezza di banda (BW) e alla frequenza centrale.
+  - **Ortogonalità SF**: Sfrutta il fatto che pacchetti con SF diversi sono quasi ortogonali e non collidono tra loro.
+  - **Capture Effect**: Implementa la logica per cui, in caso di collisione, se un pacchetto è significativamente più forte (> 6dB), viene comunque ricevuto correttamente.
+  - **Timing/Preamble**: Verifica se la sovrapposizione temporale (basata su timestamp assoluti) danneggia il preambolo critico (8 simboli) necessario alla sincronizzazione.
+- **`register_iot_sensors(self, valves, wn, mode, sf_mode, fixed_sf)`**: Registra i nodi IoT calcolandone coordinate, distanza, RSSI deterministico di base e assegnando frequenze di portante in modo round-robin tra i canali standard EU868.
+- **`get_packet_loss_rate(self)`**: Restituisce la percentuale di perdita pacchetti (PLR), aggregando perdite fisiche (segnale debole) e collisioni radio.
+- **`step(self, current_time, timestep_s)`**: Avanza la simulazione radio usando timestamp assoluti globali. Mantiene i pacchetti attivi oltre il singolo step se il loro `airtime` lo richiede, permettendo il rilevamento di collisioni cross-timestep. Rimuove la randomicità artificiale degli offset in favore di una sincronizzazione temporale precisa.
 
 #### B. Classe `WaterNetworkManager`
 È l'interfaccia fisica con il motore matematico idraulico WNTR. Modella e altera la rete infrastrutturale, inserendovi gli elementi cyber-fisici (sensori, pompe, serbatoi smart).
@@ -118,7 +123,7 @@ Il passaggio centrale per modellare il comportamento desiderato è istanziare il
 | `agent_alpha` | (Float) Definisce l'equilibrio nella funzione di Reward. `0.9` significa che dare acqua (90%) è ben più importante che risparmiare batteria / pacchetti radio (10%). |
 | `enable_pumps` | (Bool) Se `True` viene simulata ed eretta fisicamente una Pompa che spinge l'acqua del tubo dentro al serbatoio IoT per ricaricarlo quando non in uso. |
 | `gateway_mode` | (Str) Decide dove sta la torre radio LoRaWAN. `'center'`, `'random_offset'`, `'random'`. |
-| `lora_mode` | (Str) Protocollo: `'simple'` (calcolo diretto basato su 2 modelli Markov distanti) o `'multihop'` (applica più perdite successive in base alla distanza, degradando esponenzialmente il PLR). |
+| `lora_mode` | (Str) Protocollo: `'simple'` (calcolo fisico diretto RSSI/SNR) o `'multihop'` (supporto per routing multi-salto, attualmente semplificato nel nuovo motore fisico). |
 | `sf_mode` | (Str) Spreading Factor della rete LoRa: `'fixed'`, `'sequential'`, `'random'`, `'distance'`. Cambia la robustezza dei pacchetti alle collisioni. |
 | `fixed_sf` | (Int) Valore del LoRa Spreading Factor (tra 7 e 12) per i sensori, usato solo se `sf_mode='fixed'`. `12` massimizza il raggio ma aumenta i tempi d'aria e riduce frequenza e batteria. |
 | `target_head` | (Float) Forza la pressione statica / carico (Head) alla fonte Reservoir all'inizio della simulazione prima della crisi. Impatta violentemente tutta l'idraulica di rete. |
