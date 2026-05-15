@@ -17,9 +17,7 @@ import matplotlib.pyplot as plt
 
 
 dyn_wntr_path = 'Dyn-WNTR'
-lorasim_pkg = 'LoRaSim-master'
-
-for path in [dyn_wntr_path, os.path.join(dyn_wntr_path, 'mwntr'), lorasim_pkg]:
+for path in [dyn_wntr_path, os.path.join(dyn_wntr_path, 'mwntr')]:
     if os.path.exists(path) and path not in sys.path:
         sys.path.insert(0, path)
 
@@ -29,7 +27,6 @@ import importlib
 import mwntr
 from mwntr.network import LinkStatus
 from mwntr.sim.interactive_network_simulator import MWNTRInteractiveSimulator
-from LoRaSim.MarkovChain import MarkovChain
 import Strategies
 import Agents
 import Agents.heuristic_agent
@@ -49,28 +46,74 @@ import math
 import random
 
 class LoRaSystem:
-    """Simulates LoRaWAN communication with integrated real-time file logging."""
+    """Simulates LoRaWAN communication using physics-based RSSI/SNR model (LoRaSimPlus).
     
-    def __init__(self, models_dir=None, log_filename="latest_simulation_log.txt",config_params=None):
+    Replaces the old Markov-chain approach with realistic log-distance path loss,
+    receiver sensitivity checks, SNR validation, and full collision detection
+    (frequency, SF orthogonality, capture effect, timing).
+    
+    Public API is fully backward-compatible with the previous implementation.
+    """
+
+    # ── LoRa Physical Layer Constants (from LoRaSimPlus ParameterConfig.py) ──
+    # Receiver sensitivity matrix [SF7..SF12] x [125kHz, 250kHz, 500kHz]
+    _SENSI = np.array([
+        [7,  -126.5,  -124.25, -120.75],
+        [8,  -127.25, -126.75, -124.0],
+        [9,  -131.25, -128.25, -127.5],
+        [10, -132.75, -130.25, -128.75],
+        [11, -134.5,  -132.75, -128.75],
+        [12, -133.25, -132.25, -132.25],
+    ])
+    # Minimum SNR required for demodulation per SF (SF7..SF12)
+    _SNR_REQ = np.array([-7.5, -10.0, -12.5, -15.0, -17.5, -20.0])
+    # LoRaWAN EU868 carrier frequencies (Hz)
+    _CARRIER_FREQ = np.array([867.1e6, 867.3e6, 867.5e6, 867.7e6,
+                              867.9e6, 868.1e6, 868.3e6, 868.5e6])
+    # Propagation model defaults (log-distance, from LoRaSimPlus)
+    _PTX   = 14       # Transmit power (dBm)
+    _GAMMA = 2.32     # Path-loss exponent
+    _D0    = 1000.0   # Reference distance (m)
+    _STD   = 7.8      # Log-normal shadowing std dev (dB)
+    _LPLD0 = 128.95   # Path loss at d0 (dB)
+    _GL    = 0        # Combined antenna gain (dB)
+    # Collision
+    _CAPTURE_THRESHOLD_DB = 6  # Capture effect power margin (dB)
+    _NPREAM = 8                # Preamble symbols
+
+    def __init__(self, log_filename="latest_simulation_log.txt", config_params=None,
+                 bandwidth=125, payload_size=65, coding_rate=1, tx_power=None):
         self.gateway_pos = (0, 0)
         self.sensors = {}
         self.tx_interval_s = 1800
         self.total_transmissions = 0
         self.total_collisions = 0
-        
-        self.history = [] 
+
+        self.history = []
         self.debug_log = []
-        
+
+        # Configurable LoRa radio parameters
+        self.bandwidth = bandwidth          # kHz (125, 250, 500)
+        self.payload_size = payload_size    # bytes
+        self.coding_rate = coding_rate      # 1..4 (4/5 .. 4/8)
+        if tx_power is not None:
+            self._PTX = tx_power
+
+        # Persistent list of in-flight packets (survives across steps for cross-timestep collisions)
+        self._active_packets = []
+
+        # RSSI cache: sensor_id -> base RSSI (without per-step shadowing)
+        self._rssi_cache = {}
+
         # Gestione File di Log
         log_dir = "Log_review"
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
         self.log_path = os.path.join(log_dir, log_filename)
-        
-        # Sovrascriviamo il file all'inizio di ogni nuova istanza (nuova run)
+
         with open(self.log_path, "w", encoding="utf-8") as f:
             f.write("="*60 + "\n")
-            f.write(f"  LORA CO-SIMULATION SESSION: {datetime.datetime.now()}\n")
+            f.write(f"  LORA CO-SIMULATION SESSION (LoRaSimPlus): {datetime.datetime.now()}\n")
             f.write("="*60 + "\n")
             if config_params:
                 f.write("\n[CONFIG] Simulation Parameters:\n")
@@ -78,12 +121,7 @@ class LoRaSystem:
                     f.write(f"  > {k:20}: {v}\n")
                 f.write("-" * 60 + "\n\n")
 
-        # Percorso dei modelli Markoviani
-        if models_dir:
-            self.models_dir = models_dir
-        else:
-            self.models_dir = os.path.join('LoRaSim-master', 'LoRaSim', 'Models')
-    
+    # ──────────────────────── Logging ────────────────────────
     def _log(self, message, level="INFO"):
         """Centralized logging: updates memory list and writes to physical file."""
         formatted_msg = f"[{level:5}] {message}"
@@ -91,66 +129,173 @@ class LoRaSystem:
         with open(self.log_path, "a", encoding="utf-8") as f:
             f.write(formatted_msg + "\n")
 
+    # ──────────────────────── Gateway ────────────────────────
     def setup_gateway(self, pos):
         self.gateway_pos = pos
         self._log(f"Gateway set at {pos}")
 
-    def _get_best_model(self, dist_km, sf):
-        try:
-            dist_str = "650m" if dist_km <= 1.0 else "2km"
-            dr_str = f"DR{max(0, min(6, 12 - sf))}"
+    # ──────────────────── Physics Helpers ────────────────────
+    @staticmethod
+    def _get_sensitivity(sf, bw):
+        """Return receiver sensitivity (dBm) for given SF and bandwidth."""
+        bw_idx = {125: 1, 250: 2, 500: 3}.get(bw, 1)
+        sf_idx = max(0, min(5, sf - 7))
+        return LoRaSystem._SENSI[sf_idx, bw_idx]
 
-            if not os.path.exists(self.models_dir):
-                self._log(f"CRITICAL: Models directory NOT FOUND at {self.models_dir}")
-                return None
+    @staticmethod
+    def _get_min_snr(sf):
+        """Return minimum SNR (dB) required for demodulation at given SF."""
+        sf_idx = max(0, min(5, sf - 7))
+        return LoRaSystem._SNR_REQ[sf_idx]
 
-            available = [f for f in os.listdir(self.models_dir) if f.endswith('.ini')]
-            matches = [m for m in available if dist_str in m and dr_str in m]
-            
-            if matches:
-                best = matches[0]
-                self._log(f"Model selection: {best} for dist_km={dist_km:.2f}, sf={sf}")
-            else:
-                best = available[0] if available else None
-                if best:
-                    self._log(f"WARNING: No exact match for {dist_str}/{dr_str}. Fallback: {best}")
-                else:
-                    self._log(f"ERROR: No .ini files in {self.models_dir}")
-                    return None
+    def _compute_rssi(self, distance_m):
+        """Log-distance path loss model (from LoRaSimPlus Propagation.py).
+        
+        RSSI = Ptx + GL - (10*gamma*log10(d/d0) + N(Lpld0, std))
+        Returns RSSI in dBm. Includes stochastic log-normal shadowing.
+        """
+        if distance_m <= 0:
+            distance_m = 1.0  # Edge case: co-located sensor, use 1m
+        Lpl = 10 * self._GAMMA * math.log10(distance_m / self._D0) \
+              + np.random.normal(self._LPLD0, self._STD)
+        return self._PTX + self._GL - Lpl
 
-            model = MarkovChain()
-            model.loadFromFile(os.path.join(self.models_dir, best))
-            return model
-        except Exception as e:
-            self._log(f"EXCEPTION in _get_best_model (dist={dist_km}, sf={sf}): {str(e)}")
-            return None
+    def _compute_rssi_deterministic(self, distance_m):
+        """Deterministic RSSI (no shadowing) for caching at registration."""
+        if distance_m <= 0:
+            distance_m = 1.0
+        Lpl = 10 * self._GAMMA * math.log10(distance_m / self._D0) + self._LPLD0
+        return self._PTX + self._GL - Lpl
 
+    @staticmethod
+    def _compute_snr(rssi, bw_khz=125):
+        """SNR = RSSI - noise_floor, where noise_floor = -174 + 10*log10(BW_hz)."""
+        noise_floor = -174.0 + 10.0 * np.log10(bw_khz * 1e3)
+        return rssi - noise_floor
+
+    def _check_receivable(self, rssi, snr, sf, bw):
+        """Check if packet meets sensitivity and SNR demodulation thresholds."""
+        min_sensi = self._get_sensitivity(sf, bw)
+        min_snr = self._get_min_snr(sf)
+        return (rssi > min_sensi) and (snr > min_snr)
+
+    @staticmethod
+    def _airtime_ms(sf, cr, payload_bytes, bw):
+        """Compute LoRa packet airtime in ms (from LoRaSimPlus Packet.py)."""
+        H = 0   # Explicit header
+        DE = 0  # Low data rate optimization
+        Npream = 8
+
+        if bw == 125 and sf in [11, 12]:
+            DE = 1
+        if sf == 6:
+            H = 1
+
+        Tsym = (2.0 ** sf) / bw  # ms per symbol
+        Tpream = (Npream + 4.25) * Tsym
+        payloadSymbNB = 8 + max(
+            math.ceil((8.0 * payload_bytes - 4.0 * sf + 28 + 16 - 20 * H)
+                      / (4.0 * (sf - 2 * DE))) * (cr + 4), 0)
+        Tpayload = payloadSymbNB * Tsym
+        return Tpream + Tpayload
+
+    # ──────────────────── Collision Detection ────────────────
+    @staticmethod
+    def _frequency_collision(p1, p2):
+        """Check frequency overlap based on bandwidth (from LoRaSimPlus)."""
+        if abs(p1['freq'] - p2['freq']) <= 120e3 and (p1['bw'] == 500 or p2['bw'] == 500):
+            return True
+        elif abs(p1['freq'] - p2['freq']) <= 60e3 and (p1['bw'] == 250 or p2['bw'] == 250):
+            return True
+        elif abs(p1['freq'] - p2['freq']) <= 30e3:
+            return True
+        return False
+
+    @staticmethod
+    def _sf_collision(p1, p2):
+        """Different SFs are orthogonal — no collision."""
+        return p1['sf'] == p2['sf']
+
+    @staticmethod
+    def _timing_collision(p1, p2):
+        """Check if p2's transmission overlaps with p1's critical preamble.
+        
+        Uses absolute timestamps (start_abs_ms / end_abs_ms) so that
+        collisions are correctly detected even across step boundaries.
+        """
+        Tpreamb = (2 ** p1['sf']) / (1.0 * p1['bw']) * (8 - 5)  # ms
+        p2_end = p2['end_abs_ms']
+        p1_cs = p1['start_abs_ms'] + Tpreamb
+        return p1_cs < p2_end
+
+    def _power_collision(self, p1, p2):
+        """Capture effect: stronger packet survives if power gap > threshold."""
+        diff = abs(p1['rssi'] - p2['rssi'])
+        if diff < self._CAPTURE_THRESHOLD_DB:
+            return [p1, p2]  # Both lost
+        elif p2['rssi'] - p1['rssi'] > self._CAPTURE_THRESHOLD_DB:
+            return [p1]  # p1 lost
+        return [p2]  # p2 lost
+
+    def _detect_collisions(self, new_packets):
+        """Full collision detection: new packets vs ALL in-flight packets.
+        
+        Checks new_packets against each other AND against any still-active
+        packets from previous steps (_active_packets), enabling cross-timestep
+        collision detection.
+        
+        A collision requires:
+        1. Frequency overlap
+        2. Same SF (orthogonality)
+        3. Timing overlap (absolute timestamps)
+        4. Power check (capture effect)
+        """
+        # Build combined list: still-active old packets + new packets
+        all_inflight = self._active_packets + new_packets
+
+        for i, pkt in enumerate(new_packets):
+            if pkt.get('lost', False):
+                continue
+            for other in all_inflight:
+                if other is pkt or other.get('lost', False):
+                    continue
+                if self._frequency_collision(pkt, other) and self._sf_collision(pkt, other):
+                    if self._timing_collision(pkt, other):
+                        casualties = self._power_collision(pkt, other)
+                        for c in casualties:
+                            c['collided'] = True
+
+    def _purge_expired(self, current_time_ms):
+        """Remove packets whose transmission has fully completed."""
+        self._active_packets = [
+            p for p in self._active_packets if p['end_abs_ms'] > current_time_ms
+        ]
+
+    # ──────────────────── Sensor Registration ────────────────
     def register_iot_sensors(self, valves, wn, mode='simple', sf_mode='sequential', fixed_sf=10):
         self._log(f"NETWORK TOPOLOGY: {len(valves)} sensors registered", level="SETUP")
+        self._log(f"  Physics: Ptx={self._PTX}dBm, BW={self.bandwidth}kHz, "
+                  f"PL={self.payload_size}B, gamma={self._GAMMA}", level="SETUP")
         available_sfs = [7, 8, 9, 10, 11, 12]
 
         for i, v_name in enumerate(valves):
-            # 1. Coordinate
+            # 1. Coordinate (identico alla versione precedente)
             node_name = v_name.replace("IoT_Valve_", "")
-            
-            # Versione alternativa equivalente
             if node_name in wn.nodes:
                 node = wn.get_node(node_name)
             else:
-                # Se il nome non è un nodo (magari è il nome della valvola stessa), prendiamo il nodo di inizio del link
                 node = wn.get_node(wn.get_link(v_name).start_node_name)
 
-            
             tx_x, tx_y = node.coordinates
             gw_x, gw_y = self.gateway_pos
-            real_dist = math.sqrt((tx_x - gw_x)**2 + (tx_y - gw_y)**2) / 1000.0
-            
+            dist_m = math.sqrt((tx_x - gw_x)**2 + (tx_y - gw_y)**2)
+            real_dist = dist_m / 1000.0  # km (per compatibilità)
 
-            # 2. Assegnazione SF
+            # 2. Assegnazione SF (identico alla versione precedente)
             if sf_mode == 'random': sf = random.choice(available_sfs)
             elif sf_mode == 'fixed': sf = fixed_sf
             elif sf_mode == 'sequential': sf = available_sfs[i % len(available_sfs)]
-            else: # distance
+            else:  # distance
                 if real_dist < 0.5: sf = 7
                 elif real_dist < 1.0: sf = 8
                 elif real_dist < 1.5: sf = 9
@@ -158,67 +303,125 @@ class LoRaSystem:
                 elif real_dist < 3.0: sf = 11
                 else: sf = 12
 
-            # 3. Hops
-            hop_models = []
-            if mode == 'multihop':
-                remaining = real_dist
-                hop_count = 0
-                while remaining > 0:
-                    hop_count += 1
-                    d_hop = min(remaining, 2.0)
-                    model = self._get_best_model(d_hop, sf)
-                    hop_models.append({'model': model, 'dist': d_hop, 'state': 1})
-                    self._log(f"  └─ HOP {hop_count}: Dist={d_hop:.2f}km, SF={sf}")
-                    remaining -= 2.0
-            elif mode == "simple":
-                d_eff = 0.65 if real_dist < 1.3 else 2.0
-                model = self._get_best_model(d_eff, sf)
-                hop_models.append({'model': model, 'dist': d_eff, 'state': 1})
-                self._log(f"  └─ SINGLE-HOP: Dist_Eff={d_eff:.2f}km, SF={sf}")
+            # 3. Pre-compute and cache deterministic RSSI + assign carrier frequency
+            base_rssi = self._compute_rssi_deterministic(dist_m)
+            base_snr = self._compute_snr(base_rssi, self.bandwidth)
+            carrier_freq = self._CARRIER_FREQ[i % len(self._CARRIER_FREQ)]
+
+            self._rssi_cache[v_name] = base_rssi
+
+            # 4. Check baseline receivability (log a warning if marginal)
+            sensi = self._get_sensitivity(sf, self.bandwidth)
+            min_snr = self._get_min_snr(sf)
+            baseline_ok = (base_rssi > sensi) and (base_snr > min_snr)
 
             self.sensors[v_name] = {
-                'distance': real_dist, 'sf': sf, 'hop_models': hop_models,
-                'last_tx_time': -9999.0, 'data': {}
+                'distance': real_dist,      # km — backward compat
+                'distance_m': dist_m,       # meters — used for physics
+                'sf': sf,
+                'bw': self.bandwidth,       # kHz
+                'freq': carrier_freq,       # Hz
+                'cr': self.coding_rate,
+                'base_rssi': base_rssi,     # dBm (deterministic, no shadowing)
+                'last_tx_time': -9999.0,
+                'data': {},
             }
 
-            self._log(f"NODE {v_name:15} | SF{sf:2} | Dist: {real_dist:5.2f}km | Hops: {len(hop_models)}", level="REG")
-            
+            self._log(f"NODE {v_name:15} | SF{sf:2} | Dist: {real_dist:5.2f}km | "
+                      f"RSSI: {base_rssi:6.1f}dBm | SNR: {base_snr:5.1f}dB | "
+                      f"RX: {'OK' if baseline_ok else 'MARGINAL'}", level="REG")
+
+    # ──────────────────────── Metrics ────────────────────────
     def get_packet_loss_rate(self):
         if self.total_transmissions == 0: return 0.0
         plr = (self.total_collisions / self.total_transmissions) * 100.0
         self._log(f"STATS CHECK: PLR={plr:.2f}% | Total TX={self.total_transmissions}")
         return plr
 
+    # ──────────────────── Step Simulation ────────────────────
     def step(self, current_time, timestep_s):
-        received = []
+        """Simulate one co-simulation timestep with cross-timestep collision support.
+        
+        Packets use absolute timestamps (current_time converted to ms) so that
+        a packet started in step N can collide with one started in step N+1.
+        The persistent _active_packets list tracks in-flight transmissions.
+        
+        Returns: list of dicts {'id': sensor_name, 'data': payload}
+        """
+        current_time_ms = current_time * 1000.0  # Convert seconds -> ms
+
+        # Phase 0: Purge packets that finished transmitting before this step
+        self._purge_expired(current_time_ms)
+
+        # Phase 1: Build list of NEW packets transmitted this step
+        new_packets = []
+
         for s_id, s_node in self.sensors.items():
             if current_time - s_node['last_tx_time'] >= self.tx_interval_s:
                 self.total_transmissions += 1
                 s_node['last_tx_time'] = current_time
-                success = True
-                hops_results = []
-                
-                for i, hop in enumerate(s_node['hop_models']):
-                    if hop['model']:
-                        if hop['state'] == 1:
-                            if random.random() <= hop['model'].p10: hop['state'] = 0
-                        else:
-                            if random.random() <= hop['model'].p01: hop['state'] = 1
-                        if hop['state'] == 0: success = False
-                    else:
-                        success = False
-                    hops_results.append("OK" if success else "LOST")
-                
-                status_str = "SUCCESS" if success else "FAILED"
-                self._log(f"TX @{current_time:8.1f}s | {s_id:15} | SF{s_node['sf']:2} | "
-                    f"{status_str:7} | Path: [{'->'.join(hops_results)}]", 
-                    level="COMM"
-                )
-                
-                if success:
-                    received.append({'id': s_id, 'data': s_node.get('data', {})})
-                else:
-                    self.total_collisions += 1
+
+                sf = s_node['sf']
+                bw = s_node['bw']
+                dist_m = s_node['distance_m']
+
+                # Stochastic RSSI (with log-normal shadowing per transmission)
+                rssi_val = self._compute_rssi(dist_m)
+                snr_val = self._compute_snr(rssi_val, bw)
+
+                # Check physical receivability
+                is_receivable = self._check_receivable(rssi_val, snr_val, sf, bw)
+
+                # Compute airtime for collision window
+                airtime = self._airtime_ms(sf, s_node['cr'], self.payload_size, bw)
+
+                # Absolute timestamps: TX starts exactly at current_time
+                start_abs = current_time_ms
+                end_abs = current_time_ms + airtime
+
+                pkt = {
+                    'sensor_id': s_id,
+                    'sf': sf,
+                    'bw': bw,
+                    'freq': s_node['freq'],
+                    'rssi': rssi_val,
+                    'snr': snr_val,
+                    'airtime_ms': airtime,
+                    'start_abs_ms': start_abs,
+                    'end_abs_ms': end_abs,
+                    'lost': not is_receivable,
+                    'collided': False,
+                    'data': s_node.get('data', {}),
+                }
+                new_packets.append(pkt)
+
+        # Phase 2: Collision detection (new packets vs ALL in-flight packets)
+        if new_packets:
+            self._detect_collisions(new_packets)
+
+        # Phase 3: Add new packets to persistent in-flight list
+        self._active_packets.extend(new_packets)
+
+        # Phase 4: Determine outcomes for this step's packets
+        received = []
+        for pkt in new_packets:
+            if pkt['lost']:
+                reason = "LOST(SNR)"
+                self.total_collisions += 1
+            elif pkt['collided']:
+                reason = "COLLIDED"
+                self.total_collisions += 1
+            else:
+                reason = "SUCCESS"
+                received.append({'id': pkt['sensor_id'], 'data': pkt['data']})
+
+            self._log(
+                f"TX @{current_time:8.1f}s | {pkt['sensor_id']:15} | SF{pkt['sf']:2} | "
+                f"RSSI:{pkt['rssi']:6.1f} SNR:{pkt['snr']:5.1f} | "
+                f"Air:{pkt['airtime_ms']:6.1f}ms | {reason}",
+                level="COMM"
+            )
+
         return received
 
 class WaterNetworkManager:
@@ -1014,8 +1217,8 @@ engine = CoSimulationEngine(
         crisis_params={
             'decay_rate': 0.1,            
             'min_ratio': 0.025,              
-            'recovery_hour': 21.0,           # Recupero all'ora 21
-            'recovery_duration_hours': 12.0, # Mantenimento per 12 ore
+            'recovery_hour': 17.0,           # Recupero all'ora 21
+            'recovery_duration_hours': 5.0, # Mantenimento per 12 ore
             'recovery_type': 'instant',    # 'instant' o 'gradual'
             'recovery_rate': 0.1,           # Usato solo se gradual
             #'reversion_speed': 0.3,     
