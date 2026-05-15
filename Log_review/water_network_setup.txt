@@ -1,147 +1,102 @@
 ============================================================
-  WATER NETWORK DEMAND SETUP: 2026-05-12 13:33:44.057577
+  WATER NETWORK DEMAND SETUP: 2026-05-14 15:27:05.106829
 ============================================================
-Config: avg_demand=0.25, dist=lognormal, mode=random
+Config: avg_demand=15, dist=lognormal, mode=random
 
 JUNCTION_ID          | BASE_DEMAND  | PATTERN_NAME   
 ------------------------------------------------------------
-8628                 | 0.2188       | 9              
-8630                 | 0.3339       | 7              
-8632                 | 0.2908       | 7              
-8634                 | 0.2040       | 6              
-8636                 | 0.2567       | 2              
-8638                 | 0.2712       | 7              
-8640                 | 0.2056       | 8              
-8642                 | 0.2503       | 6              
-8644                 | 0.1848       | 2              
-8646                 | 0.3011       | 6              
-8648                 | 0.2667       | 2              
-8650                 | 0.2550       | 2              
-8686                 | 0.2896       | 10             
-8688                 | 0.2646       | 10             
-8690                 | 0.1751       | 8              
-8692                 | 0.2700       | 7              
-8694                 | 0.3098       | 9              
-8696                 | 0.1556       | 6              
-8698                 | 0.1982       | 8              
-8700                 | 0.4029       | 9              
-8702                 | 0.2241       | 6              
-8738                 | 0.1987       | 9              
-J106                 | 0.2177       | 9              
-2                    | 0.1414       | 2              
-3                    | 0.2465       | 9              
-4                    | 0.2963       | 6              
-5                    | 0.2088       | 8              
-6                    | 0.1928       | 2              
-7                    | 0.3222       | 10             
-8                    | 0.2084       | 7              
-9                    | 0.1807       | 2              
-10                   | 0.3037       | 6              
-11                   | 0.1729       | 8              
-12                   | 0.2444       | 2              
-13                   | 0.3488       | 1              
-14                   | 0.2112       | 7              
-15                   | 0.2234       | 9              
-16                   | 0.2677       | 1              
-17                   | 0.2703       | 8              
-18                   | 0.2258       | 10             
-19                   | 0.2210       | 2              
-20                   | 0.2111       | 7              
-21                   | 0.1763       | 1              
-22                   | 0.1198       | 9              
-23                   | 0.4259       | 6              
-24                   | 0.2165       | 2              
+8628                 | 0.0000       | PASS_THROUGH   
+8630                 | 0.0000       | PASS_THROUGH   
+8632                 | 0.0000       | PASS_THROUGH   
+8634                 | 0.0000       | PASS_THROUGH   
+8636                 | 0.0000       | PASS_THROUGH   
+8638                 | 0.0000       | PASS_THROUGH   
+8640                 | 0.0000       | PASS_THROUGH   
+8642                 | 0.0000       | PASS_THROUGH   
+8644                 | 0.0000       | PASS_THROUGH   
+8646                 | 0.0000       | PASS_THROUGH   
+8648                 | 0.0000       | PASS_THROUGH   
+8650                 | 0.0000       | PASS_THROUGH   
+8686                 | 0.0000       | PASS_THROUGH   
+8688                 | 0.0000       | PASS_THROUGH   
+8690                 | 0.0000       | PASS_THROUGH   
+8692                 | 0.0000       | PASS_THROUGH   
+8694                 | 0.0000       | PASS_THROUGH   
+8696                 | 0.0000       | PASS_THROUGH   
+8698                 | 0.0000       | PASS_THROUGH   
+8700                 | 0.0000       | PASS_THROUGH   
+8702                 | 0.0000       | PASS_THROUGH   
+8738                 | 0.0000       | PASS_THROUGH   
+J106                 | 0.0000       | PASS_THROUGH   
+2                    | 14.6603      | 10             
+3                    | 9.3800       | 7              
+4                    | 16.8646      | 9              
+5                    | 18.9567      | 10             
+6                    | 13.7197      | 1              
+7                    | 12.1969      | 10             
+8                    | 14.0730      | 2              
+9                    | 18.9098      | 8              
+10                   | 17.4435      | 6              
+11                   | 16.6011      | 10             
+12                   | 11.4029      | 9              
+13                   | 17.8675      | 9              
+14                   | 16.2562      | 6              
+15                   | 13.4257      | 7              
+16                   | 17.5000      | 6              
+17                   | 11.3751      | 8              
+18                   | 17.4397      | 6              
+19                   | 7.0555       | 10             
+20                   | 13.2985      | 2              
+21                   | 12.5426      | 2              
+22                   | 10.0443      | 2              
+23                   | 13.9549      | 8              
+24                   | 0.0000       | PASS_THROUGH   
 
 ============================================================
 Setup completed for 46 nodes.
-
-[SETUP] FIXING RESERVOIR HEADS (Target: 300)
-------------------------------------------------------------
-  - Reservoir 7384: Head 399.99999999839997 -> 300, Pattern None -> None
-------------------------------------------------------------
-
-[SETUP] REMOVING EXISTING TANKS (10 found)
-------------------------------------------------------------
-  - Node IoT_Tank_Small_0: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_0
-    * Removing node: IoT_Tank_Small_0
-  - Node IoT_Tank_Medium_1: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_1
-    * Removing node: IoT_Tank_Medium_1
-  - Node IoT_Tank_Large_2: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_2
-    * Removing node: IoT_Tank_Large_2
-  - Node IoT_Tank_Small_3: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_3
-    * Removing node: IoT_Tank_Small_3
-  - Node IoT_Tank_Medium_4: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_4
-    * Removing node: IoT_Tank_Medium_4
-  - Node IoT_Tank_Large_5: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_5
-    * Removing node: IoT_Tank_Large_5
-  - Node IoT_Tank_Small_6: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_6
-    * Removing node: IoT_Tank_Small_6
-  - Node IoT_Tank_Medium_7: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_7
-    * Removing node: IoT_Tank_Medium_7
-  - Node IoT_Tank_Large_8: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_8
-    * Removing node: IoT_Tank_Large_8
-  - Node IoT_Tank_Small_9: Removing 1 connected links first...
-    * Removing link: IoT_Valve_New_9
-    * Removing node: IoT_Tank_Small_9
-  Successfully removed all 10 original tanks and their connections.
-------------------------------------------------------------
-
-[SETUP] MAIN SOURCE IDENTIFIED
-  - Reservoir Source: J106
-  - Main Pipe: Main_Control_Valve (Diameter: 4.99999999998)
-------------------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_0 <--> 23
+  [HARDWARE DEPLOYED] IoT_Tank_Small_0 <--> 5
     - Valve created: IoT_Valve_New_0 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_1 <--> 8700
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_1 <--> 9
     - Valve created: IoT_Valve_New_1 (Initial: CLOSED)
 --------------------------------------------------
   [HARDWARE DEPLOYED] IoT_Tank_Large_2 <--> 13
     - Valve created: IoT_Valve_New_2 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_3 <--> 8630
+  [HARDWARE DEPLOYED] IoT_Tank_Small_3 <--> 16
     - Valve created: IoT_Valve_New_3 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_4 <--> 7
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_4 <--> 10
     - Valve created: IoT_Valve_New_4 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Large_5 <--> 8694
+  [HARDWARE DEPLOYED] IoT_Tank_Large_5 <--> 18
     - Valve created: IoT_Valve_New_5 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_6 <--> 10
+  [HARDWARE DEPLOYED] IoT_Tank_Small_6 <--> 4
     - Valve created: IoT_Valve_New_6 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_7 <--> 8646
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_7 <--> 11
     - Valve created: IoT_Valve_New_7 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Large_8 <--> 4
+  [HARDWARE DEPLOYED] IoT_Tank_Large_8 <--> 14
     - Valve created: IoT_Valve_New_8 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_9 <--> 8632
+  [HARDWARE DEPLOYED] IoT_Tank_Small_9 <--> 2
     - Valve created: IoT_Valve_New_9 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_10 <--> 8686
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_10 <--> 8
     - Valve created: IoT_Valve_New_10 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Large_11 <--> 8638
+  [HARDWARE DEPLOYED] IoT_Tank_Large_11 <--> 23
     - Valve created: IoT_Valve_New_11 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_12 <--> 17
+  [HARDWARE DEPLOYED] IoT_Tank_Small_12 <--> 6
     - Valve created: IoT_Valve_New_12 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_13 <--> 8692
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_13 <--> 15
     - Valve created: IoT_Valve_New_13 (Initial: CLOSED)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Large_14 <--> 16
+  [HARDWARE DEPLOYED] IoT_Tank_Large_14 <--> 20
     - Valve created: IoT_Valve_New_14 (Initial: CLOSED)
 --------------------------------------------------
 
@@ -150,26 +105,31 @@ Strategy used: DEMAND
 ------------------------------------------------------------
 TANK_NAME            | NODE       | ELEV    | T_ELEV  | DEMAND   | STATUS    
 ------------------------------------------------------------
-IoT_Tank_Small_0     | 23         | 0.0     | 150.0   | 0.43     | SUCCESS   
-IoT_Tank_Medium_1    | 8700       | 18.3    | 168.3   | 0.40     | SUCCESS   
-IoT_Tank_Large_2     | 13         | 0.0     | 150.0   | 0.35     | SUCCESS   
-IoT_Tank_Small_3     | 8630       | 18.3    | 168.3   | 0.33     | SUCCESS   
-IoT_Tank_Medium_4    | 7          | 0.0     | 150.0   | 0.32     | SUCCESS   
-IoT_Tank_Large_5     | 8694       | 18.3    | 168.3   | 0.31     | SUCCESS   
-IoT_Tank_Small_6     | 10         | 0.0     | 150.0   | 0.30     | SUCCESS   
-IoT_Tank_Medium_7    | 8646       | 18.3    | 168.3   | 0.30     | SUCCESS   
-IoT_Tank_Large_8     | 4          | 0.0     | 150.0   | 0.30     | SUCCESS   
-IoT_Tank_Small_9     | 8632       | 18.3    | 168.3   | 0.29     | SUCCESS   
-IoT_Tank_Medium_10   | 8686       | 18.3    | 168.3   | 0.29     | SUCCESS   
-IoT_Tank_Large_11    | 8638       | 18.3    | 168.3   | 0.27     | SUCCESS   
-IoT_Tank_Small_12    | 17         | 0.0     | 150.0   | 0.27     | SUCCESS   
-IoT_Tank_Medium_13   | 8692       | 18.3    | 168.3   | 0.27     | SUCCESS   
-IoT_Tank_Large_14    | 16         | 0.0     | 150.0   | 0.27     | SUCCESS   
+IoT_Tank_Small_0     | 5          | 0.0     | 1.0     | 18.96    | SUCCESS   
+IoT_Tank_Medium_1    | 9          | 0.0     | 1.0     | 18.91    | SUCCESS   
+IoT_Tank_Large_2     | 13         | 0.0     | 1.0     | 17.87    | SUCCESS   
+IoT_Tank_Small_3     | 16         | 0.0     | 1.0     | 17.50    | SUCCESS   
+IoT_Tank_Medium_4    | 10         | 0.0     | 1.0     | 17.44    | SUCCESS   
+IoT_Tank_Large_5     | 18         | 0.0     | 1.0     | 17.44    | SUCCESS   
+IoT_Tank_Small_6     | 4          | 0.0     | 1.0     | 16.86    | SUCCESS   
+IoT_Tank_Medium_7    | 11         | 0.0     | 1.0     | 16.60    | SUCCESS   
+IoT_Tank_Large_8     | 14         | 0.0     | 1.0     | 16.26    | SUCCESS   
+IoT_Tank_Small_9     | 2          | 0.0     | 1.0     | 14.66    | SUCCESS   
+IoT_Tank_Medium_10   | 8          | 0.0     | 1.0     | 14.07    | SUCCESS   
+IoT_Tank_Large_11    | 23         | 0.0     | 1.0     | 13.95    | SUCCESS   
+IoT_Tank_Small_12    | 6          | 0.0     | 1.0     | 13.72    | SUCCESS   
+IoT_Tank_Medium_13   | 15         | 0.0     | 1.0     | 13.43    | SUCCESS   
+IoT_Tank_Large_14    | 20         | 0.0     | 1.0     | 13.30    | SUCCESS   
+------------------------------------------------------------
+
+[SETUP] FIXING RESERVOIR HEADS (Target: 20)
+------------------------------------------------------------
+  - Reservoir 7384: Head 0.3048 -> 20, Pattern 3 -> None
 ------------------------------------------------------------
 
 [LoRa NETWORK SETUP]
-  - Gateway Position: (497968.39, 1378630.94) [Mode: center]
+  - Gateway Position: (497978.27, 1378652.74) [Mode: center]
   - Total Sensors:    15
-  - Average Distance: 804.98 meters
-  - Max Distance:     1184.54 meters
+  - Average Distance: 861.61 meters
+  - Max Distance:     1298.31 meters
 ------------------------------------------------------------

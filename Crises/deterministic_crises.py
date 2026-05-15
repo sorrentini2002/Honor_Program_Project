@@ -2,8 +2,8 @@ from .base_crisis import BaseCrisis
 import math
 
 class LinearCrisis(BaseCrisis):
-    def __init__(self, decay_rate=0.1, min_ratio=0.0):
-        super().__init__(decay_rate)
+    def __init__(self, decay_rate=0.1, min_ratio=0.0, **kwargs):
+        super().__init__(decay_rate, **kwargs)
         self.min_ratio = min_ratio
 
     def get_ratio(self, steps):
@@ -11,8 +11,8 @@ class LinearCrisis(BaseCrisis):
         return max(self.min_ratio, 1.0 - (steps * self.decay_rate))
 
 class ExponentialCrisis(BaseCrisis):
-    def __init__(self, decay_rate=0.9, min_ratio=0.0):
-        super().__init__(decay_rate)
+    def __init__(self, decay_rate=0.9, min_ratio=0.0, **kwargs):
+        super().__init__(decay_rate, **kwargs)
         self.min_ratio = min_ratio
 
     def get_ratio(self, steps):
@@ -21,9 +21,9 @@ class ExponentialCrisis(BaseCrisis):
         return max(self.min_ratio, val)
 
 class InstantCrisis(BaseCrisis):
-    def __init__(self, decay_rate=0.0, min_ratio=0.0):
+    def __init__(self, decay_rate=0.0, min_ratio=0.0, **kwargs):
         # In questo caso decay_rate è ignorato, min_ratio è il valore post-crisi
-        super().__init__(decay_rate)
+        super().__init__(decay_rate, **kwargs)
         self.min_ratio = min_ratio
 
     def get_ratio(self, steps):
@@ -31,8 +31,8 @@ class InstantCrisis(BaseCrisis):
         return self.min_ratio if steps >= 0 else 1.0
 
 class LogarithmicCrisis(BaseCrisis):
-    def __init__(self, decay_rate=0.1, min_ratio=0.0):
-        super().__init__(decay_rate)
+    def __init__(self, decay_rate=0.1, min_ratio=0.0, **kwargs):
+        super().__init__(decay_rate, **kwargs)
         self.min_ratio = min_ratio
 
     def get_ratio(self, steps):

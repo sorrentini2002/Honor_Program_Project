@@ -11,6 +11,9 @@ import pandas as pd
 from dataclasses import dataclass, field
 import json
 import datetime
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 
 dyn_wntr_path = 'Dyn-WNTR'
@@ -20,7 +23,7 @@ for path in [dyn_wntr_path, os.path.join(dyn_wntr_path, 'mwntr'), lorasim_pkg]:
     if os.path.exists(path) and path not in sys.path:
         sys.path.insert(0, path)
 
-print(f"✓ Working directory: {os.getcwd()}")
+print(f"Working directory: {os.getcwd()}")
 
 import importlib
 import mwntr
@@ -255,8 +258,24 @@ class WaterNetworkManager:
                 log_file.write(f"{'JUNCTION_ID':<20} | {'BASE_DEMAND':<12} | {'PATTERN_NAME':<15}\n")
                 log_file.write("-" * 60 + "\n")
 
+                # Check if the network has the 'USER_1' flag defined on any node
+                has_user_tags = any(self.wn.get_node(n).tag == 'USER_1' for n in self.wn.junction_name_list)
+
                 for i, j_name in enumerate(self.wn.junction_name_list):
                     junction = self.wn.get_node(j_name)
+
+                    # Se ci sono tag definiti, usa quelli. Altrimenti, fallback: tutti sono utenti
+                    is_user = False
+                    if has_user_tags:
+                        is_user = (junction.tag == 'USER_1')
+                    else:
+                        is_user = True
+
+                    if not is_user:
+                        junction.demand_timeseries_list.clear()
+                        junction.add_demand(base=0.0, pattern_name=None)
+                        log_file.write(f"{j_name:<20} | {'0.0000':<12} | {'PASS_THROUGH':<15}\n")
+                        continue
 
                     if dist_type == 'original':
                         # RECUPERO DATI ORIGINALI DAL FILE .INP
@@ -321,19 +340,50 @@ class WaterNetworkManager:
                     connected_links = [l_name for l_name, link in self.wn.links() 
                                       if link.start_node_name == t_name or link.end_node_name == t_name]
                     
-                    f.write(f"  - Node {t_name}: Removing {len(connected_links)} connected links first...\n")
+                    num_links = len(connected_links)
+                    f.write(f"  - Node {t_name}: Found {num_links} connected links.\n")
                     
-                    # 2. Rimuoviamo i link
-                    for l_name in connected_links:
-                        f.write(f"    * Removing link: {l_name}\n")
+                    if num_links == 1:
+                        # LOGICA 1 TUBO: Rimozione totale (foglia)
+                        l_name = connected_links[0]
+                        f.write(f"    * Removing single connection leaf: {l_name}\n")
                         self.wn.remove_link(l_name)
-                    
-                    # 3. Ora possiamo rimuovere il nodo in sicurezza
-                    f.write(f"    * Removing node: {t_name}\n")
-                    self.wn.remove_node(t_name, with_control=True)
+                        self.wn.remove_node(t_name, with_control=True)
+                        
+                    elif num_links == 2:
+                        # LOGICA 2 TUBI: Fusione (bypass)
+                        l1_name, l2_name = connected_links[0], connected_links[1]
+                        l1 = self.wn.get_link(l1_name)
+                        l2 = self.wn.get_link(l2_name)
+                        
+                        # Troviamo i due nodi esterni
+                        n1 = l1.start_node_name if l1.end_node_name == t_name else l1.end_node_name
+                        n2 = l2.start_node_name if l2.end_node_name == t_name else l2.end_node_name
+                        
+                        f.write(f"    * Merging paths: {n1} <-> {t_name} <-> {n2}\n")
+                        
+                        # Proprietà del nuovo tubo (prendiamo la media o da uno dei due)
+                        new_name = f"Merged_{n1}_{n2}"
+                        new_diam = (l1.diameter + l2.diameter) / 2
+                        new_len = l1.length + l2.length
+                        new_rough = l1.roughness
+                        
+                        self.wn.remove_link(l1_name)
+                        self.wn.remove_link(l2_name)
+                        self.wn.remove_node(t_name, with_control=True)
+                        
+                        # Creiamo il link diretto
+                        self.wn.add_pipe(new_name, n1, n2, length=new_len, diameter=new_diam, roughness=new_rough)
+                        f.write(f"    * Created bypass pipe: {new_name}\n")
+                        
+                    else:
+                        # Più di 2 tubi: Rimozione standard link per evitare loop complessi
+                        for l_name in connected_links:
+                            self.wn.remove_link(l_name)
+                        self.wn.remove_node(t_name, with_control=True)
+                        f.write(f"    * Removed node and all {num_links} links (complex junction).\n")
                 
-                f.write(f"  Successfully removed all {len(tanks)} original tanks and their connections.\n")
-                
+                f.write(f"  Successfully processed {len(tanks)} original tanks.\n")
             f.write("-" * 60 + "\n")
 
     def instrument_existing_tanks(self, use_pumps=True, min_boost=10.0, log_filename="water_network_setup.txt"):
@@ -353,28 +403,24 @@ class WaterNetworkManager:
                                    self.wn.get_link(l).start_node_name == tank_name or
                                    self.wn.get_link(l).end_node_name == tank_name]
 
-                if connected_links:
-                    link = self.wn.get_link(connected_links[0])
+                # --- [MODIFICA UTENTE] Strumentazione Topologica ---
+                # Invece di rimuovere arbitrariamente, mappiamo tutti i collegamenti esistenti
+                # tra la cisterna e la rete per trasformarli in interfacce IoT
+                for l_name in connected_links:
+                    link = self.wn.get_link(l_name)
                     junc_name = link.start_node_name if link.end_node_name == tank_name else link.end_node_name
-
+                    
                     tank_node = self.wn.get_node(tank_name)
                     junc_node = self.wn.get_node(junc_name)
-
-                    # Calcolo altezza relativa
+                    
+                    # Calcolo altezza relativa per questo specifico collegamento
                     height_diff = (tank_node.elevation - junc_node.elevation) + tank_node.max_level
                     boost = max(min_boost, height_diff)
-
-                    f.write(f"  - Retrofitting Tank: {tank_name}\n")
-                    f.write(f"    * Elevation: Tank={tank_node.elevation:.2f}m, Junction={junc_node.elevation:.2f}m\n")
-                    f.write(f"    * Max Head required (Boost): {boost:.2f}m\n")
-
-                    try:
-                        # Rimuoviamo il link vecchio e aggiungiamo il controllo IoT
-                        self.wn.remove_link(connected_links[0])
-                        self._add_iot_control_to_tank(junc_name, tank_name, tank_name, link.diameter, boost, use_pumps=use_pumps)
-                        f.write(f"    * Status: SUCCESS (IoT links and pumps installed)\n")
-                    except Exception as e:
-                        f.write(f"    * Status: FAILED Error: {str(e)}\n")
+                    
+                    self.wn.remove_link(l_name)
+                    self._add_iot_control_to_tank(junc_name, tank_name, junc_name, link.diameter, boost, use_pumps=use_pumps)
+                    f.write(f"    * Retrofitted link {l_name} connecting to Node {junc_name} (Boost: {boost:.2f}m)\n")
+                # ----------------------------------------------------
 
             f.write("-" * 60 + "\n")
 
@@ -449,7 +495,6 @@ class WaterNetworkManager:
         with open(log_path, "a", encoding="utf-8") as f:
             f.write(f"\n[SETUP] FIXING RESERVOIR HEADS (Target: {target_head})\n")
             f.write("-" * 60 + "\n")
-            
             for res_name in self.wn.reservoir_name_list:
                 res = self.wn.get_node(res_name)
                 old_head = res.head_timeseries.base_value
@@ -458,6 +503,14 @@ class WaterNetworkManager:
                 # Applichiamo la correzione: Head fisso e niente pattern
                 res.head_timeseries.base_value = target_head
                 res.head_timeseries.pattern_name = None 
+
+                # [MODIFICA] Potenziamo TUTTA la rete per eliminare colli di bottiglia strutturali
+                # Questo permette di vedere l'effetto della CRISI alla fonte senza interferenze interne
+                for l_name in self.wn.pipe_name_list:
+                    link = self.wn.get_link(l_name)
+                    if hasattr(link, 'diameter'):
+                        old_diam = link.diameter
+                        link.diameter = max(old_diam, 10.0) # Almeno 10 pollici per stabilità totale pre-crisi
                 
                 f.write(f"  - Reservoir {res_name}: Head {old_head} -> {target_head}, Pattern {old_pattern} -> None\n")
             
@@ -532,12 +585,9 @@ class WaterNetworkManager:
             current_time_s = int(getattr(sim, '_currentTime', step * 300)) # Fallback a 300s se non trovato
 
         if mode == 'pressure':
-            print("ATTENZIONE: La modifica dinamica della 'base_head' dei Reservoir in tempo reale non è supportata dai Control di WNTR.")
-            print("La pressione non cambierà. Ti preghiamo di usare mode='flow' per simulare la crisi agendo sulla Main_Control_Valve.")
-            
-            # Manteniamo la vecchia logica di calcolo solo per i log, ma non avrà impatto idraulico dinamico
+            # La modifica dinamica della 'base_head' richiede il rebuild del modello idraulico
             for res_name in self.wn.reservoir_name_list:
-                res = self.wn.get_node(res_name)
+                res = sim._wn.get_node(res_name)
                 if not hasattr(res, '_original_head'):
                     res._original_head = res.head_timeseries.base_value
                 
@@ -546,10 +596,15 @@ class WaterNetworkManager:
                     with open(log_path, "a") as f:
                         f.write(f"PRES | {step:<4} | {ratio:<5.2f} | Head: {new_head:<10.2f} | -{(1-ratio)*100:.1f}%\n")
                     res._last_ratio = ratio
+                    # Modifichiamo la head
+                    res.head_timeseries.base_value = new_head
+                    # Diciamo al simulatore di ricaricare il modello idraulico
+                    sim.rebuild_hydraulic_model = True
 
         elif mode == 'flow':
-
-            loss_coeff = max(60.0 * ratio, 1.0)
+            # Ritorno a una logica di crisi più semplice e diretta
+            # Siccome le velocità dell'acqua sono minime, serve un coefficiente gigantesco per far calare la pressione (h_L = K * v^2 / 2g)
+            loss_coeff = max(1.0, 500000.0 * (1.0 - ratio) ** 2)
             
             valve = sim._wn.get_link('Main_Control_Valve')
             
@@ -563,8 +618,7 @@ class WaterNetworkManager:
                 action = wntr.network.controls.ControlAction(valve, 'setting', loss_coeff)
                 
                 # Usiamo la condizione infallibile: scatta subito
-                condition = wntr.network.controls.SimTimeCondition(sim._wn, '>=', 0)
-                
+                condition = wntr.network.controls.SimTimeCondition(sim._wn, '=', current_time_s)
                 ctrl = wntr.network.controls.Control(condition, action, name=control_name)
                 sim._wn.add_control(control_name, ctrl)
                 # ---------------------------------------------------
@@ -609,7 +663,7 @@ class WaterNetworkManager:
         self.wn.options.time.report_timestep = timestep_s
         self.wn.options.hydraulic.demand_model = 'PDA'
         self.wn.options.hydraulic.minimum_pressure = 0.0
-        self.wn.options.hydraulic.required_pressure = 0.1
+        self.wn.options.hydraulic.required_pressure = 20
 
 
 from Agents import AGENT_MAP
@@ -639,6 +693,44 @@ def calculate_gateway_pos(wn, mode='center', offset_dist=0.0):
     return pos
 
 
+def plot_tank_levels_flexible(tank_data_matrix, step_minutes, output_filename='tank_levels_trend.png'):
+    """
+    Genera un grafico dei livelli dei serbatoi con passo temporale variabile.
+    
+    Args:
+        tank_data_matrix: Array numpy con shape (num_tanks, num_steps).
+        step_minutes: Int, intervallo in minuti tra ogni rilevazione (es. 5, 15, 60).
+        output_filename: Nome del file immagine da salvare.
+    """
+    tank_data = np.array(tank_data_matrix)
+    num_tanks, num_steps = tank_data.shape
+    
+    plt.figure(figsize=(14, 7))
+    
+    # Calcola l'asse X in ORE (più leggibile dei minuti se la simulazione è lunga)
+    # Se preferisci i minuti, basta togliere il "/ 60"
+    time_axis_hours = (np.arange(num_steps) * step_minutes) / 60.0
+    
+    for i in range(num_tanks):
+        plt.plot(time_axis_hours, tank_data[i], label=f'Tank {i+1}', linewidth=1.2)
+    
+    plt.xlabel('Time [hours]')
+    plt.ylabel('Water Level [m]')
+    plt.title(f'Water Tank Levels (Update every {step_minutes} min)')
+    
+    # Griglia dinamica: se simuli molti giorni, aiuta a vedere i cicli di 24h
+    plt.grid(True, which='both', linestyle='--', alpha=0.5)
+    
+    # Se i tank sono molti, riduciamo la legenda
+    if num_tanks <= 20:
+        plt.legend(loc='upper right', ncol=2, fontsize='x-small')
+    
+    plt.tight_layout()
+    plt.savefig(output_filename, dpi=300)
+    print(f"Grafico salvato: {output_filename} (Passo: {step_minutes} min)")
+
+
+
 class CoSimulationEngine:
     def __init__(self, network_file, duration_hours=24, step_min=5,
                  remove_tanks=False, crisis_mode='pressure', decay_type='linear',
@@ -660,26 +752,24 @@ class CoSimulationEngine:
 
         # 1. Setup Idraulico
         self.water_net.activate_network_demands(avg_demand=avg_demand, dist_type=dist_type, pattern_mode=pattern_mode)
-        self.water_net.fix_reservoir_head(target_head=target_head) 
-
-        if remove_tanks:
-            self.water_net.remove_existing_tanks()
-        else:
-            self.water_net.instrument_existing_tanks(use_pumps=enable_pumps, min_boost=self.min_boost)
-
-        if crisis_mode == 'flow':
-            self.water_net.instrument_source_with_valve()
-
         if n_tanks > 0:
             self.water_net.add_iot_tanks(n_tanks=n_tanks, strategy_name=strategy_name, 
                                          min_boost=self.min_boost, use_pumps=enable_pumps)
 
+        # 1.1 Fix Reservoir and Reinforce ALL pipes (including new IoT ones)
+        self.water_net.fix_reservoir_head(target_head=target_head) 
+
         # 2. Setup Crisi
         crisis_class = CRISIS_MAP.get(decay_type, CRISIS_MAP['linear'])
-        if crisis_params:
-            self.crisis_model = crisis_class(**crisis_params)
-        else:
-            self.crisis_model = crisis_class(decay_rate=decay_rate)
+        if crisis_params is None:
+            crisis_params = {'decay_rate': decay_rate}
+        
+        # Inseriamo automaticamente i parametri di simulazione se il modello li richiede (es: PumpTestCrisis)
+        # Questo garantisce che non ci siano discrepanze tra motore e modello di crisi
+        crisis_params['crisis_start_hour'] = crisis_start_hour
+        crisis_params['step_min'] = step_min
+
+        self.crisis_model = crisis_class(**crisis_params)
         self.crisis_mode_name = crisis_mode
         self.water_net.set_simulation_options(self.timestep_s)
 
@@ -728,8 +818,13 @@ class CoSimulationEngine:
             f.write("STEP | EXPECTED | ACTUAL | DIFF | SATISFACTION | TX_INT | OBJECTIVE\n")
             f.write("-" * 80 + "\n")
 
-        # 5. Statistiche e Log di Crisi
-        self.stats = {'time': [], 'satisfaction': [], 'packet_loss': [], 'tanks': [], 'reward': []}
+        # 5. Configurazione PDA (Pressure Driven Analysis) - CRUCIALE
+        self.water_net.wn.options.hydraulic.demand_model = 'PDA'
+        self.water_net.wn.options.hydraulic.minimum_pressure = 0.0
+        self.water_net.wn.options.hydraulic.required_pressure = 0.1 # Molto vicino alla pressione statica (40ft) per massima sensibilità
+        
+        # 6. Statistiche e Log di Crisi
+        self.stats = {'time': [], 'satisfaction': [], 'packet_loss': [], 'tanks': [], 'reward': [], 'tank_levels': []}
         log_dir = "Log_review"
         if not os.path.exists(log_dir): os.makedirs(log_dir)
         with open(os.path.join(log_dir, "crisis_status.txt"), "w") as f:
@@ -774,9 +869,14 @@ class CoSimulationEngine:
             self.sim._currentTime = int(t)
             # --- RIPRISTINO DOMANDA (Dallo step 1 in poi) ---
             if step == 1:
+                # Ripristino delle domande dopo il Soft Start
                 for j_name, val in saved_stochastic_demands.items():
                     node = self.water_net.wn.get_node(j_name)
-                    node.demand_timeseries_list[0].base_value = val
+                    if node.demand_timeseries_list:
+                        node.demand_timeseries_list[0].base_value = val
+                # Notifichiamo al simulatore che la rete è cambiata
+                if hasattr(self.sim, '_wn'):
+                    self.sim._wn.options.hydraulic.demand_model = 'PDA'
 
             if step == self.crisis_start_step:
                 crisis_step = step
@@ -802,14 +902,10 @@ class CoSimulationEngine:
 
             # --- DEBUG ROBUSTO ---
             print(f"\n--- DEBUG STEP {step} ---")
-            # 1. Verifica la fonte principale
-            source_id = 'Source_Pump' # <-- Assicurati che questo ID esista nel tuo file .inp!
-            if source_id in self.water_net.wn.link_name_list:
-                s_link = self.water_net.wn.get_link(source_id)
-                # Controllo se ci sono dati disponibili
-                flow_data = self.sim.node_res['flow'].get(source_id, [])
-                s_flow = flow_data[-1] if len(flow_data) > 0 else 0
-                print(f"FONTE [{source_id}]: Stato={s_link.status}, Portata={s_flow:.4f}")
+            # 1. Verifica i Reservoir (Fonti)
+            for res_name in self.water_net.wn.reservoir_name_list:
+                res = self.sim._wn.get_node(res_name)
+                print(f"FONTE [{res_name}]: Head={res.head_timeseries.base_value:.2f}")
             # 2. Verifica i Serbatoi
             tank_links = [l for l in self.water_net.wn.link_name_list if 'tank' in l.lower() or 'cistern' in l.lower()]
             print(f"CISTERNE ATTIVE (Agente): {self.agent.opened_count}")
@@ -840,6 +936,16 @@ class CoSimulationEngine:
             res = self.sim.node_res
 
             # Nota: prendiamo l'ultimo valore [-1] che è quello appena calcolato dallo step
+            vals = []
+            for j in res['expected_demand']:
+                if len(res['expected_demand'][j]) > 0 and res['expected_demand'][j][-1] > 0:
+                    exp = res['expected_demand'][j][-1]
+                    act = res['demand'][j][-1]
+                    sat = act / exp
+                    vals.append(sat)
+            
+            s_real = sum(vals) / len(vals) if vals else 1.0
+
             exp_t = sum(res['expected_demand'][j][-1] for j in res['expected_demand'] if len(res['expected_demand'][j]) > 0)
             act_t = sum(res['demand'][j][-1] for j in res['demand'] if len(res['demand'][j]) > 0)
             sat_p = (act_t / exp_t * 100) if exp_t > 0 else 100.0
@@ -855,8 +961,10 @@ class CoSimulationEngine:
             s_real = self.agent.calculate_current_satisfaction(self.sim)
             fa = self.agent.compute_objective(s_real, self.lora_net.tx_interval_s)
 
-            with open(self.perf_log, "a") as f:
-                f.write(f"{step:<4} | {exp_total:<8.2f} | {act_total:<6.2f} | {diff:<4.2f} | {s_real*100:<11.1f}% | {current_tx:<6} | {fa:.4f}\n")
+            # Usiamo un file separato per le metriche di rete per non sporcare il log dell'agente
+            with open("Log_review/network_metrics.txt", "a") as f:
+                if step == 0: f.write("STEP | EXP | ACT | DIFF | SAT\n")
+                f.write(f"{step:<4} | {exp_total:<5.2f} | {act_total:<5.2f} | {diff:<4.2f} | {s_real*100:.1f}%\n")
 
 
             self.stats['time'].append(t)
@@ -864,52 +972,136 @@ class CoSimulationEngine:
             self.stats['packet_loss'].append(pl)
             self.stats['reward'].append(fa)
             self.stats['tanks'].append(self.agent.opened_count)
+            
+            # --- RACCOLTA LIVELLI SERBATOI PER IL GRAFICO FINALE ---
+            current_levels = []
+            for t_name in self.water_net.wn.tank_name_list:
+                # Recuperiamo l'oggetto tank per conoscere il suo livello massimo fisico
+                tank = self.water_net.wn.get_node(t_name)
+                max_l = getattr(tank, 'max_level', 10.0) # Fallback a 10m se non trovato
+                
+                # Recuperiamo l'ultimo valore di pressione/livello calcolato
+                if t_name in self.sim.node_res['pressure'] and len(self.sim.node_res['pressure'][t_name]) > 0:
+                    level = self.sim.node_res['pressure'][t_name][-1]
+                else:
+                    try:
+                        level = tank.pressure
+                    except:
+                        level = 0.0
+                
+                # Applichiamo il clipping: il livello deve essere tra 0 e il massimo fisico del serbatoio
+                clipped_level = max(0.0, min(level, max_l))
+                current_levels.append(clipped_level)
+            
+            self.stats['tank_levels'].append(current_levels)
 
         return self.sim.get_results()
 
 
 # Choice the network file:
-network_file = 'Network/NET_30_PERFECT.inp'
+network_file = 'Network/NET_30_users_only.inp'
 
     
     # Inizializzazione pulita del motore
     # NOTA: CoSimulationEngine si occupa internamente di caricare il file e aggiungere i tank.
 engine = CoSimulationEngine(
         network_file,                   # selezione della rete
-        duration_hours=3,                  # selezione della durata della simulazione
-        step_min=2.5,                         # selezione dello step di aggiornamento
-        remove_tanks=True,             # se non vogliamo mantenere i serbaoti esistenti          
-        crisis_mode='flow',       # 'pressure' or 'flow' --> decide se la crisi è simulata tramite un cale di pressione della fonte o tramite una perdita del tubo a maggior portata
-        decay_type='instant',          # 'linear','exponential','instant', 'logarithmic' or 'ornstein_uhlenbeck'
+        duration_hours=60,                  # selezione della durata della simulazione
+        step_min=5,                         # selezione dello step di aggiornamento
+        remove_tanks=False,             # se non vogliamo mantenere i serbaoti esistenti          
+        crisis_mode='pressure',       # [MODIFICA] Torniamo a pressure per agire sulla source head in modo infallibile
+        decay_type='pump_test',          # 'linear','exponential','instant', 'logarithmic','pump_test' or 'ornstein_uhlenbeck'
         crisis_params={
-        #'decay_rate':0.2,        # necessario solo per i casi di exponential, logarithmic e linear.
-        'min_ratio':0.5,          # indica la pressione finale che la fonte ha una volta che la crisi è partita - il mu per il ou model
-        #'reversion_speed': 0.3,     # elocità con cui "cade" verso il 50%
-        #'volatility': 0.05            # Intensità delle oscillazioni attorno al 50%
+            'decay_rate': 0.1,            
+            'min_ratio': 0.025,              
+            'recovery_hour': 21.0,           # Recupero all'ora 21
+            'recovery_duration_hours': 12.0, # Mantenimento per 12 ore
+            'recovery_type': 'instant',    # 'instant' o 'gradual'
+            'recovery_rate': 0.1,           # Usato solo se gradual
+            #'reversion_speed': 0.3,     
+            #'volatility': 0.05          
         },
-        avg_demand=0.25,               # in caso siano simulate identificano la media di esse
-        dist_type='lognormal',         # 'normal', 'lognormal', 'original' or 'uniform'  --> distribuzione domanda idrica oppure se si prendono i valori originli
-        pattern_mode='random',          # 'random', 'single' or 'sequential' ---> scelta del pattern di consumo tra quelli esistenti
-        min_boost = 150,                 # altezza minima delle cisterne sia caso già esistenti che caso di nuove
-        n_tanks=15,                      # numero di serbatoi da aggiungere
-        strategy_name='demand',      # 'random','demand','pressure' 
-        crisis_start_hour=1.0,      # identifica a che ora la crisi inizia
+        avg_demand=15,               # [MODIFICA] Torniamo a 0.5 GPM (ora sostenuti dalla rete potenziata)
+        dist_type='lognormal',         # [MODIFICA] Necessario 'lognormal' perché il file .inp originale ha tutte domande a 0!
+        pattern_mode='random',          # [MODIFICA] Pattern casuali per variabilità realistica
+        min_boost=1,                 # [MODIFICA] Boost ridotto a valori idraulicamente sensati per le cisterne
+        n_tanks=5,                      # Ridotto a 5 per non annullare la crisi istantaneamente
+        strategy_name='demand',      # [MODIFICA] Più sensato posizionarli vicino alla domanda rispetto a 'random'
+        crisis_start_hour=1.5,      # [MODIFICA] La crisi inizia alla terza ora
         agent_name='heuristic',      # identifica l'agente che si sta scegliendo
-        agent_threshold=0.99,       # identifica la soglia sotto la quale si sta avverando la crisi
-        agent_aggression=5.0,      # varia tra 1 e 10 ed identifica la reattività dell'agente
-        agent_alpha=0.9, # 90% importanza all'acqua, 10% alla batteria LoRa
-        enable_pumps=False,       # se fissata su true da la possiblità alle cisterne di ricaricarsi tramite egente di controllo
-        gateway_mode='center',      # 'center','random_offset', 'random' --> definsice dove isnerire il gateway
-        #gateway_offset=0.0,       # definisce la distanza dal centro nel caso di random offset
-        lora_mode='simple',      # 'simple' or 'multihop'   --> se posto su mulithop inserisce tanti sensori quanti ne servono per arrivare al gateway altrimenti semplfica a distanza di 2 km per ampie distanze
-        sf_mode='fixed',    # 'sequential', 'random' or 'fixed'   --> associazione dei vari sf
+        agent_threshold=0.95,       # identifica la soglia sotto la quale si sta avverando la crisi
+        agent_aggression=3.0,      # varia tra 1 e 10 ed identifica la reattività dell'agente
+        agent_alpha=0.5, # 90% importanza all'acqua, 10% alla batteria LoRa
+        enable_pumps=True,       # se fissata su true da la possiblità alle cisterne di ricaricarsi tramite egente di controllo
+        gateway_mode='center',      # 'center','random_offset', 'random'
+        #gateway_offset=0.0,       
+        lora_mode='simple',      # 'simple' or 'multihop'
+        sf_mode='fixed',    # 'sequential', 'random' or 'fixed'
         fixed_sf=12,            # only with fixed
-        target_head=300         # il livello della fonte primaria
+        target_head=20       # [BILANCIAMENTO] 100ft: Equilibrio perfetto per sensibilità alla crisi
     )
 
 results = engine.run_simulation()
 
-print(f"\n✓ Simulation completed: {len(results.node)} nodes.")
-print(f"📁 Detailed logs saved to: {engine.lora_net.log_path}")
+print(f"\nSimulation completed: {len(results.node['pressure'].columns)} nodes.")
+print(f"Detailed logs saved to: {engine.lora_net.log_path}")
+
+# --- GENERAZIONE GRAFICI DI ANALISI ---
+if 'engine' in locals() and engine.stats['time']:
+    print("\nGenerating simulation analysis plots...")
+    fig, axes = plt.subplots(3, 1, figsize=(14, 12))
+    time_hours = [t/3600 for t in engine.stats['time']]
+    
+    # Plot 1: Demand Satisfaction
+    axes[0].plot(time_hours, engine.stats['satisfaction'], 'b-', linewidth=2, label='Satisfied Demand (%)')
+    if hasattr(engine, 'agent') and hasattr(engine.agent, 'threshold'):
+        axes[0].axhline(y=engine.agent.threshold * 100.0, color='r', linestyle='--', label=f'Agent Threshold ({engine.agent.threshold * 100.0}%)')
+    
+    axes[0].set_ylabel('Satisfaction (%)')
+    axes[0].set_title('Hydraulic Performance: Demand Satisfaction (Users 1-23)')
+    axes[0].legend()
+    axes[0].grid(True, alpha=0.3)
+
+    # Plot 2: IoT Tanks Status
+    axes[1].step(time_hours, engine.stats['tanks'], 'g-', where='post', linewidth=2, label='Active Reservoirs')
+    axes[1].set_ylabel('Number of Tanks')
+    axes[1].set_ylim(-0.5, len(engine.water_net.iot_valves) + 0.5)
+    axes[1].set_title('Cyber-Physical Response: Emergency Tank Activation')
+    axes[1].legend()
+    axes[1].grid(True, alpha=0.3)
+
+    # Plot 3: Packet Loss and Objective Function
+    ax2_twin = axes[2].twinx()
+    axes[2].plot(time_hours, engine.stats['packet_loss'], 'orange', linewidth=2, label='Packet Loss (%)')
+    ax2_twin.plot(time_hours, engine.stats['reward'], 'purple', linestyle=':', label='Objective F(a)')
+    
+    axes[2].set_xlabel('Time (hours)')
+    axes[2].set_ylabel('Packet Loss (%)', color='orange')
+    ax2_twin.set_ylabel('Objective Reward F(a)', color='purple')
+    axes[2].set_title('Communication Quality and Agent Reward')
+    
+    lines1, labels1 = axes[2].get_legend_handles_labels()
+    lines2, labels2 = ax2_twin.get_legend_handles_labels()
+    axes[2].legend(lines1 + lines2, labels1 + labels2, loc='upper right')
+    axes[2].grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    plot_path = "Log_review/simulation_analysis.png"
+    plt.savefig(plot_path)
+    print(f"Plot saved to: {plot_path}")
+
+    # --- GRAFICO LIVELLI SERBATOI ---
+    tank_names = engine.water_net.wn.tank_name_list
+    if tank_names:
+        print("Generating tank levels trend plot...")
+        # Usiamo i dati raccolti durante tutta la simulazione (engine.stats['tank_levels'])
+        # La lista di liste va convertita in matrice e trasposta per avere (num_tanks, num_steps)
+        tank_levels_matrix = np.array(engine.stats['tank_levels']).T
+        
+        plot_tank_levels_flexible(
+            tank_data_matrix=tank_levels_matrix, 
+            step_minutes=engine.timestep_s // 60, 
+            output_filename='Log_review/tank_levels_trend.png'
+        )
 
 

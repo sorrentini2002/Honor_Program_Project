@@ -1,68 +1,68 @@
 ============================================================
-  LORA CO-SIMULATION SESSION: 2026-05-12 13:33:44.085728
+  LORA CO-SIMULATION SESSION: 2026-05-14 15:27:05.111441
 ============================================================
-[INFO ] Gateway set at (497968.39230645157, 1378630.944193548)
+[INFO ] Gateway set at (497978.2719032258, 1378652.7379838715)
 [SETUP] NETWORK TOPOLOGY: 15 sensors registered
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_0 | SF12 | Dist:  1.09km | Hops: 1
+[REG  ] NODE IoT_Valve_New_0 | SF12 | Dist:  1.30km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_1 | SF12 | Dist:  0.61km | Hops: 1
+[REG  ] NODE IoT_Valve_New_1 | SF12 | Dist:  1.15km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_2 | SF12 | Dist:  0.69km | Hops: 1
+[REG  ] NODE IoT_Valve_New_2 | SF12 | Dist:  0.68km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_3 | SF12 | Dist:  0.81km | Hops: 1
+[REG  ] NODE IoT_Valve_New_3 | SF12 | Dist:  0.74km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_4 | SF12 | Dist:  0.97km | Hops: 1
+[REG  ] NODE IoT_Valve_New_4 | SF12 | Dist:  0.65km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_5 | SF12 | Dist:  0.47km | Hops: 1
+[REG  ] NODE IoT_Valve_New_5 | SF12 | Dist:  0.36km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_6 | SF12 | Dist:  0.67km | Hops: 1
+[REG  ] NODE IoT_Valve_New_6 | SF12 | Dist:  1.16km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_7 | SF12 | Dist:  0.72km | Hops: 1
+[REG  ] NODE IoT_Valve_New_7 | SF12 | Dist:  0.71km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_8 | SF12 | Dist:  1.18km | Hops: 1
+[REG  ] NODE IoT_Valve_New_8 | SF12 | Dist:  0.27km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_9 | SF12 | Dist:  0.99km | Hops: 1
+[REG  ] NODE IoT_Valve_New_9 | SF12 | Dist:  1.17km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_10 | SF12 | Dist:  0.90km | Hops: 1
+[REG  ] NODE IoT_Valve_New_10 | SF12 | Dist:  0.75km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_11 | SF12 | Dist:  0.79km | Hops: 1
+[REG  ] NODE IoT_Valve_New_11 | SF12 | Dist:  1.10km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_12 | SF12 | Dist:  0.93km | Hops: 1
+[REG  ] NODE IoT_Valve_New_12 | SF12 | Dist:  1.05km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_13 | SF12 | Dist:  0.52km | Hops: 1
+[REG  ] NODE IoT_Valve_New_13 | SF12 | Dist:  0.65km | Hops: 1
 [INFO ] Model selection: urban_650m_DR0.ini for dist_km=0.65, sf=12
 [INFO ]   └─ SINGLE-HOP: Dist_Eff=0.65km, SF=12
-[REG  ] NODE IoT_Valve_New_14 | SF12 | Dist:  0.73km | Hops: 1
-[COMM ] TX @   150.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @   150.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[REG  ] NODE IoT_Valve_New_14 | SF12 | Dist:  1.18km | Hops: 1
+[COMM ] TX @   300.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @   300.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
@@ -70,127 +70,898 @@
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[COMM ] TX @  2100.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  2100.0s | IoT_Valve_New_14 | SF12 | FAILED  | Path: [LOST]
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[INFO ] STATS CHECK: PLR=3.33% | Total TX=30
-[COMM ] TX @  5250.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  5250.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[INFO ] STATS CHECK: PLR=2.22% | Total TX=45
-[COMM ] TX @  7950.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @  7950.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[INFO ] STATS CHECK: PLR=1.67% | Total TX=60
-[COMM ] TX @ 10200.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
-[COMM ] TX @ 10200.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
-[INFO ] STATS CHECK: PLR=1.33% | Total TX=75
-[INFO ] STATS CHECK: PLR=1.33% | Total TX=75
-[INFO ] STATS CHECK: PLR=1.33% | Total TX=75
-[INFO ] STATS CHECK: PLR=1.33% | Total TX=75
+[COMM ] TX @  2400.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  2400.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=30
+[COMM ] TX @  4500.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  4500.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=45
+[COMM ] TX @  6600.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  6600.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=60
+[COMM ] TX @  8700.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @  8700.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=75
+[COMM ] TX @ 10800.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 10800.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=90
+[COMM ] TX @ 12900.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 12900.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=105
+[COMM ] TX @ 15000.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 15000.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[COMM ] TX @ 17100.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 17100.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[COMM ] TX @ 19200.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 19200.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[COMM ] TX @ 21300.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 21300.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[COMM ] TX @ 24600.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 24600.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[COMM ] TX @ 27900.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 27900.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[COMM ] TX @ 31200.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 31200.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[COMM ] TX @ 34800.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_7 | SF12 | FAILED  | Path: [LOST]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 34800.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
+[COMM ] TX @ 38400.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 38400.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
+[COMM ] TX @ 41700.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 41700.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
+[COMM ] TX @ 45000.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 45000.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
+[COMM ] TX @ 48000.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 48000.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
+[COMM ] TX @ 51000.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 51000.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
+[COMM ] TX @ 53700.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 53700.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[INFO ] STATS CHECK: PLR=0.32% | Total TX=315
+[COMM ] TX @ 56400.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 56400.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[INFO ] STATS CHECK: PLR=0.30% | Total TX=330
+[COMM ] TX @ 59100.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 59100.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[INFO ] STATS CHECK: PLR=0.29% | Total TX=345
+[COMM ] TX @ 61500.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 61500.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=360
+[COMM ] TX @ 63900.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 63900.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=375
+[COMM ] TX @ 66300.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 66300.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
+[COMM ] TX @ 68400.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 68400.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
+[COMM ] TX @ 70500.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_8 | SF12 | FAILED  | Path: [LOST]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 70500.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[COMM ] TX @ 72300.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 72300.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[COMM ] TX @ 74100.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 74100.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=450
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=450
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=450
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=450
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=450
+[COMM ] TX @ 75600.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 75600.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=465
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=465
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=465
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=465
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=465
+[COMM ] TX @ 77100.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 77100.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=480
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=480
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=480
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=480
+[COMM ] TX @ 78300.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 78300.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=495
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=495
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=495
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=495
+[COMM ] TX @ 79500.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 79500.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=510
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=510
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=510
+[INFO ] STATS CHECK: PLR=0.39% | Total TX=510
+[COMM ] TX @ 80700.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 80700.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.38% | Total TX=525
+[INFO ] STATS CHECK: PLR=0.38% | Total TX=525
+[INFO ] STATS CHECK: PLR=0.38% | Total TX=525
+[COMM ] TX @ 81600.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 81600.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=540
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=540
+[INFO ] STATS CHECK: PLR=0.37% | Total TX=540
+[COMM ] TX @ 82500.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 82500.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.36% | Total TX=555
+[INFO ] STATS CHECK: PLR=0.36% | Total TX=555
+[INFO ] STATS CHECK: PLR=0.36% | Total TX=555
+[COMM ] TX @ 83400.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_4 | SF12 | FAILED  | Path: [LOST]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 83400.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.53% | Total TX=570
+[INFO ] STATS CHECK: PLR=0.53% | Total TX=570
+[INFO ] STATS CHECK: PLR=0.53% | Total TX=570
+[COMM ] TX @ 84300.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84300.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.51% | Total TX=585
+[INFO ] STATS CHECK: PLR=0.51% | Total TX=585
+[COMM ] TX @ 84900.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 84900.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.50% | Total TX=600
+[INFO ] STATS CHECK: PLR=0.50% | Total TX=600
+[COMM ] TX @ 85500.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 85500.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.49% | Total TX=615
+[INFO ] STATS CHECK: PLR=0.49% | Total TX=615
+[COMM ] TX @ 86100.0s | IoT_Valve_New_0 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_1 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_2 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_3 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_4 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_5 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_6 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_7 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_8 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_9 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_10 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_11 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_12 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_13 | SF12 | SUCCESS | Path: [OK]
+[COMM ] TX @ 86100.0s | IoT_Valve_New_14 | SF12 | SUCCESS | Path: [OK]
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=630

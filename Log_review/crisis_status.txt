@@ -1,6 +1,15 @@
-SIMULATION START: 2026-05-12 13:33:44.130455
-MODE: FLOW | GATEWAY: center
+SIMULATION START: 2026-05-14 15:27:05.128407
+MODE: PRESSURE | GATEWAY: center
 -----------------------------------------------------------------
 MODE | STEP | RATIO | VALUE (Head/Coeff) | REDUCTION
 -----------------------------------------------------------------
-FLOW | 24   | 0.50  | Coeff: 30.00      | -50.0%
+PRES | 37   | 0.90  | Head: 18.00      | -10.0%
+PRES | 38   | 0.80  | Head: 16.00      | -20.0%
+PRES | 39   | 0.70  | Head: 14.00      | -30.0%
+PRES | 40   | 0.60  | Head: 12.00      | -40.0%
+PRES | 41   | 0.50  | Head: 10.00      | -50.0%
+PRES | 42   | 0.40  | Head: 8.00       | -60.0%
+PRES | 43   | 0.30  | Head: 6.00       | -70.0%
+PRES | 44   | 0.20  | Head: 4.00       | -80.0%
+PRES | 45   | 0.10  | Head: 2.00       | -90.0%
+PRES | 46   | 0.03  | Head: 0.50       | -97.5%

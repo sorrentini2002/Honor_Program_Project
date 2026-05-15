@@ -1,74 +1,64 @@
-; Filename: Network/NET_30_PERFECT.inp
+; Filename: c:\Users\matteo\OneDrive - uniroma1.it\Documenti\data science\Honor Program\project\progetto_locale\Network\NET_30_pattern_single_peak_no_default_pattern_tank.inp
 ; WNTR: 1.2.0
-; Created: 2026-05-12 12:28:53
+; Created: 2026-05-13 15:22:17
 [TITLE]
 Northwest System
 
 [JUNCTIONS]
 ;ID                      Elevation       Demand Pattern                 
- 8628                              60    2682.0936309 8                          ;
- 8630                              60    3134.2240229 8                          ;
- 8632                              60    2436.4926338 2                          ;
- 8634                              60    2587.8061399 6                          ;
- 8636                              60    3033.7575795 1                          ;
- 8638                              60    2447.6972616 1                          ;
- 8640                              60    3429.2122128 6                          ;
- 8642                              60    3013.2250992 7                          ;
- 8644                              60    2221.6853816 10                         ;
- 8646                              60     3619.523933 8                          ;
- 8648                              60    5918.3362362 2                          ;
- 8650                            62.5    3201.3176592 7                          ;
- 8686                              60    2329.0878935 8                          ;
- 8688                              60    3626.5771087 1                          ;
- 8690                              60    3661.3278943 6                          ;
- 8692                              60    3737.7321792 1                          ;
- 8694                              60     5280.337269 8                          ;
- 8696                              60    3664.1129519 2                          ;
- 8698                              60    2785.0121964 9                          ;
- 8700                              60    2099.8711439 8                          ;
- 8702                              60    2303.2908929 9                          ;
- 8738                              60    3483.7536773 8                          ;
- J106                            54.3    2823.7749488 7                          ;
- 2                                  0     3279.388326 2                          ;
- 3                                  0    2588.8395863 10                         ;
- 4                                  0    3083.5545532 8                          ;
- 5                                  0    2586.9773189 8                          ;
- 6                                  0    3050.0986948 10                         ;
- 7                                  0    3325.8543578 2                          ;
- 8                                  0    4293.8749321 1                          ;
- 9                                  0    3433.6581768 1                          ;
- 10                                 0    3062.7106913 8                          ;
- 11                                 0    3462.7319551 6                          ;
- 12                                 0    2347.4852524 9                          ;
- 13                                 0    3675.7305669 10                         ;
- 14                                 0    4843.4540485 1                          ;
- 15                                 0     3760.379028 9                          ;
- 16                                 0    3831.9276623 2                          ;
- 17                                 0    2843.6949858 8                          ;
- 18                                 0    2747.9465077 10                         ;
- 19                                 0     2683.879009 7                          ;
- 20                                 0    2756.1194799 2                          ;
- 21                                 0    2474.4113578 7                          ;
- 22                                 0      2452.11622 6                          ;
- 23                                 0    2549.5445143 2                          ;
- 24                                 0    2771.9566299 9                          ;
+ 8628                              60               0 1                          ;
+ 8630                              60               0 1                          ;
+ 8632                              60               0 1                          ;
+ 8634                              60               0 1                          ;
+ 8636                              60               0 1                          ;
+ 8638                              60               0 1                          ;
+ 8640                              60               0 1                          ;
+ 8642                              60               0 1                          ;
+ 8644                              60               0 1                          ;
+ 8646                              60               0 1                          ;
+ 8648                              60               0 1                          ;
+ 8650                            62.5               0 1                          ;
+ 8686                              60               0 1                          ;
+ 8688                              60               0 1                          ;
+ 8690                              60               0 1                          ;
+ 8692                              60               0 1                          ;
+ 8694                              60               0 1                          ;
+ 8696                              60               0 1                          ;
+ 8698                              60               0 1                          ;
+ 8700                              60               0 1                          ;
+ 8702                              60               0 1                          ;
+ 8738                              60               0 1                          ;
+ J106                            54.3               0 1                          ;
+ 2                                  0               0 1                          ;
+ 3                                  0               0 1                          ;
+ 4                                  0               0 1                          ;
+ 5                                  0               0 1                          ;
+ 6                                  0               0 1                          ;
+ 7                                  0               0 1                          ;
+ 8                                  0               0 1                          ;
+ 9                                  0               0 1                          ;
+ 10                                 0               0 1                          ;
+ 11                                 0               0 1                          ;
+ 12                                 0               0 1                          ;
+ 13                                 0               0 1                          ;
+ 14                                 0               0 1                          ;
+ 15                                 0               0 1                          ;
+ 16                                 0               0 1                          ;
+ 17                                 0               0 1                          ;
+ 18                                 0               0 1                          ;
+ 19                                 0               0 1                          ;
+ 20                                 0               0 1                          ;
+ 21                                 0               0 1                          ;
+ 22                                 0               0 1                          ;
+ 23                                 0               0 1                          ;
+ 24                                 0               0 1                          ;
 
 [RESERVOIRS]
 ;ID                                   Head                  Pattern
- 7384                     1312.335958                            ;
+ 7384                               1                        3   ;
 
 [TANKS]
 ;ID                              Elevation           Init Level            Min Level            Max Level             Diameter           Min Volume Volume Curve         Overflow            
- IoT_Tank_Small_0         388.0839895     13.12335958    1.6404199475    16.404199475     32.80839895               0                                             ;
- IoT_Tank_Medium_1        388.0839895     19.68503937     3.280839895     26.24671916    49.212598425               0                                             ;
- IoT_Tank_Large_2         328.0839895     26.24671916    4.9212598425     32.80839895      65.6167979               0                                             ;
- IoT_Tank_Small_3         328.0839895     13.12335958    1.6404199475    16.404199475     32.80839895               0                                             ;
- IoT_Tank_Medium_4        328.0839895     19.68503937     3.280839895     26.24671916    49.212598425               0                                             ;
- IoT_Tank_Large_5         328.0839895     26.24671916    4.9212598425     32.80839895      65.6167979               0                                             ;
- IoT_Tank_Small_6         388.0839895     13.12335958    1.6404199475    16.404199475     32.80839895               0                                             ;
- IoT_Tank_Medium_7        328.0839895     19.68503937     3.280839895     26.24671916    49.212598425               0                                             ;
- IoT_Tank_Large_8         388.0839895     26.24671916    4.9212598425     32.80839895      65.6167979               0                                             ;
- IoT_Tank_Small_9         388.0839895     13.12335958    1.6404199475    16.404199475     32.80839895               0                                             ;
 
 [PIPES]
 ;ID                   Node1                Node2                              Length             Diameter            Roughness           Minor Loss               Status
@@ -94,58 +84,92 @@ Northwest System
  10207                8700                 8648                      324.721046               8             140               0                 Open   ;
  10209                8696                 8702                       295.59961               8             140               0                 Open   ;
  10247                8688                 8738                      418.242585               4             140               0                 Open   ;
+ P387                 J106                 7384                      740.901075              42             140               0                 Open   ;
  1                    J106                 8628                            1000              12             100               0                 Open   ;
- Recovery_Pipe_2      8628                 2                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_3      8628                 3                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_4      8628                 4                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_5      8628                 5                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_7      8628                 7                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_8      8628                 8                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_9      8628                 9                        328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_10     8628                 10                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_12     8628                 12                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_13     8628                 13                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_14     8628                 14                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_15     8628                 15                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_17     8628                 17                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_19     8628                 19                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_20     8628                 20                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_21     8628                 21                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_22     8628                 22                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_23     8628                 23                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_24     8628                 24                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_8738   8628                 8738                     328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_11     8628                 11                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_16     8628                 16                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_18     8628                 18                       328.0839895               6             100               0                 Open   ;
- Recovery_Pipe_6      8628                 6                        328.0839895               6             100               0                 Open   ;
+ Merged_8628_2        8628                 2                               2000              12             100               0                 Open   ;
+ Merged_23_8644       23                   8644                            2000              12             100               0                 Open   ;
+ Merged_22_8646       22                   8646                            2000              12             100               0                 Open   ;
+ Merged_21_8648       21                   8648                            2000              12             100               0                 Open   ;
+ Merged_20_8650       20                   8650                            2000              12             100               0                 Open   ;
+ Merged_8700_19       8700                 19                              2000              12             100               0                 Open   ;
+ Merged_18_8698       18                   8698                            2000              12             100               0                 Open   ;
+ Merged_8702_17       8702                 17                              2000              12             100               0                 Open   ;
+ Merged_16_8696       16                   8696                            2000              12             100               0                 Open   ;
+ Merged_8694_15       8694                 15                              2000              12             100               0                 Open   ;
+ Merged_8738_14       8738                 14                              2000              12             100               0                 Open   ;
+ Merged_12_8688       12                   8688                            2000              12             100               0                 Open   ;
+ Merged_10_8642       10                   8642                            2000              12             100               0                 Open   ;
+ Merged_8_8640        8                    8640                            2000              12             100               0                 Open   ;
+ Merged_8638_7        8638                 7                               2000              12             100               0                 Open   ;
+ Merged_8636_6        8636                 6                               2000              12             100               0                 Open   ;
+ Merged_8634_5        8634                 5                               2000              12             100               0                 Open   ;
+ Merged_8632_4        8632                 4                               2000              12             100               0                 Open   ;
+ Merged_8630_3        8630                 3                               2000              12             100               0                 Open   ;
+ Merged_8686_9        8686                 9                               2000              12             100               0                 Open   ;
+ Merged_11_8690       11                   8690                            2000              12             100               0                 Open   ;
+ Merged_8692_13       8692                 13                              2000              12             100               0                 Open   ;
+ Merged_J106_24       J106                 24                              2000              12             100               0                 Open   ;
 
 [PUMPS]
 ;ID                   Node1                Node2                Properties          
 
 [VALVES]
 ;ID                   Node1                Node2                            Diameter Type              Setting           Minor Loss
- Main_Control_Valve   J106                 7384                     196.8503937 TCV                0               0   ;
- IoT_Valve_New_0      IoT_Tank_Small_0     8648                     7874.015748 TCV                1               0   ;
- IoT_Valve_New_1      IoT_Tank_Medium_1    8694                    11811.023622 TCV                1               0   ;
- IoT_Valve_New_2      IoT_Tank_Large_2     14                      15748.031496 TCV                1               0   ;
- IoT_Valve_New_3      IoT_Tank_Small_3     8                        7874.015748 TCV                1               0   ;
- IoT_Valve_New_4      IoT_Tank_Medium_4    16                      11811.023622 TCV                1               0   ;
- IoT_Valve_New_5      IoT_Tank_Large_5     15                      15748.031496 TCV                1               0   ;
- IoT_Valve_New_6      IoT_Tank_Small_6     8692                     7874.015748 TCV                1               0   ;
- IoT_Valve_New_7      IoT_Tank_Medium_7    13                      11811.023622 TCV                1               0   ;
- IoT_Valve_New_8      IoT_Tank_Large_8     8696                    15748.031496 TCV                1               0   ;
- IoT_Valve_New_9      IoT_Tank_Small_9     8690                     7874.015748 TCV                1               0   ;
 
 [TAGS]
 ;type      name       tag       
+NODE       8628       PASS_0    
+NODE       8630       PASS_0    
+NODE       8632       PASS_0    
+NODE       8634       PASS_0    
+NODE       8636       PASS_0    
+NODE       8638       PASS_0    
+NODE       8640       PASS_0    
+NODE       8642       PASS_0    
+NODE       8644       PASS_0    
+NODE       8646       PASS_0    
+NODE       8648       PASS_0    
+NODE       8650       PASS_0    
+NODE       8686       PASS_0    
+NODE       8688       PASS_0    
+NODE       8690       PASS_0    
+NODE       8692       PASS_0    
+NODE       8694       PASS_0    
+NODE       8696       PASS_0    
+NODE       8698       PASS_0    
+NODE       8700       PASS_0    
+NODE       8702       PASS_0    
+NODE       8738       PASS_0    
+NODE       J106       PASS_0    
+NODE       2          USER_1    
+NODE       3          USER_1    
+NODE       4          USER_1    
+NODE       5          USER_1    
+NODE       6          USER_1    
+NODE       7          USER_1    
+NODE       8          USER_1    
+NODE       9          USER_1    
+NODE       10         USER_1    
+NODE       11         USER_1    
+NODE       12         USER_1    
+NODE       13         USER_1    
+NODE       14         USER_1    
+NODE       15         USER_1    
+NODE       16         USER_1    
+NODE       17         USER_1    
+NODE       18         USER_1    
+NODE       19         USER_1    
+NODE       20         USER_1    
+NODE       21         USER_1    
+NODE       22         USER_1    
+NODE       23         USER_1    
+NODE       24         PASS_0    
 
 [DEMANDS]
 ;ID        Demand     Pattern   
 
 [STATUS]
 ;ID        Setting   
-Main_Control_Valve Open      
 
 [PATTERNS]
 ;ID        Multipliers
@@ -585,15 +609,15 @@ DEMAND CHARGE          0.0000
 ;Tank ID             Model Fraction
 
 [TIMES]
-DURATION             24:00:00
-HYDRAULIC TIMESTEP   00:01:00
-QUALITY TIMESTEP     00:01:00
-PATTERN TIMESTEP     00:01:00
+DURATION             168:00:00
+HYDRAULIC TIMESTEP   01:00:00
+QUALITY TIMESTEP     00:05:00
+PATTERN TIMESTEP     01:00:00
 PATTERN START        00:00:00
-REPORT TIMESTEP      00:01:00
+REPORT TIMESTEP      01:00:00
 REPORT START         00:00:00
 START CLOCKTIME      00:00:00 AM
-RULE TIMESTEP        00:01:00
+RULE TIMESTEP        00:06:00
 STATISTIC            NONE      
 
 [REPORT]
@@ -613,10 +637,6 @@ MAXCHECK             10
 UNBALANCED           CONTINUE 10
 PATTERN              1                   
 DEMAND MULTIPLIER    1
-DEMAND MODEL         PDA
-MINIMUM PRESSURE     0.00
-REQUIRED PRESSURE    7.11
-PRESSURE EXPONENT    0.5
 EMITTER EXPONENT     0.5
 QUALITY              NONE                
 DIFFUSIVITY          1
@@ -671,16 +691,6 @@ J106           494000.440000000    1376678.870000000
 23             496875.485000000    1378633.294000000
 24             494012.732000000    1376985.968000000
 7384           493747.160000000    1377175.410000000
-IoT_Tank_Small_0     497424.750000000    1377973.780000000
-IoT_Tank_Medium_1     498263.180000000    1378259.820000000
-IoT_Tank_Large_2     498247.619000000    1378663.870000000
-IoT_Tank_Small_3     498553.387000000    1379126.345000000
-IoT_Tank_Medium_4     498427.258000000    1378059.979000000
-IoT_Tank_Large_5     498484.589000000    1378251.084000000
-IoT_Tank_Small_6     498491.820000000    1378666.130000000
-IoT_Tank_Medium_7     498660.406000000    1378663.870000000
-IoT_Tank_Large_8     498259.620000000    1378150.320000000
-IoT_Tank_Small_9     498560.180000000    1378898.950000000
 
 [VERTICES]
 ;Link      X-Coord    Y-Coord   
@@ -772,6 +782,7 @@ IoT_Tank_Small_9     498560.180000000    1378898.950000000
 10247          498023.570000000    1378753.800000000
 10247          497995.860000000    1378727.250000000
 10247          497994.820000000    1378684.970000000
+P387           493754.530000000    1376680.480000000
 
 [LABELS]
 

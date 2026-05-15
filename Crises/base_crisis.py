@@ -2,7 +2,7 @@ import math
 
 class BaseCrisis:
     """Base class for all Crisis Models."""
-    def __init__(self, decay_rate=0.1):
+    def __init__(self, decay_rate=0.1, **kwargs):
         self.decay_rate = decay_rate
         self.current_ratio = 1.0
 
