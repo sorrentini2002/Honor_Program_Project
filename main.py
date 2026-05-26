@@ -709,13 +709,13 @@ class WaterNetworkManager:
 
                 # [MODIFICA] Potenziamo TUTTA la rete per eliminare colli di bottiglia strutturali
                 # Questo permette di vedere l'effetto della CRISI alla fonte senza interferenze interne
-                for l_name in self.wn.pipe_name_list:
-                    link = self.wn.get_link(l_name)
-                    if hasattr(link, 'diameter'):
-                        old_diam = link.diameter
-                        link.diameter = max(old_diam, 10.0) # Almeno 10 pollici per stabilità totale pre-crisi
+                #for l_name in self.wn.pipe_name_list:
+                #    link = self.wn.get_link(l_name)
+                #    if hasattr(link, 'diameter'):
+                #        old_diam = link.diameter
+                #        link.diameter = max(old_diam, 10.0) # Almeno 10 pollici per stabilità totale pre-crisi
                 
-                f.write(f"  - Reservoir {res_name}: Head {old_head} -> {target_head}, Pattern {old_pattern} -> None\n")
+                #f.write(f"  - Reservoir {res_name}: Head {old_head} -> {target_head}, Pattern {old_pattern} -> None\n")
             
             f.write("-" * 60 + "\n")
 
@@ -788,6 +788,12 @@ class WaterNetworkManager:
             current_time_s = int(getattr(sim, '_currentTime', step * 300)) # Fallback a 300s se non trovato
 
         if mode == 'pressure':
+            try:
+                v_link = sim._wn.get_link('Main_Control_Valve')
+                v_link.status = mwntr.network.elements.LinkStatus.Open
+                v_link.setting = 0.0
+            except:
+                pass
             # La modifica dinamica della 'base_head' richiede il rebuild del modello idraulico
             for res_name in self.wn.reservoir_name_list:
                 res = sim._wn.get_node(res_name)
@@ -832,32 +838,32 @@ class WaterNetworkManager:
         return ratio
 
     def _add_iot_control_to_tank(self, junc_name, tank_name, tank_id, diameter, boost_head, use_pumps=True):
-        """Install control hardware (Valve & Pump) and log the deployment."""
-        import os
-        v_name = f"IoT_Valve_{tank_id}"
-        p_name = f"IoT_Pump_{tank_id}"
-        curve_name = f"Curve_{p_name}"
-        log_path = os.path.join("Log_review", "water_network_setup.txt")
+            import os
+            v_name = f"IoT_Valve_{tank_id}"
+            p_name = f"IoT_Pump_{tank_id}"
+            curve_name = f"Curve_{p_name}"
+            log_path = os.path.join("Log_review", "water_network_setup.txt")
 
-        # 1. Installazione Valvola (Hardware di scarico)
-        self.wn.add_valve(name=v_name, start_node_name=tank_name, end_node_name=junc_name,
-                          diameter=diameter, valve_type='TCV', initial_setting=1.0)
-        self.iot_valves.append(v_name)
+            # 1. Installazione Valvola (Hardware di scarico)
+            self.wn.add_valve(name=v_name, start_node_name=tank_name, end_node_name=junc_name,
+                            diameter=diameter, valve_type='TCV', initial_setting=1.0)
+            self.iot_valves.append(v_name)
 
-        # 2. Installazione Pompa (Hardware di ricarica)
-        if use_pumps:
-            self.wn.add_curve(curve_name, 'HEAD', [(0.0, boost_head * 1.2), (1.0, boost_head * 1.1), (2.0, float(boost_head))])
-            self.wn.add_pump(name=p_name, start_node_name=junc_name, end_node_name=tank_name,
-                             pump_type='HEAD', pump_parameter=curve_name)
-            self.iot_pumps.append(p_name)
-
-        # 3. Log di conferma creazione
-        with open(log_path, "a", encoding="utf-8") as f:
-            f.write(f"  [HARDWARE DEPLOYED] {tank_name} <--> {junc_name}\n")
-            f.write(f"    - Valve created: {v_name} (Initial: CLOSED)\n")
+            # 2. Installazione Pompa (Hardware di ricarica)
             if use_pumps:
-                f.write(f"    - Pump created:  {p_name} (Ready for control)\n")
-            f.write("-" * 50 + "\n")
+                # CORREZIONE: 0.005 m^3/s (5 L/s) e 0.01 m^3/s (10 L/s) per uno svuotamento graduale e realistico
+                self.wn.add_curve(curve_name, 'HEAD', [(0.0, boost_head * 1.2), (0.005, boost_head * 1.1), (0.01, float(boost_head))])
+                self.wn.add_pump(name=p_name, start_node_name=junc_name, end_node_name=tank_name,
+                                pump_type='HEAD', pump_parameter=curve_name)
+                self.iot_pumps.append(p_name)
+
+            # 3. Log di conferma creazione
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(f"  [HARDWARE DEPLOYED] {tank_name} <--> {junc_name}\n")
+                f.write(f"    - Valve created: {v_name} (Initial: CLOSED)\n")
+                if use_pumps:
+                    f.write(f"    - Pump created:  {p_name} (Ready for control)\n")
+                f.write("-" * 50 + "\n")
 
     def set_simulation_options(self, timestep_s=300):
         """Configures WNTR for PDA simulation."""
@@ -865,8 +871,8 @@ class WaterNetworkManager:
         self.wn.options.time.hydraulic_timestep = timestep_s
         self.wn.options.time.report_timestep = timestep_s
         self.wn.options.hydraulic.demand_model = 'PDA'
-        self.wn.options.hydraulic.minimum_pressure = 0.0
-        self.wn.options.hydraulic.required_pressure = 20
+        self.wn.options.hydraulic.minimum_pressure = -10.0
+        self.wn.options.hydraulic.required_pressure = 5.0
 
 
 from Agents import AGENT_MAP
@@ -931,6 +937,14 @@ def plot_tank_levels_flexible(tank_data_matrix, step_minutes, output_filename='t
     plt.tight_layout()
     plt.savefig(output_filename, dpi=300)
     print(f"Grafico salvato: {output_filename} (Passo: {step_minutes} min)")
+
+
+def _is_real_user_node(node_name):
+    try:
+        user_id = int(str(node_name))
+    except (TypeError, ValueError):
+        return False
+    return 1 <= user_id <= 30
 
 
 
@@ -1016,20 +1030,39 @@ class CoSimulationEngine:
                                  aggression=agent_aggression,
                                  alpha=agent_alpha)
                             
-        self.perf_log = "Log_review/agent_performance.txt"
+        # Keep engine/main logs separate from agent's own log file
+        self.perf_log = "Log_review/main_performance.txt"
         with open(self.perf_log, "w") as f:
             f.write("STEP | EXPECTED | ACTUAL | DIFF | SATISFACTION | TX_INT | OBJECTIVE\n")
             f.write("-" * 80 + "\n")
 
         # 5. Configurazione PDA (Pressure Driven Analysis) - CRUCIALE
         self.water_net.wn.options.hydraulic.demand_model = 'PDA'
-        self.water_net.wn.options.hydraulic.minimum_pressure = 0.0
-        self.water_net.wn.options.hydraulic.required_pressure = 0.1 # Molto vicino alla pressione statica (40ft) per massima sensibilità
+        self.water_net.wn.options.hydraulic.minimum_pressure = -10.0
+        self.water_net.wn.options.hydraulic.required_pressure = 5.0 
         
         # 6. Statistiche e Log di Crisi
-        self.stats = {'time': [], 'satisfaction': [], 'packet_loss': [], 'tanks': [], 'reward': [], 'tank_levels': []}
+        self.stats = {
+            'time': [],
+            'satisfaction': [],
+            'packet_loss': [],
+            'tanks': [],
+            'tank_activation_ever': [],
+            'tank_activity_steps': [],
+            'reward': [],
+            'tank_levels': []
+        }
+        self._ever_opened_valves = set()
         log_dir = "Log_review"
         if not os.path.exists(log_dir): os.makedirs(log_dir)
+        # Prepare valve commands CSV for diagnostics (store as instance attribute)
+        self.valve_csv = os.path.join(log_dir, "valve_commands.csv")
+        with open(self.valve_csv, "w") as vf:
+            vf.write("step,time_hours,valve_name,commanded_level\n")
+        # Prepare valve settings CSV to record applied WNTR link settings (loss coeffs)
+        self.valve_settings_csv = os.path.join(log_dir, "valve_settings.csv")
+        with open(self.valve_settings_csv, "w") as vf2:
+            vf2.write("step,time_hours,valve_name,initial_setting,status\n")
         with open(os.path.join(log_dir, "crisis_status.txt"), "w") as f:
             f.write(f"SIMULATION START: {datetime.datetime.now()}\n")
             f.write(f"MODE: {self.crisis_mode_name.upper()} | GATEWAY: {gateway_mode}\n")
@@ -1044,10 +1077,14 @@ class CoSimulationEngine:
         for j_name in self.water_net.wn.junction_name_list:
             node = self.water_net.wn.get_node(j_name)
             if node.demand_timeseries_list:
-                # Salviamo il valore che activate_network_demands ha creato
-                saved_stochastic_demands[j_name] = node.demand_timeseries_list[0].base_value
-                # Azzeriamo SOLO per permettere il login della simulazione (Soft Start)
-                node.demand_timeseries_list[0].base_value = 0.0
+                # 1. Leggiamo il valore stocastico che era già stato generato e iniettato nel .inp
+                original_val = node.demand_timeseries_list[0].base_value
+                
+                # 2. Lo salviamo nel dizionario di backup
+                saved_stochastic_demands[j_name] = original_val
+                
+                # 3. NON azzeriamo nulla. Lasciamo che il valore rimanga quello reale fin dallo step 0!
+                node.demand_timeseries_list[0].base_value = original_val
 
         try:
             main_valve = self.water_net.wn.get_link("Main_Control_Valve")
@@ -1059,35 +1096,117 @@ class CoSimulationEngine:
 
         self.sim.init_simulation()
         t = 0.0
-        crisis_step = None
 
         demand_log_path = "Log_review/demand_distribution.csv"
         with open(demand_log_path, "w") as f:
             f.write("step,time_hours,expected_demand,actual_demand,satisfaction_pct\n")
 
+
+
+        # --- EXPORT TOPOLOGY ---
+        topology = {
+            "nodes": [],
+            "links": []
+        }
+        
+        # Collect all coordinates to find min/max for normalization
+        all_coords = []
+        node_coords_map = {}
+        for n_name, node in self.water_net.wn.nodes():
+            coords = node.coordinates if hasattr(node, 'coordinates') and node.coordinates else (0, 0)
+            node_coords_map[n_name] = coords
+            all_coords.append(coords)
+        
+        # Calculate min/max for normalization
+        if all_coords:
+            all_x = [c[0] for c in all_coords]
+            all_y = [c[1] for c in all_coords]
+            min_x, max_x = min(all_x), max(all_x)
+            min_y, max_y = min(all_y), max(all_y)
+            range_x = max_x - min_x if max_x > min_x else 1
+            range_y = max_y - min_y if max_y > min_y else 1
+        else:
+            min_x, max_x, min_y, max_y, range_x, range_y = 0, 1, 0, 1, 1, 1
+        
+        # Build node list with normalized coordinates
+        for n_name, node in self.water_net.wn.nodes():
+            n_type = "Junction"
+            if n_name in self.water_net.wn.reservoir_name_list:
+                n_type = "Reservoir"
+            elif n_name in self.water_net.wn.tank_name_list:
+                n_type = "Tank"
+            
+            coords = node_coords_map[n_name]
+            # Normalize to 0-1000 range
+            norm_x = ((coords[0] - min_x) / range_x * 1000) if range_x > 0 else 500
+            norm_y = ((coords[1] - min_y) / range_y * 1000) if range_y > 0 else 500
+            
+            topology["nodes"].append({
+                "id": n_name,
+                "type": n_type,
+                "x": float(norm_x),
+                "y": float(norm_y)
+            })
+            
+        for l_name, link in self.water_net.wn.links():
+            l_type = "Pipe"
+            if l_name in self.water_net.wn.pump_name_list:
+                l_type = "Pump"
+            elif l_name in self.water_net.wn.valve_name_list:
+                l_type = "Valve"
+                
+            topology["links"].append({
+                "id": l_name,
+                "type": l_type,
+                "source": link.start_node_name,
+                "target": link.end_node_name
+            })
+            
+        import json
+        import os
+        # Assicurati che la cartella Dashobard esista
+        os.makedirs("Dashobard", exist_ok=True)
+        # Scrivi il file data.js nella cartella Dashobard con i dati come variabili globali JavaScript
+        with open("Dashobard/data.js", "w") as js_file:
+            js_file.write("// Generated dashboard data - auto-generated by main.py\n\n")
+            js_file.write("window.topology = " + json.dumps(topology, indent=2) + ";\n\n")
+            js_file.write("window.simData = null; // Will be set after dashboard_data is collected\n")
+
+        # Inizializzo l'array per l'export JSON della dashboard
+        dashboard_data = []
+
         for step in range(self.n_steps):
             t += self.timestep_s
 
-
             self.sim._currentTime = int(t)
-            # --- RIPRISTINO DOMANDA (Dallo step 1 in poi) ---
-            if step == 1:
-                # Ripristino delle domande dopo il Soft Start
-                for j_name, val in saved_stochastic_demands.items():
-                    node = self.water_net.wn.get_node(j_name)
-                    if node.demand_timeseries_list:
-                        node.demand_timeseries_list[0].base_value = val
-                # Notifichiamo al simulatore che la rete è cambiata
-                if hasattr(self.sim, '_wn'):
+                            # Notifichiamo al simulatore che la rete è cambiata
+            if hasattr(self.sim, '_wn'):
                     self.sim._wn.options.hydraulic.demand_model = 'PDA'
+                    # Impostiamo una pressione richiesta molto ampia (es. 40 ft) per spalmare la gradualità
+                    self.sim._wn.options.hydraulic.required_pressure = 35 
+                    self.sim._wn.options.hydraulic.minimum_pressure = 0
+            # --- RIPRISTINO DOMANDA (Dallo step 1 in poi) ---
+            # --- AGGIORNATO: RIPRISTINO DOMANDA CON NOTIFICA AL SIMULATORE INTERATTIVO ---
+            # Iniettiamo i valori stocastici stabili nella copia attiva del simulatore
+                    if step == 0:
+                        for j_name, val in saved_stochastic_demands.items():
+                            sim_node = self.sim._wn.get_node(j_name)
+                            if sim_node.demand_timeseries_list:
+                                sim_node.demand_timeseries_list[0].base_value = val
+                        self.sim.rebuild_hydraulic_model = True
+                
+                        # Forziamo il simulatore a ricostruire il modello matematico per applicare le nuove domande
+                        if hasattr(self.sim, 'rebuild_hydraulic_model'):
+                            self.sim.rebuild_hydraulic_model = True
 
-            if step == self.crisis_start_step:
-                crisis_step = step
 
-            if crisis_step is not None:
-                steps_passed = step - crisis_step
-                ratio = self.crisis_model.get_ratio(steps_passed)
-                self.water_net.apply_crisis_reduction(self.sim, ratio, step, mode=self.crisis_mode_name)
+            crisis_start_time_s = self.crisis_start_step * self.timestep_s
+            
+            current_ratio = 1.0
+            if t >= crisis_start_time_s:
+                time_elapsed_hours = (t - crisis_start_time_s) / 3600.0
+                current_ratio = self.crisis_model.get_ratio(time_elapsed_hours)
+                self.water_net.apply_crisis_reduction(self.sim, current_ratio, step, mode=self.crisis_mode_name)
 
             if hasattr(self.sim, '_wn'):
                 old_controls = [c_name for c_name in self.sim._wn.control_name_list 
@@ -1096,215 +1215,421 @@ class CoSimulationEngine:
                     self.sim._wn.remove_control(c_name)
 
             # Il cuore della co-simulazione
-            s_current = self.agent.calculate_current_satisfaction(self.sim)
+            s_current = self.stats['satisfaction'][-1] / 100.0 if self.stats['satisfaction'] else 1.0
             pl = self.lora_net.get_packet_loss_rate()
             act = self.agent.decide_action(step, t, s_current)
             self.agent.apply_mitigation(act, self.sim, self.lora_net, t)
             
-            self.sim.step_sim()
+            self.water_net.sim = self.sim
 
-            # --- DEBUG ROBUSTO ---
-            print(f"\n--- DEBUG STEP {step} ---")
-            # 1. Verifica i Reservoir (Fonti)
+            self.sim.step_sim()
+            
+            # --- PRELIEVO INDICE DI CRISI ---
+            source_head = 0.0
             for res_name in self.water_net.wn.reservoir_name_list:
-                res = self.sim._wn.get_node(res_name)
-                print(f"FONTE [{res_name}]: Head={res.head_timeseries.base_value:.2f}")
+                res_node = self.sim._wn.get_node(res_name) # Cambiato 'res' in 'res_node' per evitare conflitti
+                source_head = res_node.head_timeseries.base_value
+                
+
             # 2. Verifica i Serbatoi
             tank_links = [l for l in self.water_net.wn.link_name_list if 'tank' in l.lower() or 'cistern' in l.lower()]
-            print(f"CISTERNE ATTIVE (Agente): {self.agent.opened_count}")
             for t_id in tank_links:
                 t_link = self.water_net.wn.get_link(t_id)
-                f_data = self.sim.node_res['flow'].get(t_id, [])
-                t_flow = f_data[-1] if len(f_data) > 0 else 0
-                print(f"  -> Link {t_id}: Stato={t_link.status}, Portata={t_flow:.4f}")
-                print(f"DEBUG FISICO -> Link {t_id}: Stato={t_link.status}")
-            # 3. Verifica Pressione Media (con controllo lista vuota)
+                if 'flow' in self.sim.node_res and t_id in self.sim.node_res['flow']:
+                    f_data = self.sim.node_res['flow'][t_id]
+                    t_flow = f_data[-1] if len(f_data) > 0 else 0
+                else:
+                    t_flow = 0.0
+                
+            
+            # 3. Verifica Pressione Media
             pressures = []
-            for n in self.sim.node_res['pressure']:
-                p_list = self.sim.node_res['pressure'][n]
-                if len(p_list) > 0:
-                    pressures.append(p_list[-1])
+            if 'pressure' in self.sim.node_res:
+                for n in self.sim.node_res['pressure']:
+                    p_list = self.sim.node_res['pressure'][n]
+                    if len(p_list) > 0:
+                        pressures.append(p_list[-1])
             if pressures:
                 avg_p = sum(pressures) / len(pressures)
-                print(f"PRESSIONE MEDIA RETE: {avg_p:.2f}")
-            else:
-                print("ATTENZIONE: Nessun dato di pressione disponibile! Il simulatore potrebbe essere bloccato.")
-            print("------------------------")
 
             self.lora_net.step(t, self.timestep_s)
 
-            # Raccolta metriche
-            current_tx = self.lora_net.tx_interval_s
-
-            res = self.sim.node_res
-
-            # Nota: prendiamo l'ultimo valore [-1] che è quello appena calcolato dallo step
-            vals = []
-            for j in res['expected_demand']:
-                if len(res['expected_demand'][j]) > 0 and res['expected_demand'][j][-1] > 0:
-                    exp = res['expected_demand'][j][-1]
-                    act = res['demand'][j][-1]
-                    sat = act / exp
-                    vals.append(sat)
+            # --- RACCOLTA DATI AGGIORNATA E SICURA ---
+            node_demands_dict = {}
+            sim_nodes_source = self.sim.node_res
             
-            s_real = sum(vals) / len(vals) if vals else 1.0
+            # Calcoliamo l'ora corrente
+            current_hour_int = int(t / 3600) % 24
+            
+            real_user_nodes = [j_name for j_name in self.water_net.wn.junction_name_list
+                               if _is_real_user_node(j_name)]
 
-            exp_t = sum(res['expected_demand'][j][-1] for j in res['expected_demand'] if len(res['expected_demand'][j]) > 0)
-            act_t = sum(res['demand'][j][-1] for j in res['demand'] if len(res['demand'][j]) > 0)
+            for j_name in real_user_nodes:
+                exp_val = 0.0
+                act_val = 0.0
+                
+                try:
+                    # Leggiamo il nodo direttamente dall'istanza attiva del simulatore
+                    node_obj = self.sim._wn.get_node(j_name) if hasattr(self.sim, '_wn') else self.water_net.wn.get_node(j_name)
+                    
+                    if node_obj.demand_timeseries_list:
+                        base_dem = node_obj.demand_timeseries_list[0].base_value
+                        pattern_obj = node_obj.demand_timeseries_list[0].pattern
+                        
+                        if pattern_obj and hasattr(pattern_obj, 'multipliers'):
+                            multipliers = pattern_obj.multipliers
+                            if len(multipliers) > 0:
+                                current_mult = multipliers[current_hour_int % len(multipliers)]
+                                exp_val = base_dem * current_mult
+                            else:
+                                exp_val = base_dem
+                        else:
+                            exp_val = base_dem
+                except:
+                    exp_val = 0.0
+                
+                # Lettura dell'Actual demand calcolata dal solutore PDA
+                if 'demand' in sim_nodes_source and j_name in sim_nodes_source['demand']:
+                    vec = sim_nodes_source['demand'][j_name]
+                    if len(vec) > 0:
+                        calculated_act = vec[-1]
+                        act_val = min(calculated_act, exp_val) if calculated_act > 0 else 0.0
+                else:
+                    act_val=0.0
+
+                node_demands_dict[j_name] = {'expected': float(exp_val), 'actual': float(act_val)}
+
+            # Calcolo globale esclusivamente sui nodi utente reali 1..30.
+            exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name))
+            act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name))
             sat_p = (act_t / exp_t * 100) if exp_t > 0 else 100.0
             
-            # Scrittura su file
+            # Scrittura su file standard
             with open("Log_review/demand_distribution.csv", "a") as f:
                 f.write(f"{step},{t/3600:.2f},{exp_t:.2f},{act_t:.2f},{sat_p:.2f}\n")
 
-            exp_total = sum(res['expected_demand'][j][-1] for j in res['expected_demand'] if len(res['expected_demand'][j]) > 0)
-            act_total = sum(res['demand'][j][-1] for j in res['demand'] if len(res['demand'][j]) > 0)
-            diff = exp_total - act_total
-
-            s_real = self.agent.calculate_current_satisfaction(self.sim)
+            diff = exp_t - act_t
+            s_real = sat_p / 100.0
             fa = self.agent.compute_objective(s_real, self.lora_net.tx_interval_s)
 
-            # Usiamo un file separato per le metriche di rete per non sporcare il log dell'agente
             with open("Log_review/network_metrics.txt", "a") as f:
                 if step == 0: f.write("STEP | EXP | ACT | DIFF | SAT\n")
-                f.write(f"{step:<4} | {exp_total:<5.2f} | {act_total:<5.2f} | {diff:<4.2f} | {s_real*100:.1f}%\n")
-
+                f.write(f"{step:<4} | {exp_t:<5.2f} | {act_t:<5.2f} | {diff:<4.2f} | {s_real*100:.1f}%\n")
 
             self.stats['time'].append(t)
             self.stats['satisfaction'].append(s_real * 100)
             self.stats['packet_loss'].append(pl)
             self.stats['reward'].append(fa)
+            current_open_valves = {
+                v_name for v_name, level in getattr(self.agent, 'current_valve_levels', {}).items()
+                if float(level) > 0.0
+            }
+            self._ever_opened_valves.update(current_open_valves)
             self.stats['tanks'].append(self.agent.opened_count)
+            self.stats['tank_activation_ever'].append(len(self._ever_opened_valves))
+            self.stats['tank_activity_steps'].append({
+                v_name: float(level)
+                for v_name, level in getattr(self.agent, 'current_valve_levels', {}).items()
+            })
             
-            # --- RACCOLTA LIVELLI SERBATOI PER IL GRAFICO FINALE ---
+# =================================================================
+            # EXTRAZIONE DATI CO-SIMULAZIONE (Sincronizzata, Ordinata e Corretta)
+            # =================================================================
+            
+            # 1. Identificazione immediata della rete attiva e dell'indice temporale corretto
+            active_wn = self.sim._wn if hasattr(self.sim, '_wn') else self.water_net.wn
+            current_sim_step_idx = len(self.sim.node_res.get('pressure', {}).get(list(active_wn.node_name_list)[0], [])) - 1
+            current_sim_step_idx = max(0, current_sim_step_idx)
+
+# --- RACCOLTA LIVELLI SERBATOI (TANKS) ---
             current_levels = []
-            for t_name in self.water_net.wn.tank_name_list:
-                # Recuperiamo l'oggetto tank per conoscere il suo livello massimo fisico
-                tank = self.water_net.wn.get_node(t_name)
-                max_l = getattr(tank, 'max_level', 10.0) # Fallback a 10m se non trovato
-                
-                # Recuperiamo l'ultimo valore di pressione/livello calcolato
-                if t_name in self.sim.node_res['pressure'] and len(self.sim.node_res['pressure'][t_name]) > 0:
-                    level = self.sim.node_res['pressure'][t_name][-1]
+            current_levels_dict = {}  # Inizializzazione pulita ad ogni step
+            
+            for t_name in active_wn.tank_name_list:
+                # Per i serbatoi, il livello effettivo è memorizzato in node_res['pressure']
+                # (pressure = head - elevation = level per i serbatoi)
+                if t_name in self.sim.node_res.get('pressure', {}):
+                    p_data = self.sim.node_res['pressure'][t_name]
+                    if len(p_data) > current_sim_step_idx:
+                        level = p_data[current_sim_step_idx]
+                    else:
+                        level = p_data[-1] if len(p_data) > 0 else 0.0
                 else:
                     try:
-                        level = tank.pressure
+                        # Fallback: leggi direttamente dal tank object durante la simulazione
+                        tank_obj = active_wn.get_node(t_name)
+                        level = tank_obj.level if hasattr(tank_obj, 'level') else 0.0
                     except:
                         level = 0.0
                 
-                # Applichiamo il clipping: il livello deve essere tra 0 e il massimo fisico del serbatoio
+                tank_obj = active_wn.get_node(t_name)
+                max_l = getattr(tank_obj, 'max_level', 10.0)
                 clipped_level = max(0.0, min(level, max_l))
+                
+                # Riempire ENTRAMBE le strutture per non perdere i dati
                 current_levels.append(clipped_level)
-            
+                current_levels_dict[t_name] = float(clipped_level)
+
             self.stats['tank_levels'].append(current_levels)
+
+            # --- RACCOLTA FLUSSO TUBI E STATO VALVOLE (PIPES & VALVES) ---
+            pipe_flows_dict = {}
+            valves_status_dict = {}
+            
+            for link_name in active_wn.link_name_list:
+                flow_val = 0.0
+                
+                if 'flow' in self.sim.link_res and link_name in self.sim.link_res['flow']:
+                    f_data = self.sim.link_res['flow'][link_name]
+                    if len(f_data) > current_sim_step_idx:
+                        flow_val = f_data[current_sim_step_idx]
+                    elif len(f_data) > 0:
+                        flow_val = f_data[-1]
+                else:
+                    try:
+                        link_obj = active_wn.get_link(link_name)
+                        if hasattr(link_obj, 'flow'):
+                            flow_val = link_obj.flow
+                    except:
+                        flow_val = 0.0
+                
+                pipe_flows_dict[link_name] = float(flow_val)
+                
+                if link_name in active_wn.valve_name_list or link_name in active_wn.pump_name_list:
+                    try:
+                        v_link = active_wn.get_link(link_name)
+                        status_str = "OPEN"
+                        if hasattr(v_link, 'status'):
+                            status_str = str(v_link.status.name).upper()
+                        valves_status_dict[link_name] = status_str
+                    except:
+                        valves_status_dict[link_name] = "OPEN"
+                else:
+                    valves_status_dict[link_name] = "OPEN"
+
+            # --- CREAZIONE PAYLOAD DEL TIME-STEP PER LA DASHBOARD ---
+            step_data = {
+                "step": step,
+                "time_hours": float(t / 3600),
+                "global_metrics": {
+                    "satisfaction_pct": float(s_real * 100),
+                    "crisis_ratio": float(current_ratio),
+                    "source_head": float(source_head),
+                    "active_tanks": int(self.agent.opened_count)
+                },
+                "nodes": node_demands_dict,
+                "pipes": pipe_flows_dict,
+                "tanks": current_levels_dict,
+                "valves": valves_status_dict,
+                # Include agent-commanded valve levels (if agent exposes them)
+                "valve_commands": (getattr(self.agent, 'current_valve_levels', {})),
+                # Expose the low-level valve 'initial_setting' (loss coeff) for diagnostics
+                "valve_settings": {
+                    ln: float(getattr(active_wn.get_link(ln), 'initial_setting', float('nan')))
+                    for ln in active_wn.valve_name_list if ln in active_wn.link_name_list
+                }
+            }
+            dashboard_data.append(step_data)
+
+            # Append per-valve commands to CSV for offline analysis
+            try:
+                with open(self.valve_csv, "a") as vf:
+                    vlevels = getattr(self.agent, 'current_valve_levels', {})
+                    for vname, lvl in vlevels.items():
+                        vf.write(f"{step},{t/3600:.3f},{vname},{float(lvl):.6f}\n")
+            except Exception:
+                pass
+
+            # Append valve settings (applied loss coeff) for comparison
+            try:
+                with open(self.valve_settings_csv, "a") as vf2:
+                    for vname in active_wn.valve_name_list:
+                        try:
+                            vobj = active_wn.get_link(vname)
+                            init_set = float(getattr(vobj, 'initial_setting', float('nan')))
+                            status = getattr(vobj, 'initial_status', getattr(vobj, 'status', 'UNKNOWN'))
+                            status_str = str(status.name).upper() if hasattr(status, 'name') else str(status)
+                            vf2.write(f"{step},{t/3600:.3f},{vname},{init_set:.6f},{status_str}\n")
+                        except Exception:
+                            pass
+            except Exception:
+                pass
+
+
+        # Esporta i dati di simulazione nel file data.js (nella cartella Dashobard)
+        import json
+        with open("Dashobard/data.js", "a") as js_file:
+            js_file.write("window.simData = " + json.dumps(dashboard_data, indent=2) + ";\n")
+
+        print("\n✓ Generated Dashobard/data.js - Ready to use without server!")
 
         return self.sim.get_results()
 
 
-# Choice the network file:
-network_file = 'Network/NET_30_users_only.inp'
-
     
-    # Inizializzazione pulita del motore
-    # NOTA: CoSimulationEngine si occupa internamente di caricare il file e aggiungere i tank.
-engine = CoSimulationEngine(
-        network_file,                   # selezione della rete
-        duration_hours=60,                  # selezione della durata della simulazione
-        step_min=5,                         # selezione dello step di aggiornamento
-        remove_tanks=False,             # se non vogliamo mantenere i serbaoti esistenti          
-        crisis_mode='pressure',       # [MODIFICA] Torniamo a pressure per agire sulla source head in modo infallibile
-        decay_type='pump_test',          # 'linear','exponential','instant', 'logarithmic','pump_test' or 'ornstein_uhlenbeck'
-        crisis_params={
-            'decay_rate': 0.1,            
-            'min_ratio': 0.025,              
-            'recovery_hour': 17.0,           # Recupero all'ora 21
-            'recovery_duration_hours': 5.0, # Mantenimento per 12 ore
-            'recovery_type': 'instant',    # 'instant' o 'gradual'
-            'recovery_rate': 0.1,           # Usato solo se gradual
-            #'reversion_speed': 0.3,     
-            #'volatility': 0.05          
-        },
-        avg_demand=15,               # [MODIFICA] Torniamo a 0.5 GPM (ora sostenuti dalla rete potenziata)
-        dist_type='lognormal',         # [MODIFICA] Necessario 'lognormal' perché il file .inp originale ha tutte domande a 0!
-        pattern_mode='random',          # [MODIFICA] Pattern casuali per variabilità realistica
-        min_boost=1,                 # [MODIFICA] Boost ridotto a valori idraulicamente sensati per le cisterne
-        n_tanks=5,                      # Ridotto a 5 per non annullare la crisi istantaneamente
-        strategy_name='demand',      # [MODIFICA] Più sensato posizionarli vicino alla domanda rispetto a 'random'
-        crisis_start_hour=1.5,      # [MODIFICA] La crisi inizia alla terza ora
-        agent_name='heuristic',      # identifica l'agente che si sta scegliendo
-        agent_threshold=0.95,       # identifica la soglia sotto la quale si sta avverando la crisi
-        agent_aggression=3.0,      # varia tra 1 e 10 ed identifica la reattività dell'agente
-        agent_alpha=0.5, # 90% importanza all'acqua, 10% alla batteria LoRa
-        enable_pumps=True,       # se fissata su true da la possiblità alle cisterne di ricaricarsi tramite egente di controllo
-        gateway_mode='center',      # 'center','random_offset', 'random'
-        #gateway_offset=0.0,       
-        lora_mode='simple',      # 'simple' or 'multihop'
-        sf_mode='fixed',    # 'sequential', 'random' or 'fixed'
-        fixed_sf=12,            # only with fixed
-        target_head=20       # [BILANCIAMENTO] 100ft: Equilibrio perfetto per sensibilità alla crisi
-    )
+    # Inizializzazione del motore di co-simulazione con parametri dal file di configurazione
+    # NOTA: Modifica i parametri in config.py, non qui!
 
-results = engine.run_simulation()
 
-print(f"\nSimulation completed: {len(results.node['pressure'].columns)} nodes.")
-print(f"Detailed logs saved to: {engine.lora_net.log_path}")
+if __name__ == "__main__":
+    from config_2 import create_engine
+    engine = create_engine()
 
-# --- GENERAZIONE GRAFICI DI ANALISI ---
-if 'engine' in locals() and engine.stats['time']:
-    print("\nGenerating simulation analysis plots...")
-    fig, axes = plt.subplots(3, 1, figsize=(14, 12))
-    time_hours = [t/3600 for t in engine.stats['time']]
+    results = engine.run_simulation()
+
+    print(f"\nSimulation completed: {len(results.node['pressure'].columns)} nodes.")
+    print(f"Detailed logs saved to: {engine.lora_net.log_path}")
+
+    # --- GENERAZIONE GRAFICI DI ANALISI ---
+    if 'engine' in locals() and engine.stats['time']:
+        print("\nGenerating simulation analysis plots...")
+        fig, axes = plt.subplots(3, 1, figsize=(14, 12))
+        # Create x-axis proportional to configured simulation duration (in hours).
+        try:
+            total_hours = float(getattr(engine, 'duration_hours', None))
+            if total_hours is None or total_hours <= 0:
+                # fallback to last recorded time in stats
+                total_hours = engine.stats['time'][-1] / 3600.0 if engine.stats['time'] else 0.0
+        except Exception:
+            total_hours = engine.stats['time'][-1] / 3600.0 if engine.stats['time'] else 0.0
+
+        # Distribute the x-axis linearly from 0 to total_hours across samples
+        import numpy as _np
+        time_hours = _np.linspace(0.0, total_hours, num=len(engine.stats['time']))
     
-    # Plot 1: Demand Satisfaction
-    axes[0].plot(time_hours, engine.stats['satisfaction'], 'b-', linewidth=2, label='Satisfied Demand (%)')
-    if hasattr(engine, 'agent') and hasattr(engine.agent, 'threshold'):
-        axes[0].axhline(y=engine.agent.threshold * 100.0, color='r', linestyle='--', label=f'Agent Threshold ({engine.agent.threshold * 100.0}%)')
+        # Plot 1: Demand Satisfaction
+        axes[0].plot(time_hours, engine.stats['satisfaction'], 'b-', linewidth=2, label='Satisfied Demand (%)')
+        if hasattr(engine, 'agent') and hasattr(engine.agent, 'threshold'):
+            axes[0].axhline(y=engine.agent.threshold * 100.0, color='r', linestyle='--', label=f'Agent Threshold ({engine.agent.threshold * 100.0}%)')
     
-    axes[0].set_ylabel('Satisfaction (%)')
-    axes[0].set_title('Hydraulic Performance: Demand Satisfaction (Users 1-23)')
-    axes[0].legend()
-    axes[0].grid(True, alpha=0.3)
+        axes[0].set_ylabel('Satisfaction (%)')
+        axes[0].set_title('Hydraulic Performance: Demand Satisfaction (Users 1-23)')
+        axes[0].legend()
+        axes[0].grid(True, alpha=0.3)
 
-    # Plot 2: IoT Tanks Status
-    axes[1].step(time_hours, engine.stats['tanks'], 'g-', where='post', linewidth=2, label='Active Reservoirs')
-    axes[1].set_ylabel('Number of Tanks')
-    axes[1].set_ylim(-0.5, len(engine.water_net.iot_valves) + 0.5)
-    axes[1].set_title('Cyber-Physical Response: Emergency Tank Activation')
-    axes[1].legend()
-    axes[1].grid(True, alpha=0.3)
+        # Plot 2: IoT Tanks Status (hourly counts based on tank level drawdown)
+        # Preferred metric: a tank is ACTIVE in an hour if its level decreased from
+        # the first step to the last step of that hour (indicating discharge).
+        tank_names = list(engine.water_net.wn.tank_name_list)
+        tank_levels = engine.stats.get('tank_levels', [])  # list per step: [level1, level2, ...]
+        step_minutes = max(1, int(engine.timestep_s // 60))
+        steps_per_hour = max(1, int(60 // step_minutes))
 
-    # Plot 3: Packet Loss and Objective Function
-    ax2_twin = axes[2].twinx()
-    axes[2].plot(time_hours, engine.stats['packet_loss'], 'orange', linewidth=2, label='Packet Loss (%)')
-    ax2_twin.plot(time_hours, engine.stats['reward'], 'purple', linestyle=':', label='Objective F(a)')
+        if tank_names and tank_levels:
+            levels_arr = np.array(tank_levels)  # shape: (num_steps, num_tanks)
+            num_steps, num_tanks = levels_arr.shape
+            num_hours = (num_steps + steps_per_hour - 1) // steps_per_hour
+
+            hourly_active_counts = []
+            for h in range(num_hours):
+                start = h * steps_per_hour
+                end = min(start + steps_per_hour - 1, num_steps - 1)
+                if start > end:
+                    hourly_active_counts.append(0); continue
+                start_vals = levels_arr[start, :]
+                end_vals = levels_arr[end, :]
+                # count tanks whose level decreased (start > end)
+                active = np.sum((start_vals - end_vals) > 1e-6)
+                hourly_active_counts.append(int(active))
+
+            hours = np.arange(len(hourly_active_counts), dtype=float)
+            axes[1].clear()
+            axes[1].bar(hours, hourly_active_counts, color='green', alpha=0.7, label='Tanks discharged per hour')
+            axes[1].step(hours, hourly_active_counts, where='mid', color='black', linewidth=1)
+            axes[1].set_xlabel('Hour')
+            axes[1].set_ylabel('Number of Tanks')
+            axes[1].set_ylim(-0.5, num_tanks + 0.5)
+            axes[1].set_title('Cyber-Physical Response: Tanks Discharged (hourly)')
+            axes[1].legend()
+        else:
+            # fallback to valve-command based approach if tank levels are unavailable
+            step_activity = engine.stats.get('tank_activity_steps', [])
+            if step_activity:
+                steps_per_hour = max(1, int(60 // step_minutes))
+                num_hours = (len(step_activity) + steps_per_hour - 1) // steps_per_hour
+                def valve_to_tank(vname):
+                    candidates = [
+                        vname.replace('IoT_Valve_', 'IoT_Tank_'),
+                        vname.replace('IoT_Valve_New_', 'IoT_Tank_'),
+                        vname.replace('IoT_ValveNew_', 'IoT_Tank_'),
+                        vname.replace('IoTValve_', 'IoT_Tank_')
+                    ]
+                    for c in candidates:
+                        if c in tank_names:
+                            return c
+                    import re
+                    m = re.search(r"(\d+)", vname)
+                    if m:
+                        idx = m.group(1)
+                        for t in tank_names:
+                            if idx in t:
+                                return t
+                    return None
+
+                hourly_active_counts = []
+                for h in range(num_hours):
+                    start = h * steps_per_hour
+                    end = start + steps_per_hour
+                    hour_slice = step_activity[start:end]
+                    active_tanks = set()
+                    for step_snapshot in hour_slice:
+                        for valve_name, commanded_level in step_snapshot.items():
+                            try:
+                                lvl = float(commanded_level)
+                            except Exception:
+                                continue
+                            # fallback rule: treat value > 0 as active
+                            if lvl > 0.0:
+                                tname = valve_to_tank(valve_name)
+                                if tname:
+                                    active_tanks.add(tname)
+                    hourly_active_counts.append(len(active_tanks))
+
+                hours = np.arange(len(hourly_active_counts), dtype=float)
+                axes[1].clear()
+                axes[1].bar(hours, hourly_active_counts, color='green', alpha=0.7, label='Active tanks per hour (fallback)')
+                axes[1].step(hours, hourly_active_counts, where='mid', color='black', linewidth=1)
+                axes[1].set_xlabel('Hour')
+                axes[1].set_ylabel('Number of Tanks')
+                axes[1].set_ylim(-0.5, len(tank_names) + 0.5)
+                axes[1].set_title('Cyber-Physical Response: Emergency Tank Activation (fallback)')
+                axes[1].legend()
+            else:
+                axes[1].text(0.5, 0.5, 'No tank or valve data available', ha='center', va='center')
+        axes[1].grid(True, alpha=0.3)
+
+        # Plot 3: Packet Loss and Objective Function
+        ax2_twin = axes[2].twinx()
+        axes[2].plot(time_hours, engine.stats['packet_loss'], 'orange', linewidth=2, label='Packet Loss (%)')
+        ax2_twin.plot(time_hours, engine.stats['reward'], 'purple', linestyle=':', label='Objective F(a)')
     
-    axes[2].set_xlabel('Time (hours)')
-    axes[2].set_ylabel('Packet Loss (%)', color='orange')
-    ax2_twin.set_ylabel('Objective Reward F(a)', color='purple')
-    axes[2].set_title('Communication Quality and Agent Reward')
+        axes[2].set_xlabel('Time (hours)')
+        axes[2].set_ylabel('Packet Loss (%)', color='orange')
+        ax2_twin.set_ylabel('Objective Reward F(a)', color='purple')
+        axes[2].set_title('Communication Quality and Agent Reward')
     
-    lines1, labels1 = axes[2].get_legend_handles_labels()
-    lines2, labels2 = ax2_twin.get_legend_handles_labels()
-    axes[2].legend(lines1 + lines2, labels1 + labels2, loc='upper right')
-    axes[2].grid(True, alpha=0.3)
+        lines1, labels1 = axes[2].get_legend_handles_labels()
+        lines2, labels2 = ax2_twin.get_legend_handles_labels()
+        axes[2].legend(lines1 + lines2, labels1 + labels2, loc='upper right')
+        axes[2].grid(True, alpha=0.3)
 
-    plt.tight_layout()
-    plot_path = "Log_review/simulation_analysis.png"
-    plt.savefig(plot_path)
-    print(f"Plot saved to: {plot_path}")
+        plt.tight_layout()
+        plot_path = "Log_review/simulation_analysis.png"
+        plt.savefig(plot_path)
+        print(f"Plot saved to: {plot_path}")
 
-    # --- GRAFICO LIVELLI SERBATOI ---
-    tank_names = engine.water_net.wn.tank_name_list
-    if tank_names:
-        print("Generating tank levels trend plot...")
-        # Usiamo i dati raccolti durante tutta la simulazione (engine.stats['tank_levels'])
-        # La lista di liste va convertita in matrice e trasposta per avere (num_tanks, num_steps)
-        tank_levels_matrix = np.array(engine.stats['tank_levels']).T
+        # --- GRAFICO LIVELLI SERBATOI ---
+        tank_names = engine.water_net.wn.tank_name_list
+        if tank_names:
+            print("Generating tank levels trend plot...")
+            # Usiamo i dati raccolti durante tutta la simulazione (engine.stats['tank_levels'])
+            # La lista di liste va convertita in matrice e trasposta per avere (num_tanks, num_steps)
+            tank_levels_matrix = np.array(engine.stats['tank_levels']).T
         
-        plot_tank_levels_flexible(
-            tank_data_matrix=tank_levels_matrix, 
-            step_minutes=engine.timestep_s // 60, 
-            output_filename='Log_review/tank_levels_trend.png'
-        )
+            plot_tank_levels_flexible(
+                tank_data_matrix=tank_levels_matrix, 
+                step_minutes=engine.timestep_s // 60, 
+                output_filename='Log_review/tank_levels_trend.png'
+            )
 
 

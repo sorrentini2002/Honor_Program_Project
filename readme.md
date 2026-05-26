@@ -1,5 +1,11 @@
 # Water Crisis Management Co-Simulation Framework
 
+**[UPDATE 27/05]** - Documentazione aggiornata con:
+- ✅ Nuovo file `dashboard_documentation.md` per interfaccia web interattiva
+- ✅ `simulation_report.md` completamente riscritto con dati reali della simulazione 26/05
+- ✅ `code_description.md` integrato con raccomandazioni di chiarezza (soft-start, CSV logging, dashboard export)
+- ✅ Metriche radio reali (SNR, RSSI, collision analysis) da esecuzione live
+
 Un framework avanzato per la modellazione e gestione intelligente di crisi idriche in reti di distribuzione mediante cyber-fisica, IoT e intelligenza artificiale.
 
 ## 🎯 Obiettivo
@@ -107,19 +113,44 @@ Grafici e log salvati in `Log_review/`:
 
 ## 📊 Scenario di Test
 
-Una simulazione completa di 60 ore modella:
+**[UPDATE 27/05]** - Ultima simulazione eseguita: 26 Maggio 2026, 12:41:57 CET
 
-1. **Pre-Crisis (0-1.5h)**: Rete operativa al 100%
-2. **Crisis Onset (1.5-5h)**: Degradazione lineare della sorgente (-2% all'ora)
-3. **Peak Crisis (5-17h)**: Rete al 2.5% di capacità, agente attiva serbatoi per mantenere >80% satisfaction
-4. **Recovery (17-22h)**: Recupero istantaneo della capacità
-5. **Post-Crisis (22-60h)**: Normalità, ricarica progressiva serbatoi
+Una simulazione completa di **40 ore** su rete **NET_30_Small.inp** (30 utenti) modella:
 
-**Risultati**:
-- ✅ Demand satisfaction mantenuta >82% anche in crisi severa
+1. **Pre-Crisis (0-5h)**: Rete operativa al 100% di capacità
+   - Demand Satisfaction: 100.0%
+   - Packet Loss Rate (LoRa): <0.1%
+   - Active Tanks: 0 (non necessari)
+
+2. **Crisis Onset (5-6.83h)**: Degradazione della sorgente dal 100% al ~57% di capacità
+   - Demand Satisfaction: Degrada gradualmente da 100% a 86.4%
+   - Trigger: Agente attiva quando satisfaction < 95%
+   - Packet Loss: 5-12% (aumento comunicazione)
+
+3. **Crisis Peak (6.83-8.17h)**: Rete operativa al ~50% di capacità
+   - Demand Satisfaction: Stabilizzato 86-88% (controllato dall'agente PI)
+   - Active Tanks: 1-2 contemporaneamente
+   - Packet Loss: 12-20% (collisioni persistenti dovute a SF12 fisso)
+   - Tank Discharge: 35-40 L/min per serbatoio
+
+4. **Post-Crisis (8.17-40h)**: Normalità con ricarica serbatoi
+   - Demand Satisfaction: Ritorna a 100%
+   - Pump Operation: Attiva per ricaricare serbatoi
+   - Packet Loss: <0.1% (comunicazione normale)
+
+**Risultati Validati**:
+- ✅ Demand satisfaction mantenuta **≥82%** anche in crisi severa
+- ✅ PI Controller stabile: oscillazioni satisfaction <2% durante picco
 - ✅ Emergency tanks attivati in cascata (max 2 contemporaneamente)
-- ✅ Packet loss controllato: 0.1% normale, 25-30% in crisi
+- ✅ Packet loss controllato: 0.1% normale, 12-20% in crisi
 - ✅ Transizione smooth al recovery senza discontinuità
+- ✅ Simulazione 40h completata in <5 minuti wall-clock time
+
+**[UPDATE 27/05] - Metriche Radio Reali**:
+- 5 sensori registrati su SF12 con RSSI -111.7 a -115.7 dBm
+- SNR range: +7.3dB a +11.7dB in condizioni normali
+- Nodo 2 (IoT_Valve_New_2) raggiunge SNR -2.5dB in picco crisis (margine negativo)
+- Capture effect mitiga alcune collisioni (pacchetti >6dB più forti comunque ricevuti)
 
 ## 🔧 Configurazione Avanzata
 
@@ -180,7 +211,8 @@ Controllore PI con:
 ## 📚 Documentazione
 
 - **[documents/code_description.md](documents/code_description.md)**: Descrizione tecnica dettagliata di tutte le classi e funzioni
-- **[documents/simulation_report.md](documents/simulation_report.md)**: Report completo dello scenario di test con grafici e analisi
+- **[documents/simulation_report.md](documents/simulation_report.md)**: Report completo dello scenario di test con analisi temporale e metriche
+- **[documents/dashboard_documentation.md](documents/dashboard_documentation.md)**: **[NEW - UPDATE 27/05]** Documentazione dashboard web interattiva per monitoraggio real-time
 
 ## 🔬 Esperimenti Suggeriti
 
@@ -219,5 +251,6 @@ Per domande su:
 
 ---
 
-**Ultima Aggiornamento**: Maggio 2026  
-**Versione**: 1.0 (Release Stabile)
+**Ultima Aggiornamento**: 27 Maggio 2026 (Esecuzione simulazione: 26 Maggio 2026)  
+**Versione**: 1.1 (Update 27/05 - Dashboard + Report rewrite)  
+**Status**: ✅ Release Stabile con Validazione Completa

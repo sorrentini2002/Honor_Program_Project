@@ -6,8 +6,8 @@ class BaseCrisis:
         self.decay_rate = decay_rate
         self.current_ratio = 1.0
 
-    def get_ratio(self, steps_since_start):
-        """Must be implemented by child classes."""
+    def get_ratio(self, time_hours):
+        """Must be implemented by child classes. Returns the crisis ratio based on time passed in hours."""
         raise NotImplementedError("Each crisis must implement get_ratio")
 
     def reset(self):

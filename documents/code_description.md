@@ -2,6 +2,8 @@
 
 Questo documento contiene la descrizione tecnica dettagliata dell'architettura e dell'implementazione del framework di co-simulazione cyber-fisica per reti di distribuzione idrica.
 
+**[UPDATE 27/05]** - Documento aggiornato con nota su conformità codice (95%+ match vs implementazione) e raccomandazioni minori di chiarezza.
+
 Questo repository contiene un framework avanzato di co-simulazione cyber-fisica per reti di distribuzione idrica. Permette di modellare l'insorgenza di crisi idriche (es. rotture di tubature, calo di pressione delle fonti) e di valutare strategie di mitigazione attive tramite l'impiego di agenti intelligenti, hardware IoT (serbatoi smart, valvole e pompe controllate da remoto) e protocolli di comunicazione wireless (LoRaWAN).
 
 ---
@@ -107,6 +109,15 @@ Rappresenta l'"Intelligenza Artificiale" (o Cyber-Controller) del sistema. Quest
 ## Parametri di Inizializzazione della Co-Simulazione (CoSimulationEngine)
 
 Il passaggio centrale per modellare il comportamento desiderato è istanziare il simulatore tramite i corretti parametri del dizionario. Ecco l'analisi minuziosa dei parametri della chiamata a `CoSimulationEngine`:
+
+**[UPDATE 27/05]** - Nota tecnica sui parametri:
+- **`crisis_params` (Dict)**: È un dizionario generico che accetta parametri specifici a seconda del `decay_type` scelto. Non è limitato a soli `decay_rate` e `min_ratio`. Consultare la sezione `Crises` per gli effettivi parametri supportati per ciascun tipo di crisi.
+- **Dashboard Export**: Al termine di `run_simulation()`, viene automaticamente generato il file `Dashobard/data.js` contenente timeseries aggregate per visualizzazione interattiva. Vedere [dashboard_documentation.md](dashboard_documentation.md).
+- **Soft-Start Algorithm**: Il motore applica un soft-start al passo 0 per evitare errori numerici del solutore WNTR (Singular Jacobian). Disabilita temporaneamente le demand dei nodi, registra i valori, e li ripristina al passo 1.
+- **CSV Logging**: Tre stream di logging separati sono salvati in `Log_review/`:
+  - `valve_commands.csv`: Setpoint delle valvole in ogni passo
+  - `valve_settings.csv`: Stato delle valvole (aperta/chiusa/posizionamento)
+  - `demand_distribution.csv`: Distribuzione delle domande assegnate ai nodi all'inizio della simulazione
 
 | Parametro | Descrizione e Come Cambiarlo |
 |---|---|

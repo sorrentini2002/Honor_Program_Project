@@ -1,7 +1,7 @@
 ============================================================
-  WATER NETWORK DEMAND SETUP: 2026-05-15 16:58:47.104089
+  WATER NETWORK DEMAND SETUP: 2026-05-26 12:41:57.059804
 ============================================================
-Config: avg_demand=15, dist=lognormal, mode=random
+Config: avg_demand=0.3, dist=lognormal, mode=random
 
 JUNCTION_ID          | BASE_DEMAND  | PATTERN_NAME   
 ------------------------------------------------------------
@@ -28,73 +28,72 @@ JUNCTION_ID          | BASE_DEMAND  | PATTERN_NAME
 8702                 | 0.0000       | PASS_THROUGH   
 8738                 | 0.0000       | PASS_THROUGH   
 J106                 | 0.0000       | PASS_THROUGH   
-2                    | 10.9579      | 9              
-3                    | 11.8070      | 2              
-4                    | 13.5328      | 9              
-5                    | 13.0426      | 8              
-6                    | 18.9932      | 10             
-7                    | 14.7773      | 2              
-8                    | 11.3587      | 7              
-9                    | 16.5599      | 7              
-10                   | 14.3380      | 2              
-11                   | 26.1445      | 1              
-12                   | 14.1038      | 9              
-13                   | 12.0741      | 8              
-14                   | 11.9480      | 10             
-15                   | 22.6831      | 8              
-16                   | 12.8058      | 7              
-17                   | 10.1870      | 1              
-18                   | 17.7342      | 7              
-19                   | 12.9000      | 8              
-20                   | 14.6314      | 7              
-21                   | 21.3487      | 7              
-22                   | 14.7035      | 2              
-23                   | 15.7283      | 1              
+2                    | 0.3450       | 8              
+3                    | 0.2886       | 1              
+4                    | 0.3368       | 9              
+5                    | 0.2056       | 1              
+6                    | 0.1917       | 8              
+7                    | 0.2668       | 2              
+8                    | 0.3691       | 10             
+9                    | 0.3717       | 9              
+10                   | 0.3428       | 10             
+11                   | 0.2589       | 1              
+12                   | 0.2068       | 2              
+13                   | 0.2648       | 8              
+14                   | 0.3083       | 8              
+15                   | 0.3589       | 9              
+16                   | 0.2624       | 9              
+17                   | 0.2296       | 2              
+18                   | 0.2310       | 8              
+19                   | 0.1791       | 7              
+20                   | 0.2371       | 7              
+21                   | 0.2133       | 9              
+22                   | 0.3086       | 1              
+23                   | 0.2498       | 1              
 24                   | 0.0000       | PASS_THROUGH   
 
 ============================================================
 Setup completed for 46 nodes.
-  [HARDWARE DEPLOYED] IoT_Tank_Small_0 <--> 11
+  [HARDWARE DEPLOYED] IoT_Tank_Small_0 <--> 19
     - Valve created: IoT_Valve_New_0 (Initial: CLOSED)
     - Pump created:  IoT_Pump_New_0 (Ready for control)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_1 <--> 15
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_1 <--> 8640
     - Valve created: IoT_Valve_New_1 (Initial: CLOSED)
     - Pump created:  IoT_Pump_New_1 (Ready for control)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Large_2 <--> 21
+  [HARDWARE DEPLOYED] IoT_Tank_Large_2 <--> 20
     - Valve created: IoT_Valve_New_2 (Initial: CLOSED)
     - Pump created:  IoT_Pump_New_2 (Ready for control)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_3 <--> 6
+  [HARDWARE DEPLOYED] IoT_Tank_Small_3 <--> 13
     - Valve created: IoT_Valve_New_3 (Initial: CLOSED)
     - Pump created:  IoT_Pump_New_3 (Ready for control)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_4 <--> 18
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_4 <--> 8690
     - Valve created: IoT_Valve_New_4 (Initial: CLOSED)
     - Pump created:  IoT_Pump_New_4 (Ready for control)
 --------------------------------------------------
 
 [SETUP] DEPLOYING NEW IoT TANKS
-Strategy used: DEMAND
+Strategy used: RANDOM
 ------------------------------------------------------------
 TANK_NAME            | NODE       | ELEV    | T_ELEV  | DEMAND   | STATUS    
 ------------------------------------------------------------
-IoT_Tank_Small_0     | 11         | 0.0     | 1.0     | 26.14    | SUCCESS   
-IoT_Tank_Medium_1    | 15         | 0.0     | 1.0     | 22.68    | SUCCESS   
-IoT_Tank_Large_2     | 21         | 0.0     | 1.0     | 21.35    | SUCCESS   
-IoT_Tank_Small_3     | 6          | 0.0     | 1.0     | 18.99    | SUCCESS   
-IoT_Tank_Medium_4    | 18         | 0.0     | 1.0     | 17.73    | SUCCESS   
+IoT_Tank_Small_0     | 19         | 0.0     | 65.0    | 0.18     | SUCCESS   
+IoT_Tank_Medium_1    | 8640       | 18.3    | 83.3    | 0.00     | SUCCESS   
+IoT_Tank_Large_2     | 20         | 0.0     | 65.0    | 0.24     | SUCCESS   
+IoT_Tank_Small_3     | 13         | 0.0     | 65.0    | 0.26     | SUCCESS   
+IoT_Tank_Medium_4    | 8690       | 18.3    | 83.3    | 0.00     | SUCCESS   
 ------------------------------------------------------------
 
-[SETUP] FIXING RESERVOIR HEADS (Target: 20)
+[SETUP] FIXING RESERVOIR HEADS (Target: 280)
 ------------------------------------------------------------
-  - Reservoir 7384: Head 0.3048 -> 20, Pattern 3 -> None
 ------------------------------------------------------------
 
 [LoRa NETWORK SETUP]
-  - Gateway Position: (497910.33, 1378589.39) [Mode: center]
+  - Gateway Position: (497905.55, 1378583.94) [Mode: center]
   - Total Sensors:    5
-  - Average Distance: 800.74 meters
-  - Max Distance:     1138.33 meters
+  - Average Distance: 818.44 meters
+  - Max Distance:     1081.53 meters
 ------------------------------------------------------------

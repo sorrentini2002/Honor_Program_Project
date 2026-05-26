@@ -19,26 +19,33 @@ class OrnsteinUhlenbeck(BaseCrisis):
         self.mu = kwargs.get('min_ratio', mu)
         
         self.last_ratio = 1.0
-        self.last_step = -1
+        self.last_time = -1.0
 
-    def get_ratio(self, steps):
-        if steps <= 0:
+    def get_ratio(self, time_hours):
+        if time_hours <= 0:
             self.last_ratio = 1.0
-            self.last_step = -1
+            self.last_time = -1.0
             return 1.0
         
-        if steps > self.last_step:
+        if time_hours > self.last_time:
+            # Calcolo del dt in ore, partendo da 0
+            if self.last_time < 0:
+                dt = time_hours
+            else:
+                dt = time_hours - self.last_time
+                
             # Il sistema cerca di tornare verso il valore 'mu' (o 'min_ratio')
-            drift = self.reversion_speed * (self.mu - self.last_ratio)
+            drift = self.reversion_speed * (self.mu - self.last_ratio) * dt
             
-            # Shock casuale basato sulla volatilità
-            shock = random.gauss(0, self.volatility)
+            # Shock casuale scalato per sqrt(dt)
+            import math
+            shock = random.gauss(0, self.volatility) * math.sqrt(dt) if dt > 0 else 0
             
             # Aggiornamento dello stato
             new_ratio = self.last_ratio + drift + shock
             
             # Clamp per evitare valori fisicamente impossibili (sotto lo zero o sopra 1)
             self.last_ratio = max(0.0, min(1.0, new_ratio))
-            self.last_step = steps
+            self.last_time = time_hours
             
         return self.last_ratio
