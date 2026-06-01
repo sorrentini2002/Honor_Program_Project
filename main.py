@@ -509,7 +509,7 @@ class WaterNetworkManager:
                                  log_filename="water_network_setup.txt",
                                  preserve_patterns=True):
 
-            # Percorso del log dedicato all'idraulica
+            # Path to the hydraulic log file
             log_dir = "Log_review"
             if not os.path.exists(log_dir):
                 os.makedirs(log_dir)
@@ -550,7 +550,7 @@ class WaterNetworkManager:
                     for i, j_name in enumerate(self.wn.junction_name_list):
                         junction = self.wn.get_node(j_name)
 
-                        # Se ci sono tag definiti, usa quelli. Altrimenti, fallback: tutti sono utenti
+                        # If tags are defined, use them. Otherwise, fallback: all are users
                         is_user = False
                         if has_user_tags:
                             is_user = (junction.tag == 'USER_1')
@@ -594,10 +594,10 @@ class WaterNetworkManager:
                     log_file.write("[MODE: STOCHASTIC RANDOMIZATION]\n\n")
                     
                     # Distribution parameters for stochastic models
-                    LOGNORMAL_SIGMA = 0.5  # Shape parameter for lognormal distribution
+                    LOGNORMAL_SIGMA = 0.25  # Shape parameter (sigma) for lognormal distribution
                     NORMAL_STD_RATIO = 0.2  # Standard deviation as ratio of mean (20%)
                     
-                    # Select pattern based on pattern_mode
+                    # Pattern selection based on pattern_mode
                     if pattern_mode == 'sequential':
                         pattern_idx = 0
                     elif pattern_mode == 'random':
@@ -619,18 +619,23 @@ class WaterNetworkManager:
                         elif dist_type == 'lognormal':
                             # Lognormal distribution: produces right-skewed distribution
                             # Useful for modeling realistic water demand patterns
-                            base_val = np.random.lognormal(np.log(avg_demand), LOGNORMAL_SIGMA)
-                            base_val = max(0.0, base_val)  # Ensure non-negative
+                            # Calculate mu so that the mean of lognormal equals avg_demand
+                            mu = np.log(avg_demand) - 0.5 * LOGNORMAL_SIGMA**2
+                            base_val = np.random.lognormal(mu, LOGNORMAL_SIGMA)
                         elif dist_type == 'uniform':
-                            # Uniform distribution: all demands equally likely between 0 and avg_demand
-                            base_val = np.random.uniform(0.0, avg_demand)
-                            base_val = max(0.0, base_val)  # Ensure non-negative
+                            # Uniform distribution: centered around avg_demand with ±50% range
+                            lower_bound = avg_demand * 0.5
+                            upper_bound = avg_demand * 1.5
+                            base_val = np.random.uniform(lower_bound, upper_bound)
                         else:  # 'original' or any other value
                             # Use original or average demand as fallback
                             if junction.demand_timeseries_list:
                                 base_val = junction.demand_timeseries_list[0].base_value
                             else:
                                 base_val = avg_demand
+                        
+                        # Ensure non-negative for all cases
+                        base_val = max(0.0, base_val)
                         
                         # Select pattern based on pattern_mode
                         if pattern_names and pattern_names[0] is not None:
