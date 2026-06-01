@@ -593,8 +593,9 @@ class WaterNetworkManager:
                     # ============================================================
                     log_file.write("[MODE: STOCHASTIC RANDOMIZATION]\n\n")
                     
-                    # Set random seed for reproducibility (optional)
-                    np.random.seed(None)
+                    # Distribution parameters for stochastic models
+                    LOGNORMAL_SIGMA = 0.5  # Shape parameter for lognormal distribution
+                    NORMAL_STD_RATIO = 0.2  # Standard deviation as ratio of mean (20%)
                     
                     # Select pattern based on pattern_mode
                     if pattern_mode == 'sequential':
@@ -612,15 +613,18 @@ class WaterNetworkManager:
                         # Apply stochastic distribution to calculate base demand
                         if dist_type == 'normal':
                             # Normal distribution: avg_demand is the mean
-                            std_dev = avg_demand * 0.2  # 20% standard deviation
+                            std_dev = avg_demand * NORMAL_STD_RATIO
                             base_val = np.random.normal(avg_demand, std_dev)
                             base_val = max(0.0, base_val)  # Ensure non-negative
                         elif dist_type == 'lognormal':
-                            # Lognormal distribution
-                            base_val = np.random.lognormal(np.log(avg_demand), 0.5)
+                            # Lognormal distribution: produces right-skewed distribution
+                            # Useful for modeling realistic water demand patterns
+                            base_val = np.random.lognormal(np.log(avg_demand), LOGNORMAL_SIGMA)
+                            base_val = max(0.0, base_val)  # Ensure non-negative
                         elif dist_type == 'uniform':
-                            # Uniform distribution: avg_demand is the maximum
+                            # Uniform distribution: all demands equally likely between 0 and avg_demand
                             base_val = np.random.uniform(0.0, avg_demand)
+                            base_val = max(0.0, base_val)  # Ensure non-negative
                         else:  # 'original' or any other value
                             # Use original or average demand as fallback
                             if junction.demand_timeseries_list:
