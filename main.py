@@ -481,7 +481,7 @@ class WaterNetworkManager:
                                         # Pattern field is non-empty and not a comment marker
                                         has_pattern = bool(pattern_field) and not pattern_field.startswith(';')
                                     
-                                    # Check if numeric ID >= 9
+                                    # Check if numeric ID >= 9 (IDs 1-8 are reserved for infrastructure, 9+ are user nodes)
                                     try:
                                         node_num = int(node_id)
                                         if node_num >= 9 or has_pattern:
@@ -499,7 +499,7 @@ class WaterNetworkManager:
                     if j_name in user_nodes:
                         junction = self.wn.get_node(j_name)
                         junction.tag = 'USER_1'
-        except Exception as e:
+        except Exception:
             # If tagging fails, continue (tagging is not critical for operation)
             # Silent failure to avoid disrupting simulation
             pass
@@ -1013,7 +1013,7 @@ def _is_real_user_node(node_name, wn=None):
     try:
         node = wn.get_node(node_name)
         return node.tag == 'USER_1'
-    except:
+    except (KeyError, AttributeError):
         return False
 
 
