@@ -21,6 +21,7 @@ CRISIS_START_HOUR = 5      # Hour at which crisis begins (converted to steps int
 AVG_DEMAND = 0.3              # Average demand at junctions (L/s)
 DIST_TYPE = 'lognormal'      # Distribution type: 'original', 'normal', 'lognormal', 'uniform'
 PATTERN_MODE = 'random'      # Pattern selection: 'random', 'sequential', 'single'
+PRESERVE_DEMAND_PATTERNS = True  # If True: preserve original demand patterns; If False: apply stochastic randomization
 TARGET_HEAD = 280             # Target reservoir head (m)
 MIN_BOOST = 65                # Minimum boost pressure for IoT tanks (m)
 
@@ -118,4 +119,5 @@ def create_engine():
         crisis_params=CRISIS_PARAMS,
         agent_alpha=AGENT_ALPHA,
         target_head=TARGET_HEAD,
+        preserve_demand_patterns=PRESERVE_DEMAND_PATTERNS,
     )
