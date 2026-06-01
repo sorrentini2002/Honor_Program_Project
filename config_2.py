@@ -6,7 +6,7 @@ All simulation parameters can be easily modified here
 # ============================================================================
 # NETWORK CONFIGURATION
 # ============================================================================
-NETWORK_FILE = "Network/NET_30_Small.inp"  # Path to the water network file 
+NETWORK_FILE = "Network/NET_30_pattern_single_peak_show.inp"  # Path to the water network file 
 
 # ============================================================================
 # TEMPORAL CONFIGURATION

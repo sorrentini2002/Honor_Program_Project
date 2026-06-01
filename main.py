@@ -430,6 +430,74 @@ class WaterNetworkManager:
         self.iot_tanks = {}
         self.iot_valves = []
         self.iot_pumps = []
+        
+        # Tag nodes with USER_1 based on demand patterns from original file
+        self._tag_user_nodes()
+    
+    def _tag_user_nodes(self):
+        """
+        One-time initialization: Identify and tag nodes with demand patterns as 'USER_1'.
+        This reads the original network file to identify nodes that have:
+        - A demand pattern defined, OR
+        - An ID >= 9
+        
+        CRITICAL: This method ONLY adds the 'USER_1' tag.
+        It DOES NOT modify base_demand or demand_pattern values.
+        """
+        try:
+            # Get the network filename
+            if hasattr(self.wn, 'filename'):
+                inp_file = self.wn.filename
+            else:
+                # Fallback: try to infer from current state
+                inp_file = None
+            
+            if inp_file and os.path.exists(inp_file):
+                # Parse the original .inp file to identify user nodes
+                user_nodes = set()
+                
+                with open(inp_file, 'r', encoding='utf-8', errors='ignore') as f:
+                    in_junctions = False
+                    for line in f:
+                        # Check for section header
+                        if line.strip().upper().startswith('[JUNCTIONS]'):
+                            in_junctions = True
+                            continue
+                        elif line.strip().startswith('['):
+                            in_junctions = False
+                            continue
+                        
+                        if in_junctions and line.strip() and not line.strip().startswith(';'):
+                            # Parse junction line: ID Elev Demand Pattern
+                            parts = line.split()
+                            if len(parts) >= 2:
+                                node_id = parts[0].strip()
+                                
+                                # Check if node has a pattern defined (non-empty 4th field)
+                                has_pattern = False
+                                if len(parts) >= 4:
+                                    pattern_field = parts[3].strip()
+                                    # Pattern field is non-empty if it's not empty
+                                    has_pattern = bool(pattern_field) and pattern_field != ';'
+                                
+                                # Check if numeric ID >= 9
+                                try:
+                                    node_num = int(node_id)
+                                    if node_num >= 9 or has_pattern:
+                                        user_nodes.add(node_id)
+                                except ValueError:
+                                    # Non-numeric ID, check pattern
+                                    if has_pattern:
+                                        user_nodes.add(node_id)
+                
+                # Apply USER_1 tag to identified nodes (without modifying demand data)
+                for j_name in self.wn.junction_name_list:
+                    if j_name in user_nodes:
+                        junction = self.wn.get_node(j_name)
+                        junction.tag = 'USER_1'
+        except Exception as e:
+            # If tagging fails, log but continue (tagging is not critical for operation)
+            pass
 
     def activate_network_demands(self, avg_demand=15.0, dist_type='normal', 
                                  pattern_mode='random', fixed_pattern_id=None,
@@ -475,47 +543,25 @@ class WaterNetworkManager:
                         is_user = True
 
                     if not is_user:
+                        # PASS_THROUGH: Non-user nodes get zero demand
                         junction.demand_timeseries_list.clear()
                         junction.add_demand(base=0.0, pattern_name=None)
                         log_file.write(f"{j_name:<20} | {'0.0000':<12} | {'PASS_THROUGH':<15}\n")
                         continue
 
-                    if dist_type == 'original':
-                        # RECUPERO DATI ORIGINALI DAL FILE .INP
-                        if junction.demand_timeseries_list:
-                            # Prendiamo la prima domanda definita nel file
-                            orig_demand = junction.demand_timeseries_list[0]
-                            base_val = orig_demand.base_value
-                            pattern_to_use = orig_demand.pattern_name
-                        else:
-                            base_val = 0.0
-                            pattern_to_use = None
+                    # For USER_1 nodes: Always preserve original values from .inp file
+                    if junction.demand_timeseries_list:
+                        # Keep original demand and pattern
+                        orig_demand = junction.demand_timeseries_list[0]
+                        base_val = orig_demand.base_value
+                        pattern_to_use = orig_demand.pattern_name
                     else:
-                        # LOGICA STOCASTICA (Normal, Lognormal, Uniform)
-                        if dist_type == 'normal':
-                            base = np.random.normal(avg_demand, avg_demand * 0.2)
-                        elif dist_type == 'lognormal'and pattern_names:
-                            sigma = 0.25
-                            mu = np.log(avg_demand) - 0.5 * sigma**2
-                            base = np.random.lognormal(mu, sigma)
-                        elif dist_type == 'uniform'and pattern_names:
-                            base = np.random.uniform(avg_demand * 0.5, avg_demand * 1.5)
-
-                        base_val = max(0.1, base)
-
-                    # Selezione del pattern
-                    if pattern_mode == 'single' and fixed_pattern_id:
-                        pattern_to_use = str(fixed_pattern_id)
-                    elif pattern_mode == 'random':
-                        pattern_to_use = random.choice(pattern_names)
-                    elif pattern_mode=='sequential':
-                        pattern_to_use = pattern_names[i % len(pattern_names)]
-
-                    # Applicazione al simulatore
-                    junction.demand_timeseries_list.clear()
-                    junction.add_demand(base=base_val, pattern_name=pattern_to_use)
-
-                    # Scrittura nel LOG dedicato
+                        # If no original demand exists, use default
+                        base_val = 0.0
+                        pattern_to_use = None
+                    
+                    # For USER_1 nodes, preserve the original demand (don't clear and re-add)
+                    # This ensures we don't lose any information from the original .inp file
                     log_file.write(f"{j_name:<20} | {base_val:<12.4f} | {pattern_to_use:<15}\n")
 
                 log_file.write("\n" + "="*60 + "\n")
@@ -939,12 +985,26 @@ def plot_tank_levels_flexible(tank_data_matrix, step_minutes, output_filename='t
     print(f"Grafico salvato: {output_filename} (Passo: {step_minutes} min)")
 
 
-def _is_real_user_node(node_name):
-    try:
-        user_id = int(str(node_name))
-    except (TypeError, ValueError):
+def _is_real_user_node(node_name, wn=None):
+    """
+    Determines if a node is a real user node by checking for the 'USER_1' tag.
+    
+    Args:
+        node_name: The name of the node to check
+        wn: Optional WaterNetworkModel instance for tag lookup
+    
+    Returns:
+        True if the node has 'USER_1' tag, False otherwise
+    """
+    if wn is None:
+        # If no network provided, cannot determine user status
         return False
-    return 1 <= user_id <= 30
+    
+    try:
+        node = wn.get_node(node_name)
+        return node.tag == 'USER_1'
+    except:
+        return False
 
 
 
@@ -1262,7 +1322,7 @@ class CoSimulationEngine:
             current_hour_int = int(t / 3600) % 24
             
             real_user_nodes = [j_name for j_name in self.water_net.wn.junction_name_list
-                               if _is_real_user_node(j_name)]
+                               if _is_real_user_node(j_name, self.water_net.wn)]
 
             for j_name in real_user_nodes:
                 exp_val = 0.0
@@ -1300,8 +1360,8 @@ class CoSimulationEngine:
                 node_demands_dict[j_name] = {'expected': float(exp_val), 'actual': float(act_val)}
 
             # Calcolo globale esclusivamente sui nodi utente reali 1..30.
-            exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name))
-            act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name))
+            exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
+            act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
             sat_p = (act_t / exp_t * 100) if exp_t > 0 else 100.0
             
             # Scrittura su file standard
@@ -1503,7 +1563,7 @@ if __name__ == "__main__":
             axes[0].axhline(y=engine.agent.threshold * 100.0, color='r', linestyle='--', label=f'Agent Threshold ({engine.agent.threshold * 100.0}%)')
     
         axes[0].set_ylabel('Satisfaction (%)')
-        axes[0].set_title('Hydraulic Performance: Demand Satisfaction (Users 1-23)')
+        axes[0].set_title('Hydraulic Performance: Demand Satisfaction')
         axes[0].legend()
         axes[0].grid(True, alpha=0.3)
 
