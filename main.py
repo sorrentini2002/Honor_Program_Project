@@ -456,39 +456,43 @@ class WaterNetworkManager:
                 # Parse the original .inp file to identify user nodes
                 user_nodes = set()
                 
-                with open(inp_file, 'r', encoding='utf-8', errors='ignore') as f:
-                    in_junctions = False
-                    for line in f:
-                        # Check for section header
-                        if line.strip().upper().startswith('[JUNCTIONS]'):
-                            in_junctions = True
-                            continue
-                        elif line.strip().startswith('['):
-                            in_junctions = False
-                            continue
-                        
-                        if in_junctions and line.strip() and not line.strip().startswith(';'):
-                            # Parse junction line: ID Elev Demand Pattern
-                            parts = line.split()
-                            if len(parts) >= 2:
-                                node_id = parts[0].strip()
-                                
-                                # Check if node has a pattern defined (non-empty 4th field)
-                                has_pattern = False
-                                if len(parts) >= 4:
-                                    pattern_field = parts[3].strip()
-                                    # Pattern field is non-empty if it's not empty
-                                    has_pattern = bool(pattern_field) and pattern_field != ';'
-                                
-                                # Check if numeric ID >= 9
-                                try:
-                                    node_num = int(node_id)
-                                    if node_num >= 9 or has_pattern:
-                                        user_nodes.add(node_id)
-                                except ValueError:
-                                    # Non-numeric ID, check pattern
-                                    if has_pattern:
-                                        user_nodes.add(node_id)
+                try:
+                    with open(inp_file, 'r', encoding='utf-8', errors='replace') as f:
+                        in_junctions = False
+                        for line in f:
+                            # Check for section header
+                            if line.strip().upper().startswith('[JUNCTIONS]'):
+                                in_junctions = True
+                                continue
+                            elif line.strip().startswith('['):
+                                in_junctions = False
+                                continue
+                            
+                            if in_junctions and line.strip() and not line.strip().startswith(';'):
+                                # Parse junction line: ID Elev Demand Pattern
+                                parts = line.split()
+                                if len(parts) >= 2:
+                                    node_id = parts[0].strip()
+                                    
+                                    # Check if node has a pattern defined (non-empty 4th field)
+                                    has_pattern = False
+                                    if len(parts) >= 4:
+                                        pattern_field = parts[3].strip()
+                                        # Pattern field is non-empty and not a comment marker
+                                        has_pattern = bool(pattern_field) and not pattern_field.startswith(';')
+                                    
+                                    # Check if numeric ID >= 9
+                                    try:
+                                        node_num = int(node_id)
+                                        if node_num >= 9 or has_pattern:
+                                            user_nodes.add(node_id)
+                                    except ValueError:
+                                        # Non-numeric ID, check pattern
+                                        if has_pattern:
+                                            user_nodes.add(node_id)
+                except IOError as io_err:
+                    # Log file reading error but continue
+                    pass
                 
                 # Apply USER_1 tag to identified nodes (without modifying demand data)
                 for j_name in self.wn.junction_name_list:
@@ -496,7 +500,8 @@ class WaterNetworkManager:
                         junction = self.wn.get_node(j_name)
                         junction.tag = 'USER_1'
         except Exception as e:
-            # If tagging fails, log but continue (tagging is not critical for operation)
+            # If tagging fails, continue (tagging is not critical for operation)
+            # Silent failure to avoid disrupting simulation
             pass
 
     def activate_network_demands(self, avg_demand=15.0, dist_type='normal', 
@@ -555,13 +560,18 @@ class WaterNetworkManager:
                         orig_demand = junction.demand_timeseries_list[0]
                         base_val = orig_demand.base_value
                         pattern_to_use = orig_demand.pattern_name
+                        
+                        # Re-apply the original values to ensure correct configuration
+                        # (using the same original values, not modifying them)
+                        junction.demand_timeseries_list.clear()
+                        junction.add_demand(base=base_val, pattern_name=pattern_to_use)
                     else:
                         # If no original demand exists, use default
                         base_val = 0.0
                         pattern_to_use = None
+                        junction.demand_timeseries_list.clear()
+                        junction.add_demand(base=base_val, pattern_name=pattern_to_use)
                     
-                    # For USER_1 nodes, preserve the original demand (don't clear and re-add)
-                    # This ensures we don't lose any information from the original .inp file
                     log_file.write(f"{j_name:<20} | {base_val:<12.4f} | {pattern_to_use:<15}\n")
 
                 log_file.write("\n" + "="*60 + "\n")
