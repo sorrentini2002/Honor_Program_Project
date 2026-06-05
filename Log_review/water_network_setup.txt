@@ -1,78 +1,52 @@
 ============================================================
-  WATER NETWORK DEMAND SETUP: 2026-05-26 12:41:57.059804
+  WATER NETWORK DEMAND SETUP: 2026-06-05 17:23:29.857020
 ============================================================
-Config: avg_demand=0.3, dist=lognormal, mode=random
+Config: avg_demand=0.003, dist=lognormal, mode=random, preserve_patterns=False
 
 JUNCTION_ID          | BASE_DEMAND  | PATTERN_NAME   
 ------------------------------------------------------------
-8628                 | 0.0000       | PASS_THROUGH   
-8630                 | 0.0000       | PASS_THROUGH   
-8632                 | 0.0000       | PASS_THROUGH   
-8634                 | 0.0000       | PASS_THROUGH   
-8636                 | 0.0000       | PASS_THROUGH   
-8638                 | 0.0000       | PASS_THROUGH   
-8640                 | 0.0000       | PASS_THROUGH   
-8642                 | 0.0000       | PASS_THROUGH   
-8644                 | 0.0000       | PASS_THROUGH   
-8646                 | 0.0000       | PASS_THROUGH   
-8648                 | 0.0000       | PASS_THROUGH   
-8650                 | 0.0000       | PASS_THROUGH   
-8686                 | 0.0000       | PASS_THROUGH   
-8688                 | 0.0000       | PASS_THROUGH   
-8690                 | 0.0000       | PASS_THROUGH   
-8692                 | 0.0000       | PASS_THROUGH   
-8694                 | 0.0000       | PASS_THROUGH   
-8696                 | 0.0000       | PASS_THROUGH   
-8698                 | 0.0000       | PASS_THROUGH   
-8700                 | 0.0000       | PASS_THROUGH   
-8702                 | 0.0000       | PASS_THROUGH   
-8738                 | 0.0000       | PASS_THROUGH   
-J106                 | 0.0000       | PASS_THROUGH   
-2                    | 0.3450       | 8              
-3                    | 0.2886       | 1              
-4                    | 0.3368       | 9              
-5                    | 0.2056       | 1              
-6                    | 0.1917       | 8              
-7                    | 0.2668       | 2              
-8                    | 0.3691       | 10             
-9                    | 0.3717       | 9              
-10                   | 0.3428       | 10             
-11                   | 0.2589       | 1              
-12                   | 0.2068       | 2              
-13                   | 0.2648       | 8              
-14                   | 0.3083       | 8              
-15                   | 0.3589       | 9              
-16                   | 0.2624       | 9              
-17                   | 0.2296       | 2              
-18                   | 0.2310       | 8              
-19                   | 0.1791       | 7              
-20                   | 0.2371       | 7              
-21                   | 0.2133       | 9              
-22                   | 0.3086       | 1              
-23                   | 0.2498       | 1              
-24                   | 0.0000       | PASS_THROUGH   
+[MODE: STOCHASTIC RANDOMIZATION]
+
+8628                 | 0.0039       | 7              
+8630                 | 0.0038       | 9              
+8632                 | 0.0044       | 8              
+8634                 | 0.0027       | 1              
+8636                 | 0.0027       | 1              
+8638                 | 0.0037       | 9              
+8640                 | 0.0032       | 6              
+8642                 | 0.0036       | 7              
+8644                 | 0.0028       | 1              
+8646                 | 0.0037       | 9              
+8648                 | 0.0026       | 10             
+8650                 | 0.0053       | 6              
+8686                 | 0.0036       | 10             
+8688                 | 0.0030       | 6              
+8690                 | 0.0034       | 6              
+8692                 | 0.0026       | 8              
+8694                 | 0.0032       | 8              
+8696                 | 0.0026       | 2              
+8698                 | 0.0026       | 6              
+8700                 | 0.0023       | 9              
+8702                 | 0.0020       | 1              
+8738                 | 0.0027       | 1              
+J106                 | 0.0031       | 8              
 
 ============================================================
-Setup completed for 46 nodes.
-  [HARDWARE DEPLOYED] IoT_Tank_Small_0 <--> 19
-    - Valve created: IoT_Valve_New_0 (Initial: CLOSED)
-    - Pump created:  IoT_Pump_New_0 (Ready for control)
+Setup completed for 23 nodes.
+  [HARDWARE DEPLOYED] IoT_Tank_Small_0 <--> 8696
+    - Valve created: IoT_Valve_New_0 (Initial: CLOSED, K=1000)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_1 <--> 8640
-    - Valve created: IoT_Valve_New_1 (Initial: CLOSED)
-    - Pump created:  IoT_Pump_New_1 (Ready for control)
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_1 <--> 8694
+    - Valve created: IoT_Valve_New_1 (Initial: CLOSED, K=1000)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Large_2 <--> 20
-    - Valve created: IoT_Valve_New_2 (Initial: CLOSED)
-    - Pump created:  IoT_Pump_New_2 (Ready for control)
+  [HARDWARE DEPLOYED] IoT_Tank_Large_2 <--> 8644
+    - Valve created: IoT_Valve_New_2 (Initial: CLOSED, K=1000)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Small_3 <--> 13
-    - Valve created: IoT_Valve_New_3 (Initial: CLOSED)
-    - Pump created:  IoT_Pump_New_3 (Ready for control)
+  [HARDWARE DEPLOYED] IoT_Tank_Small_3 <--> 8698
+    - Valve created: IoT_Valve_New_3 (Initial: CLOSED, K=1000)
 --------------------------------------------------
-  [HARDWARE DEPLOYED] IoT_Tank_Medium_4 <--> 8690
-    - Valve created: IoT_Valve_New_4 (Initial: CLOSED)
-    - Pump created:  IoT_Pump_New_4 (Ready for control)
+  [HARDWARE DEPLOYED] IoT_Tank_Medium_4 <--> 8738
+    - Valve created: IoT_Valve_New_4 (Initial: CLOSED, K=1000)
 --------------------------------------------------
 
 [SETUP] DEPLOYING NEW IoT TANKS
@@ -80,20 +54,20 @@ Strategy used: RANDOM
 ------------------------------------------------------------
 TANK_NAME            | NODE       | ELEV    | T_ELEV  | DEMAND   | STATUS    
 ------------------------------------------------------------
-IoT_Tank_Small_0     | 19         | 0.0     | 65.0    | 0.18     | SUCCESS   
-IoT_Tank_Medium_1    | 8640       | 18.3    | 83.3    | 0.00     | SUCCESS   
-IoT_Tank_Large_2     | 20         | 0.0     | 65.0    | 0.24     | SUCCESS   
-IoT_Tank_Small_3     | 13         | 0.0     | 65.0    | 0.26     | SUCCESS   
-IoT_Tank_Medium_4    | 8690       | 18.3    | 83.3    | 0.00     | SUCCESS   
+IoT_Tank_Small_0     | 8696       | 18.3    | 28.3    | 0.00     | SUCCESS   
+IoT_Tank_Medium_1    | 8694       | 18.3    | 28.3    | 0.00     | SUCCESS   
+IoT_Tank_Large_2     | 8644       | 18.3    | 28.3    | 0.00     | SUCCESS   
+IoT_Tank_Small_3     | 8698       | 18.3    | 28.3    | 0.00     | SUCCESS   
+IoT_Tank_Medium_4    | 8738       | 18.3    | 28.3    | 0.00     | SUCCESS   
 ------------------------------------------------------------
 
-[SETUP] FIXING RESERVOIR HEADS (Target: 280)
+[SETUP] FIXING RESERVOIR HEADS (Target: 50)
 ------------------------------------------------------------
 ------------------------------------------------------------
 
 [LoRa NETWORK SETUP]
-  - Gateway Position: (497905.55, 1378583.94) [Mode: center]
+  - Gateway Position: (498040.53, 1378701.13) [Mode: center]
   - Total Sensors:    5
-  - Average Distance: 818.44 meters
-  - Max Distance:     1081.53 meters
+  - Average Distance: 499.99 meters
+  - Max Distance:     820.73 meters
 ------------------------------------------------------------

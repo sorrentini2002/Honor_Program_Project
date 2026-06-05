@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 import json
 import datetime
 import matplotlib
+from torch import mode
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
@@ -430,12 +431,86 @@ class WaterNetworkManager:
         self.iot_tanks = {}
         self.iot_valves = []
         self.iot_pumps = []
+        
+        # Tag nodes with USER_1 based on demand patterns from original file
+        self._tag_user_nodes()
+    
+    def _tag_user_nodes(self):
+        """
+        One-time initialization: Identify and tag nodes with demand patterns as 'USER_1'.
+        This reads the original network file to identify nodes that have:
+        - A demand pattern defined, OR
+        - An ID >= 9
+        
+        CRITICAL: This method ONLY adds the 'USER_1' tag.
+        It DOES NOT modify base_demand or demand_pattern values.
+        """
+        try:
+            # Get the network filename
+            if hasattr(self.wn, 'filename'):
+                inp_file = self.wn.filename
+            else:
+                # Fallback: try to infer from current state
+                inp_file = None
+            
+            if inp_file and os.path.exists(inp_file):
+                # Parse the original .inp file to identify user nodes
+                user_nodes = set()
+                
+                try:
+                    with open(inp_file, 'r', encoding='utf-8', errors='replace') as f:
+                        in_junctions = False
+                        for line in f:
+                            # Check for section header
+                            if line.strip().upper().startswith('[JUNCTIONS]'):
+                                in_junctions = True
+                                continue
+                            elif line.strip().startswith('['):
+                                in_junctions = False
+                                continue
+                            
+                            if in_junctions and line.strip() and not line.strip().startswith(';'):
+                                # Parse junction line: ID Elev Demand Pattern
+                                parts = line.split()
+                                if len(parts) >= 2:
+                                    node_id = parts[0].strip()
+                                    
+                                    # Check if node has a pattern defined (non-empty 4th field)
+                                    has_pattern = False
+                                    if len(parts) >= 4:
+                                        pattern_field = parts[3].strip()
+                                        # Pattern field is non-empty and not a comment marker
+                                        has_pattern = bool(pattern_field) and not pattern_field.startswith(';')
+                                    
+                                    # Check if numeric ID >= 9 (IDs 1-8 are reserved for infrastructure, 9+ are user nodes)
+                                    try:
+                                        node_num = int(node_id)
+                                        if node_num >= 9 or has_pattern:
+                                            user_nodes.add(node_id)
+                                    except ValueError:
+                                        # Non-numeric ID, check pattern
+                                        if has_pattern:
+                                            user_nodes.add(node_id)
+                except IOError as io_err:
+                    # Log file reading error but continue
+                    pass
+                
+                # Apply USER_1 tag to identified nodes (without modifying demand data)
+                for j_name in self.wn.junction_name_list:
+                    if j_name in user_nodes:
+                        junction = self.wn.get_node(j_name)
+                        junction.tag = 'USER_1'
+        except Exception:
+            # If tagging fails, continue (tagging is not critical for operation)
+            # Silent failure to avoid disrupting simulation
+            pass
 
     def activate_network_demands(self, avg_demand=15.0, dist_type='normal', 
                                  pattern_mode='random', fixed_pattern_id=None,
-                                 log_filename="water_network_setup.txt"):
+                                 log_filename="water_network_setup.txt",
+                                 preserve_patterns=True):
 
-            # Percorso del log dedicato all'idraulica
+            # Path to the hydraulic log file
             log_dir = "Log_review"
             if not os.path.exists(log_dir):
                 os.makedirs(log_dir)
@@ -457,66 +532,131 @@ class WaterNetworkManager:
                 log_file.write("="*60 + "\n")
                 log_file.write(f"  WATER NETWORK DEMAND SETUP: {datetime.datetime.now()}\n")
                 log_file.write("="*60 + "\n")
-                log_file.write(f"Config: avg_demand={avg_demand}, dist={dist_type}, mode={pattern_mode}\n\n")
+                log_file.write(f"Config: avg_demand={avg_demand}, dist={dist_type}, mode={pattern_mode}, preserve_patterns={preserve_patterns}\n\n")
                 log_file.write(f"{'JUNCTION_ID':<20} | {'BASE_DEMAND':<12} | {'PATTERN_NAME':<15}\n")
                 log_file.write("-" * 60 + "\n")
 
-                # Check if the network has the 'USER_1' flag defined on any node
-                has_user_tags = any(self.wn.get_node(n).tag == 'USER_1' for n in self.wn.junction_name_list)
+                if preserve_patterns:
+                    # ============================================================
+                    # MODE 1: PRESERVE_PATTERNS = True
+                    # Uses tag-based detection to identify active users
+                    # For USER_1 nodes: Preserves and applies original demand values
+                    # For non-USER_1 nodes: Sets to PASS_THROUGH with zero demand
+                    # ============================================================
+                    log_file.write("[MODE: PRESERVE DEMAND PATTERNS]\n\n")
+                    
+                    # Check if the network has the 'USER_1' flag defined on any node
+                    has_user_tags = any(self.wn.get_node(n).tag == 'USER_1' for n in self.wn.junction_name_list)
 
-                for i, j_name in enumerate(self.wn.junction_name_list):
-                    junction = self.wn.get_node(j_name)
+                    for i, j_name in enumerate(self.wn.junction_name_list):
+                        junction = self.wn.get_node(j_name)
 
-                    # Se ci sono tag definiti, usa quelli. Altrimenti, fallback: tutti sono utenti
-                    is_user = False
-                    if has_user_tags:
-                        is_user = (junction.tag == 'USER_1')
-                    else:
-                        is_user = True
+                        # If tags are defined, use them. Otherwise, fallback: all are users
+                        is_user = False
+                        if has_user_tags:
+                            is_user = (junction.tag == 'USER_1')
+                        else:
+                            is_user = True
 
-                    if not is_user:
-                        junction.demand_timeseries_list.clear()
-                        junction.add_demand(base=0.0, pattern_name=None)
-                        log_file.write(f"{j_name:<20} | {'0.0000':<12} | {'PASS_THROUGH':<15}\n")
-                        continue
+                        if not is_user:
+                            # PASS_THROUGH: Non-user nodes get zero demand
+                            junction.demand_timeseries_list.clear()
+                            junction.add_demand(base=0.0, pattern_name=None)
+                            log_file.write(f"{j_name:<20} | {'0.0000':<12} | {'PASS_THROUGH':<15}\n")
+                            continue
 
-                    if dist_type == 'original':
-                        # RECUPERO DATI ORIGINALI DAL FILE .INP
+                        # For USER_1 nodes: Always preserve original values from .inp file
                         if junction.demand_timeseries_list:
-                            # Prendiamo la prima domanda definita nel file
+                            # Keep original demand and pattern
                             orig_demand = junction.demand_timeseries_list[0]
                             base_val = orig_demand.base_value
                             pattern_to_use = orig_demand.pattern_name
+                            
+                            # Re-apply the original values to ensure correct configuration
+                            # (using the same original values, not modifying them)
+                            junction.demand_timeseries_list.clear()
+                            junction.add_demand(base=base_val, pattern_name=pattern_to_use)
                         else:
+                            # If no original demand exists, use default
                             base_val = 0.0
                             pattern_to_use = None
-                    else:
-                        # LOGICA STOCASTICA (Normal, Lognormal, Uniform)
-                        if dist_type == 'normal':
-                            base = np.random.normal(avg_demand, avg_demand * 0.2)
-                        elif dist_type == 'lognormal'and pattern_names:
-                            sigma = 0.25
-                            mu = np.log(avg_demand) - 0.5 * sigma**2
-                            base = np.random.lognormal(mu, sigma)
-                        elif dist_type == 'uniform'and pattern_names:
-                            base = np.random.uniform(avg_demand * 0.5, avg_demand * 1.5)
+                            junction.demand_timeseries_list.clear()
+                            junction.add_demand(base=base_val, pattern_name=pattern_to_use)
+                        
+                        log_file.write(f"{j_name:<20} | {base_val:<12.4f} | {pattern_to_use:<15}\n")
 
-                        base_val = max(0.1, base)
-
-                    # Selezione del pattern
-                    if pattern_mode == 'single' and fixed_pattern_id:
-                        pattern_to_use = str(fixed_pattern_id)
+                else:
+                    # ============================================================
+                    # MODE 2: PRESERVE_PATTERNS = False
+                    # Applies stochastic distributions to alter demands randomly
+                    # Uses distribution type (normal, lognormal, uniform) and pattern mode
+                    # This simulates the historical behavior with random demand variation
+                    # ============================================================
+                    log_file.write("[MODE: STOCHASTIC RANDOMIZATION]\n\n")
+                    
+                    # Distribution parameters for stochastic models
+                    LOGNORMAL_SIGMA = 0.25  # Shape parameter (sigma) for lognormal distribution
+                    NORMAL_STD_RATIO = 0.2  # Standard deviation as ratio of mean (20%)
+                    
+                    # Pattern selection based on pattern_mode
+                    if pattern_mode == 'sequential':
+                        pattern_idx = 0
                     elif pattern_mode == 'random':
-                        pattern_to_use = random.choice(pattern_names)
-                    elif pattern_mode=='sequential':
-                        pattern_to_use = pattern_names[i % len(pattern_names)]
-
-                    # Applicazione al simulatore
-                    junction.demand_timeseries_list.clear()
-                    junction.add_demand(base=base_val, pattern_name=pattern_to_use)
-
-                    # Scrittura nel LOG dedicato
-                    log_file.write(f"{j_name:<20} | {base_val:<12.4f} | {pattern_to_use:<15}\n")
+                        pattern_idx = None  # Will be randomly selected for each node
+                    elif pattern_mode == 'single' and fixed_pattern_id is not None:
+                        pattern_idx = fixed_pattern_id
+                    else:
+                        pattern_idx = None
+                    
+                    for i, j_name in enumerate(self.wn.junction_name_list):
+                        junction = self.wn.get_node(j_name)
+                        
+                        # Apply stochastic distribution to calculate base demand
+                        if dist_type == 'normal':
+                            # Normal distribution: avg_demand is the mean
+                            std_dev = avg_demand * NORMAL_STD_RATIO
+                            base_val = np.random.normal(avg_demand, std_dev)
+                            base_val = max(0.0, base_val)  # Ensure non-negative
+                        elif dist_type == 'lognormal':
+                            # Lognormal distribution: produces right-skewed distribution
+                            # Useful for modeling realistic water demand patterns
+                            # Calculate mu so that the mean of lognormal equals avg_demand
+                            mu = np.log(avg_demand) - 0.5 * LOGNORMAL_SIGMA**2
+                            base_val = np.random.lognormal(mu, LOGNORMAL_SIGMA)
+                        elif dist_type == 'uniform':
+                            # Uniform distribution: centered around avg_demand with ±50% range
+                            lower_bound = avg_demand * 0.5
+                            upper_bound = avg_demand * 1.5
+                            base_val = np.random.uniform(lower_bound, upper_bound)
+                        else:  # 'original' or any other value
+                            # Use original or average demand as fallback
+                            if junction.demand_timeseries_list:
+                                base_val = junction.demand_timeseries_list[0].base_value
+                            else:
+                                base_val = avg_demand
+                        
+                        # Ensure non-negative for all cases
+                        base_val = max(0.0, base_val)
+                        
+                        # Select pattern based on pattern_mode
+                        if pattern_names and pattern_names[0] is not None:
+                            if pattern_mode == 'sequential':
+                                pattern_to_use = pattern_names[pattern_idx % len(pattern_names)]
+                                pattern_idx += 1
+                            elif pattern_mode == 'random':
+                                pattern_to_use = np.random.choice(pattern_names)
+                            elif pattern_mode == 'single' and fixed_pattern_id is not None:
+                                pattern_to_use = pattern_names[fixed_pattern_id % len(pattern_names)]
+                            else:
+                                pattern_to_use = None
+                        else:
+                            pattern_to_use = None
+                        
+                        # Apply the randomized demand to the junction
+                        junction.demand_timeseries_list.clear()
+                        junction.add_demand(base=base_val, pattern_name=pattern_to_use)
+                        
+                        log_file.write(f"{j_name:<20} | {base_val:<12.4f} | {pattern_to_use:<15}\n")
 
                 log_file.write("\n" + "="*60 + "\n")
                 log_file.write(f"Setup completed for {len(self.wn.junction_name_list)} nodes.\n")
@@ -787,83 +927,123 @@ class WaterNetworkManager:
         except AttributeError:
             current_time_s = int(getattr(sim, '_currentTime', step * 300)) # Fallback a 300s se non trovato
 
-        if mode == 'pressure':
-            try:
-                v_link = sim._wn.get_link('Main_Control_Valve')
-                v_link.status = mwntr.network.elements.LinkStatus.Open
-                v_link.setting = 0.0
-            except:
-                pass
-            # La modifica dinamica della 'base_head' richiede il rebuild del modello idraulico
-            for res_name in self.wn.reservoir_name_list:
-                res = sim._wn.get_node(res_name)
-                if not hasattr(res, '_original_head'):
-                    res._original_head = res.head_timeseries.base_value
+            if mode == 'pressure':
+                # Apriamo la valvola principale se esiste (per compatibilità con modalità flow)
+                try:
+                    v_link = sim._wn.get_link('Main_Control_Valve')
+                    v_link._user_status = mwntr.network.elements.LinkStatus.Open
+                    v_link._internal_status = mwntr.network.elements.LinkStatus.Open
+                    v_link._setting = 0.0
+                except:
+                    pass
                 
-                new_head = res._original_head * ratio
-                if abs(getattr(res, '_last_ratio', 1.0) - ratio) > 0.01:
-                    with open(log_path, "a") as f:
-                        f.write(f"PRES | {step:<4} | {ratio:<5.2f} | Head: {new_head:<10.2f} | -{(1-ratio)*100:.1f}%\n")
-                    res._last_ratio = ratio
-                    # Modifichiamo la head
-                    res.head_timeseries.base_value = new_head
-                    # Diciamo al simulatore di ricaricare il modello idraulico
-                    sim.rebuild_hydraulic_model = True
+                # Modifica dinamica della head dei reservoir
+                for res_name in self.wn.reservoir_name_list:
+                    res = sim._wn.get_node(res_name)
+                    if not hasattr(res, '_original_head'):
+                        res._original_head = res.head_timeseries.base_value
+                    
+                    new_head = res._original_head * ratio
+                    
+                    if abs(getattr(res, '_last_ratio', 1.0) - ratio) > 0.005:
+                        with open(log_path, "a") as f:
+                            f.write(f"PRES | {step:<4} | {ratio:<5.2f} | Head: {new_head:<10.2f} | -{(1-ratio)*100:.1f}%\n")
+                        res._last_ratio = ratio
+                        
+                        # 1. Aggiorna la timeseries (per coerenza con WNTR)
+                        res.head_timeseries.base_value = new_head
+                        
+                        # 2. ⚡ AGGIORNAMENTO DIRETTO DEL MODELLO AML ⚡
+                        # Questo è il passaggio CRITICO che mancava:
+                        # forza il solver Newton a vedere immediatamente la nuova head
+                        try:
+                            if hasattr(sim, '_model') and hasattr(sim._model, 'source_head'):
+                                if res_name in sim._model.source_head:
+                                    sim._model.source_head[res_name].value = new_head
+                        except Exception:
+                            pass
 
-        elif mode == 'flow':
-            # Ritorno a una logica di crisi più semplice e diretta
-            # Siccome le velocità dell'acqua sono minime, serve un coefficiente gigantesco per far calare la pressione (h_L = K * v^2 / 2g)
-            loss_coeff = max(1.0, 500000.0 * (1.0 - ratio) ** 2)
-            
-            valve = sim._wn.get_link('Main_Control_Valve')
-            
-            # Interveniamo solo se c'è stata una reale variazione di ratio
-            if abs(getattr(valve, '_last_ratio', 1.0) - ratio) > 0.01:
-                with open(log_path, "a") as f:
-                    f.write(f"FLOW | {step:<4} | {ratio:<5.2f} | Coeff: {loss_coeff:<10.2f} | -{(1-ratio)*100:.1f}%\n")
-                
-                # --- INIEZIONE DEL CONTROLLO WNTR PER LA CRISI ---
-                control_name = f"CrisisCtrl_Valve_{current_time_s}"
-                action = wntr.network.controls.ControlAction(valve, 'setting', loss_coeff)
-                
-                # Usiamo la condizione infallibile: scatta subito
-                condition = wntr.network.controls.SimTimeCondition(sim._wn, '=', current_time_s)
-                ctrl = wntr.network.controls.Control(condition, action, name=control_name)
-                sim._wn.add_control(control_name, ctrl)
-                # ---------------------------------------------------
-                
-                valve._last_ratio = ratio
-
+            elif mode == 'flow':
+                    loss_coeff = max(1.0, 500000.0 * (1.0 - ratio) ** 2)
+                    valve = sim._wn.get_link('Main_Control_Valve')
+                    
+                    if abs(getattr(valve, '_last_ratio', 1.0) - ratio) > 0.01:
+                        with open(log_path, "a") as f:
+                            f.write(f"FLOW | {step:<4} | {ratio:<5.2f} | Coeff: {loss_coeff:<10.2f} | -{(1-ratio)*100:.1f}%\n")
+                        
+                        # Pulizia vecchi controlli crisi
+                        for mgr in [sim._presolve_controls, sim._postsolve_controls,
+                                    sim._rules, sim._feasibility_controls]:
+                            to_remove = [c for c in mgr._controls
+                                        if hasattr(c, '_name') and c._name
+                                        and c._name.startswith("CrisisCtrl_")]
+                            for ctrl in to_remove:
+                                mgr.deregister(ctrl)
+                                try:
+                                    sim._change_tracker.deregister(ctrl)
+                                except Exception:
+                                    pass
+                        
+                        old_crisis = [n for n in sim._wn.control_name_list if n.startswith("CrisisCtrl_")]
+                        for n in old_crisis:
+                            sim._wn.remove_control(n)
+                        
+                        # Nuovo controllo crisi
+                        next_fire = sim.get_sim_time() + sim.hydraulic_timestep()
+                        control_name = f"CrisisCtrl_Valve_{int(next_fire)}"
+                        action = mwntr.network.controls.ControlAction(valve, 'setting', loss_coeff)
+                        condition = mwntr.network.controls.SimTimeCondition(sim._wn, '=', next_fire)
+                        ctrl = mwntr.network.controls.Control(condition, action, 
+                                                            name=control_name,
+                                                            priority=mwntr.network.controls.ControlPriority.high)
+                        
+                        sim._wn.add_control(control_name, ctrl)
+                        sim._add_control(ctrl)
+                        sim._register_controls_with_observers()
+                        
+                        valve._last_ratio = ratio
         # Rimosso: sim.rebuild_hydraulic_model = True. Non serve più e rallentava tutto.
         return ratio
 
     def _add_iot_control_to_tank(self, junc_name, tank_name, tank_id, diameter, boost_head, use_pumps=True):
-            import os
-            v_name = f"IoT_Valve_{tank_id}"
-            p_name = f"IoT_Pump_{tank_id}"
-            curve_name = f"Curve_{p_name}"
-            log_path = os.path.join("Log_review", "water_network_setup.txt")
+        import os
+        v_name = f"IoT_Valve_{tank_id}"
+        p_name = f"IoT_Pump_{tank_id}"
+        curve_name = f"Curve_{p_name}"
+        log_path = os.path.join("Log_review", "water_network_setup.txt")
 
-            # 1. Installazione Valvola (Hardware di scarico)
-            self.wn.add_valve(name=v_name, start_node_name=tank_name, end_node_name=junc_name,
-                            diameter=diameter, valve_type='TCV', initial_setting=1.0)
-            self.iot_valves.append(v_name)
+        # 1. Installazione Valvola TCV - Collegamento DIRETTO Tank -> Junction
+        self.wn.add_valve(name=v_name, 
+                        start_node_name=tank_name, 
+                        end_node_name=junc_name,
+                        diameter=diameter, 
+                        valve_type='TCV', 
+                        initial_setting=1000.0,
+                        initial_status='CLOSED')
+        self.iot_valves.append(v_name)
 
-            # 2. Installazione Pompa (Hardware di ricarica)
+        # 2. Installazione Pompa (Hardware di ricarica)
+        if use_pumps:
+            self.wn.add_curve(curve_name, 'HEAD', [
+                (0.0, boost_head * 1.2), 
+                (0.005, boost_head * 1.1), 
+                (0.01, float(boost_head))
+            ])
+            self.wn.add_pump(name=p_name, 
+                            start_node_name=junc_name, 
+                            end_node_name=tank_name,
+                            pump_type='HEAD', 
+                            pump_parameter=curve_name,
+                            initial_status='CLOSED')
+            self.iot_pumps.append(p_name)
+
+        # 3. Log di conferma
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"  [HARDWARE DEPLOYED] {tank_name} <--> {junc_name}\n")
+            f.write(f"    - Valve created: {v_name} (Initial: CLOSED, K=1000)\n")
             if use_pumps:
-                # CORREZIONE: 0.005 m^3/s (5 L/s) e 0.01 m^3/s (10 L/s) per uno svuotamento graduale e realistico
-                self.wn.add_curve(curve_name, 'HEAD', [(0.0, boost_head * 1.2), (0.005, boost_head * 1.1), (0.01, float(boost_head))])
-                self.wn.add_pump(name=p_name, start_node_name=junc_name, end_node_name=tank_name,
-                                pump_type='HEAD', pump_parameter=curve_name)
-                self.iot_pumps.append(p_name)
-
-            # 3. Log di conferma creazione
-            with open(log_path, "a", encoding="utf-8") as f:
-                f.write(f"  [HARDWARE DEPLOYED] {tank_name} <--> {junc_name}\n")
-                f.write(f"    - Valve created: {v_name} (Initial: CLOSED)\n")
-                if use_pumps:
-                    f.write(f"    - Pump created:  {p_name} (Ready for control)\n")
-                f.write("-" * 50 + "\n")
+                f.write(f"    - Pump created: {p_name} (Ready for control)\n")
+            f.write("-" * 50 + "\n")    
 
     def set_simulation_options(self, timestep_s=300):
         """Configures WNTR for PDA simulation."""
@@ -871,8 +1051,8 @@ class WaterNetworkManager:
         self.wn.options.time.hydraulic_timestep = timestep_s
         self.wn.options.time.report_timestep = timestep_s
         self.wn.options.hydraulic.demand_model = 'PDA'
-        self.wn.options.hydraulic.minimum_pressure = -10.0
-        self.wn.options.hydraulic.required_pressure = 5.0
+        self.wn.options.hydraulic.minimum_pressure = 0.0
+        self.wn.options.hydraulic.required_pressure = 35.0
 
 
 from Agents import AGENT_MAP
@@ -939,12 +1119,26 @@ def plot_tank_levels_flexible(tank_data_matrix, step_minutes, output_filename='t
     print(f"Grafico salvato: {output_filename} (Passo: {step_minutes} min)")
 
 
-def _is_real_user_node(node_name):
-    try:
-        user_id = int(str(node_name))
-    except (TypeError, ValueError):
+def _is_real_user_node(node_name, wn=None):
+    """
+    Determines if a node is a real user node by checking for the 'USER_1' tag.
+    
+    Args:
+        node_name: The name of the node to check
+        wn: Optional WaterNetworkModel instance for tag lookup
+    
+    Returns:
+        True if the node has 'USER_1' tag, False otherwise
+    """
+    if wn is None:
+        # If no network provided, cannot determine user status
         return False
-    return 1 <= user_id <= 30
+    
+    try:
+        node = wn.get_node(node_name)
+        return node.tag == 'USER_1'
+    except (KeyError, AttributeError):
+        return False
 
 
 
@@ -957,7 +1151,7 @@ class CoSimulationEngine:
                  agent_name='heuristic', agent_threshold=0.90, agent_aggression=5.0,
                  enable_pumps=True, lora_mode='multihop',
                  gateway_mode='center', min_boost=10.0, gateway_offset=0.0, 
-                 sf_mode='distance', fixed_sf=10, crisis_params=None, crisis_start_hour=2.0, agent_alpha=0.8, target_head=200):
+                 sf_mode='distance', fixed_sf=10, crisis_params=None, crisis_start_hour=2.0, agent_alpha=0.8, target_head=200, preserve_demand_patterns=True):
 
         self.timestep_s = step_min * 60
         self.n_steps = int((duration_hours * 3600) / self.timestep_s)
@@ -968,7 +1162,7 @@ class CoSimulationEngine:
         self.target_head = target_head
 
         # 1. Setup Idraulico
-        self.water_net.activate_network_demands(avg_demand=avg_demand, dist_type=dist_type, pattern_mode=pattern_mode)
+        self.water_net.activate_network_demands(avg_demand=avg_demand, dist_type=dist_type, pattern_mode=pattern_mode, preserve_patterns=preserve_demand_patterns)
         if n_tanks > 0:
             self.water_net.add_iot_tanks(n_tanks=n_tanks, strategy_name=strategy_name, 
                                          min_boost=self.min_boost, use_pumps=enable_pumps)
@@ -1025,10 +1219,11 @@ class CoSimulationEngine:
         # 4. Inizializzazione Simulatore e Agente
         self.sim = MWNTRInteractiveSimulator(self.water_net.wn)
         agent_class = AGENT_MAP.get(agent_name, AGENT_MAP['heuristic'])
-        self.agent = agent_class(self.water_net, self.lora_net, 
-                                 threshold=agent_threshold, 
-                                 aggression=agent_aggression,
-                                 alpha=agent_alpha)
+        self.agent = agent_class(self.water_net, self.lora_net,
+                         threshold=agent_threshold,
+                         aggression=agent_aggression,
+                         alpha=agent_alpha,
+                         crisis_start_time_s=self.crisis_start_step * self.timestep_s)
                             
         # Keep engine/main logs separate from agent's own log file
         self.perf_log = "Log_review/main_performance.txt"
@@ -1038,8 +1233,8 @@ class CoSimulationEngine:
 
         # 5. Configurazione PDA (Pressure Driven Analysis) - CRUCIALE
         self.water_net.wn.options.hydraulic.demand_model = 'PDA'
-        self.water_net.wn.options.hydraulic.minimum_pressure = -10.0
-        self.water_net.wn.options.hydraulic.required_pressure = 5.0 
+        self.water_net.wn.options.hydraulic.minimum_pressure = 0
+        self.water_net.wn.options.hydraulic.required_pressure = 35.0 
         
         # 6. Statistiche e Log di Crisi
         self.stats = {
@@ -1095,6 +1290,8 @@ class CoSimulationEngine:
             pass # Se la valvola si chiama diversamente o non esiste, ignora
 
         self.sim.init_simulation()
+
+
         t = 0.0
 
         demand_log_path = "Log_review/demand_distribution.csv"
@@ -1188,16 +1385,12 @@ class CoSimulationEngine:
             # --- RIPRISTINO DOMANDA (Dallo step 1 in poi) ---
             # --- AGGIORNATO: RIPRISTINO DOMANDA CON NOTIFICA AL SIMULATORE INTERATTIVO ---
             # Iniettiamo i valori stocastici stabili nella copia attiva del simulatore
+
                     if step == 0:
                         for j_name, val in saved_stochastic_demands.items():
                             sim_node = self.sim._wn.get_node(j_name)
                             if sim_node.demand_timeseries_list:
                                 sim_node.demand_timeseries_list[0].base_value = val
-                        self.sim.rebuild_hydraulic_model = True
-                
-                        # Forziamo il simulatore a ricostruire il modello matematico per applicare le nuove domande
-                        if hasattr(self.sim, 'rebuild_hydraulic_model'):
-                            self.sim.rebuild_hydraulic_model = True
 
 
             crisis_start_time_s = self.crisis_start_step * self.timestep_s
@@ -1208,21 +1401,41 @@ class CoSimulationEngine:
                 current_ratio = self.crisis_model.get_ratio(time_elapsed_hours)
                 self.water_net.apply_crisis_reduction(self.sim, current_ratio, step, mode=self.crisis_mode_name)
 
-            if hasattr(self.sim, '_wn'):
-                old_controls = [c_name for c_name in self.sim._wn.control_name_list 
-                                if c_name.startswith("AgentCtrl_") or c_name.startswith("CrisisCtrl_")]
-                for c_name in old_controls:
-                    self.sim._wn.remove_control(c_name)
-
             # Il cuore della co-simulazione
             s_current = self.stats['satisfaction'][-1] / 100.0 if self.stats['satisfaction'] else 1.0
             pl = self.lora_net.get_packet_loss_rate()
-            act = self.agent.decide_action(step, t, s_current)
+            act = self.agent.decide_action(step, t, s_current, sim=self.sim)
             self.agent.apply_mitigation(act, self.sim, self.lora_net, t)
             
             self.water_net.sim = self.sim
 
+            # ── DIAGNOSTICO PRE-STEP ──
+            if step > 0 and step % 10 == 0:
+                tank_levels = []
+                for t_name in self.sim._wn.tank_name_list:
+                    tank = self.sim._wn.get_node(t_name)
+                    tank_levels.append(f"{t_name}={tank.level:.2f}m (min={tank.min_level}m)")
+                print(f"[STEP {step:3d}] t={t/3600:5.2f}h | Crisis={current_ratio:.2f} | "
+                    f"Terminated={self.sim.is_terminated()} | Tanks: {', '.join(tank_levels)}")
+
             self.sim.step_sim()
+
+            # ── DIAGNOSTICA VALVOLE E POMPE IoT ──
+            if step % 10 == 0:  # Ogni 10 step
+                print(f"\n[STEP {step}] IoT Hardware Status:")
+                for v_name in self.water_net.iot_valves:
+                    try:
+                        valve = self.sim._wn.get_link(v_name)
+                        print(f"  Valve {v_name}: status={valve.status.name}, setting={valve.setting:.2f}, flow={valve.flow:.4f} m³/s")
+                    except Exception as e:
+                        print(f"  Valve {v_name}: ERROR - {e}")
+                
+                for p_name in self.water_net.iot_pumps:
+                    try:
+                        pump = self.sim._wn.get_link(p_name)
+                        print(f"  Pump {p_name}: status={pump.status.name}, speed={pump.base_speed:.2f}, flow={pump.flow:.4f} m³/s")
+                    except Exception as e:
+                        print(f"  Pump {p_name}: ERROR - {e}")
             
             # --- PRELIEVO INDICE DI CRISI ---
             source_head = 0.0
@@ -1262,7 +1475,7 @@ class CoSimulationEngine:
             current_hour_int = int(t / 3600) % 24
             
             real_user_nodes = [j_name for j_name in self.water_net.wn.junction_name_list
-                               if _is_real_user_node(j_name)]
+                               if _is_real_user_node(j_name, self.water_net.wn)]
 
             for j_name in real_user_nodes:
                 exp_val = 0.0
@@ -1293,16 +1506,32 @@ class CoSimulationEngine:
                     vec = sim_nodes_source['demand'][j_name]
                     if len(vec) > 0:
                         calculated_act = vec[-1]
-                        act_val = min(calculated_act, exp_val) if calculated_act > 0 else 0.0
-                else:
-                    act_val=0.0
+                        # Clamp: actual non può superare expected a livello di nodo
+                        if calculated_act > 0 and exp_val > 0:
+                            act_val = min(calculated_act, exp_val)
+                        elif calculated_act > 0 and exp_val <= 0:
+                            act_val = 0.0  # Se expected è zero, actual deve essere zero
+                        else:
+                            act_val = 0.0
 
                 node_demands_dict[j_name] = {'expected': float(exp_val), 'actual': float(act_val)}
 
-            # Calcolo globale esclusivamente sui nodi utente reali 1..30.
-            exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name))
-            act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name))
-            sat_p = (act_t / exp_t * 100) if exp_t > 0 else 100.0
+                exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
+                act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
+                
+                # Clamp fisico: actual non può superare expected
+                act_t = min(act_t, exp_t)
+                
+                # Soglia minima: se expected è trascurabile (< 1e-4 L/s), 
+                # la satisfaction è indefinibile → usa 100%
+                MIN_EXP_THRESHOLD = 1e-4
+                if exp_t < MIN_EXP_THRESHOLD:
+                    sat_p = 100.0
+                else:
+                    sat_p = (act_t / exp_t) * 100.0
+                
+                # Safety clamp finale: mai sopra 100%
+                sat_p = min(sat_p, 100.0)
             
             # Scrittura su file standard
             with open("Log_review/demand_distribution.csv", "a") as f:
@@ -1472,7 +1701,7 @@ class CoSimulationEngine:
 
 
 if __name__ == "__main__":
-    from config_2 import create_engine
+    from config import create_engine
     engine = create_engine()
 
     results = engine.run_simulation()
@@ -1503,7 +1732,7 @@ if __name__ == "__main__":
             axes[0].axhline(y=engine.agent.threshold * 100.0, color='r', linestyle='--', label=f'Agent Threshold ({engine.agent.threshold * 100.0}%)')
     
         axes[0].set_ylabel('Satisfaction (%)')
-        axes[0].set_title('Hydraulic Performance: Demand Satisfaction (Users 1-23)')
+        axes[0].set_title('Hydraulic Performance: Demand Satisfaction')
         axes[0].legend()
         axes[0].grid(True, alpha=0.3)
 
