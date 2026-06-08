@@ -1,4 +1,4 @@
-SIMULATION START: 2026-06-05 17:23:29.868524
+SIMULATION START: 2026-06-08 11:40:38.123539
 MODE: PRESSURE | GATEWAY: center
 -----------------------------------------------------------------
 MODE | STEP | RATIO | VALUE (Head/Coeff) | REDUCTION

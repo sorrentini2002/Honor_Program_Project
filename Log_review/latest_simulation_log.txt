@@ -1,970 +1,970 @@
 ============================================================
-  LORA CO-SIMULATION SESSION (LoRaSimPlus): 2026-06-05 17:23:29.862012
+  LORA CO-SIMULATION SESSION (LoRaSimPlus): 2026-06-08 11:40:38.116537
 ============================================================
-[INFO ] Gateway set at (498040.5325517241, 1378701.1267931035)
+[INFO ] Gateway set at (498099.94496551726, 1378752.9867931034)
 [SETUP] NETWORK TOPOLOGY: 5 sensors registered
 [SETUP]   Physics: Ptx=14dBm, BW=125kHz, PL=65B, gamma=2.32
-[REG  ] NODE IoT_Valve_New_0 | SF12 | Dist:  0.59km | RSSI: -109.7dBm | SNR:  13.3dB | RX: OK
-[REG  ] NODE IoT_Valve_New_1 | SF12 | Dist:  0.49km | RSSI: -107.9dBm | SNR:  15.2dB | RX: OK
-[REG  ] NODE IoT_Valve_New_2 | SF12 | Dist:  0.82km | RSSI: -113.0dBm | SNR:  10.1dB | RX: OK
-[REG  ] NODE IoT_Valve_New_3 | SF12 | Dist:  0.55km | RSSI: -109.0dBm | SNR:  14.1dB | RX: OK
-[REG  ] NODE IoT_Valve_New_4 | SF12 | Dist:  0.04km | RSSI:  -82.5dBm | SNR:  40.5dB | RX: OK
-[COMM ] TX @  3600.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.3 SNR: 18.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  3600.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.6 SNR: 17.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  3600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.0 SNR:  8.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  3600.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.2 SNR:  4.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  3600.0s | IoT_Valve_New_4 | SF12 | RSSI: -94.7 SNR: 28.3 | Air:2793.5ms | SUCCESS
+[REG  ] NODE IoT_Valve_New_0 | SF12 | Dist:  0.61km | RSSI: -110.0dBm | SNR:  13.0dB | RX: OK
+[REG  ] NODE IoT_Valve_New_1 | SF12 | Dist:  0.57km | RSSI: -109.4dBm | SNR:  13.7dB | RX: OK
+[REG  ] NODE IoT_Valve_New_2 | SF12 | Dist:  1.03km | RSSI: -115.3dBm | SNR:   7.8dB | RX: OK
+[REG  ] NODE IoT_Valve_New_3 | SF12 | Dist:  0.85km | RSSI: -113.3dBm | SNR:   9.8dB | RX: OK
+[REG  ] NODE IoT_Valve_New_4 | SF12 | Dist:  0.94km | RSSI: -114.3dBm | SNR:   8.7dB | RX: OK
+[COMM ] TX @  3600.0s | IoT_Valve_New_0 | SF12 | RSSI:-125.1 SNR: -2.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  3600.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.4 SNR:  7.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  3600.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.5 SNR:  9.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  3600.0s | IoT_Valve_New_3 | SF12 | RSSI:-122.8 SNR:  0.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  3600.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=5
-[COMM ] TX @  7200.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.4 SNR: 21.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  7200.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.5 SNR:  6.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  7200.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  7200.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.8 SNR:  8.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @  7200.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.2 SNR: 41.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  7200.0s | IoT_Valve_New_0 | SF12 | RSSI: -97.3 SNR: 25.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  7200.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.7 SNR: 21.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  7200.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  7200.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.3 SNR: 11.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @  7200.0s | IoT_Valve_New_4 | SF12 | RSSI:-116.6 SNR:  6.4 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=10
-[COMM ] TX @ 10800.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.1 SNR: 17.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 10800.0s | IoT_Valve_New_1 | SF12 | RSSI: -97.9 SNR: 25.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 10800.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.1 SNR:  6.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 10800.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.6 SNR:  6.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 10800.0s | IoT_Valve_New_4 | SF12 | RSSI: -70.2 SNR: 52.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 10800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.0 SNR: 14.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 10800.0s | IoT_Valve_New_1 | SF12 | RSSI:-119.1 SNR:  3.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 10800.0s | IoT_Valve_New_2 | SF12 | RSSI:-102.2 SNR: 20.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 10800.0s | IoT_Valve_New_3 | SF12 | RSSI: -98.6 SNR: 24.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 10800.0s | IoT_Valve_New_4 | SF12 | RSSI:-101.1 SNR: 21.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=15
-[COMM ] TX @ 14400.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.7 SNR:  5.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 14400.0s | IoT_Valve_New_1 | SF12 | RSSI: -96.9 SNR: 26.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 14400.0s | IoT_Valve_New_2 | SF12 | RSSI:-131.5 SNR: -8.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 14400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.0 SNR: 17.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 14400.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.1 SNR: 46.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 14400.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.7 SNR: 17.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 14400.0s | IoT_Valve_New_1 | SF12 | RSSI:-119.6 SNR:  3.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 14400.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.7 SNR: 12.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 14400.0s | IoT_Valve_New_3 | SF12 | RSSI: -92.0 SNR: 31.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 14400.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.1 SNR:  9.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=20
-[COMM ] TX @ 18000.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.9 SNR: 14.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 18000.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.2 SNR: 19.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 18000.0s | IoT_Valve_New_2 | SF12 | RSSI:-131.2 SNR: -8.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 18000.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.9 SNR:  2.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 18000.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.9 SNR: 44.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 18000.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.5 SNR:  7.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 18000.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.2 SNR: 15.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 18000.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.4 SNR:  0.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 18000.0s | IoT_Valve_New_3 | SF12 | RSSI: -99.9 SNR: 23.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 18000.0s | IoT_Valve_New_4 | SF12 | RSSI: -98.2 SNR: 24.8 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=25
-[COMM ] TX @ 21600.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.3 SNR: 19.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 21600.0s | IoT_Valve_New_1 | SF12 | RSSI:-119.9 SNR:  3.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 21600.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.3 SNR: 13.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 21600.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.4 SNR:  7.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 21600.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.5 SNR: 34.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 21600.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.0 SNR: 19.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 21600.0s | IoT_Valve_New_1 | SF12 | RSSI: -97.7 SNR: 25.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 21600.0s | IoT_Valve_New_2 | SF12 | RSSI:-127.6 SNR: -4.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 21600.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.4 SNR:  6.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 21600.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.1 SNR: 11.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=30
-[COMM ] TX @ 25200.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.0 SNR: 12.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 25200.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 25200.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.4 SNR: 11.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 25200.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.6 SNR: 11.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 25200.0s | IoT_Valve_New_4 | SF12 | RSSI: -86.7 SNR: 36.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 25200.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.1 SNR:  2.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 25200.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 25200.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.0 SNR:  2.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 25200.0s | IoT_Valve_New_3 | SF12 | RSSI:-119.3 SNR:  3.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 25200.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=35
-[COMM ] TX @ 28800.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.0 SNR: 15.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 28800.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.8 SNR: 19.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 28800.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.2 SNR:  3.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 28800.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.7 SNR:  6.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 28800.0s | IoT_Valve_New_4 | SF12 | RSSI:-101.5 SNR: 21.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 28800.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.1 SNR: 21.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 28800.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.7 SNR: 19.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 28800.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.6 SNR:  2.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 28800.0s | IoT_Valve_New_3 | SF12 | RSSI:-102.6 SNR: 20.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 28800.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.9 SNR: -0.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=40
-[COMM ] TX @ 32400.0s | IoT_Valve_New_0 | SF12 | RSSI:-122.5 SNR:  0.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 32400.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.4 SNR: 17.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 32400.0s | IoT_Valve_New_2 | SF12 | RSSI: -98.2 SNR: 24.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 32400.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 32400.0s | IoT_Valve_New_4 | SF12 | RSSI: -83.2 SNR: 39.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 32400.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.3 SNR: 22.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 32400.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.7 SNR: 18.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 32400.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.6 SNR: 16.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 32400.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.1 SNR: 15.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 32400.0s | IoT_Valve_New_4 | SF12 | RSSI:-107.3 SNR: 15.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=45
-[COMM ] TX @ 36000.0s | IoT_Valve_New_0 | SF12 | RSSI: -93.9 SNR: 29.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 36000.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.6 SNR: 23.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 36000.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.6 SNR: 11.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 36000.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.2 SNR: 11.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 36000.0s | IoT_Valve_New_4 | SF12 | RSSI: -84.9 SNR: 38.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 36000.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.7 SNR: 16.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 36000.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.5 SNR:  9.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 36000.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.3 SNR:  6.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 36000.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.9 SNR:  8.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 36000.0s | IoT_Valve_New_4 | SF12 | RSSI:-104.3 SNR: 18.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=50
-[COMM ] TX @ 39600.0s | IoT_Valve_New_0 | SF12 | RSSI: -98.4 SNR: 24.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 39600.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.7 SNR:  9.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 39600.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.3 SNR: 14.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 39600.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.6 SNR:  6.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 39600.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.3 SNR: 46.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 39600.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.1 SNR: 12.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 39600.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.4 SNR: 12.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 39600.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.3 SNR:  3.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 39600.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.1 SNR:  5.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 39600.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.3 SNR: 11.8 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=55
-[COMM ] TX @ 43200.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 43200.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.9 SNR: 27.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 43200.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.1 SNR: 23.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 43200.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.8 SNR:  4.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 43200.0s | IoT_Valve_New_4 | SF12 | RSSI: -84.2 SNR: 38.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 43200.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.7 SNR:  5.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 43200.0s | IoT_Valve_New_1 | SF12 | RSSI:-121.4 SNR:  1.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 43200.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 43200.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.6 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 43200.0s | IoT_Valve_New_4 | SF12 | RSSI:-105.4 SNR: 17.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=60
-[COMM ] TX @ 46800.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 46800.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.2 SNR: 10.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 46800.0s | IoT_Valve_New_2 | SF12 | RSSI:-128.1 SNR: -5.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 46800.0s | IoT_Valve_New_3 | SF12 | RSSI:-124.9 SNR: -1.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 46800.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.3 SNR: 41.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 46800.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 46800.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.7 SNR: 15.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 46800.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.0 SNR: 18.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 46800.0s | IoT_Valve_New_3 | SF12 | RSSI:-122.1 SNR:  1.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 46800.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.7 SNR:  9.3 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=65
-[COMM ] TX @ 50400.0s | IoT_Valve_New_0 | SF12 | RSSI:-124.3 SNR: -1.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 50400.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.7 SNR: 13.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 50400.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.7 SNR: 13.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 50400.0s | IoT_Valve_New_3 | SF12 | RSSI:-102.2 SNR: 20.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 50400.0s | IoT_Valve_New_4 | SF12 | RSSI: -70.4 SNR: 52.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 50400.0s | IoT_Valve_New_0 | SF12 | RSSI: -94.1 SNR: 28.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 50400.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.8 SNR: 24.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 50400.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.5 SNR: 10.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 50400.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 50400.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.0 SNR: 11.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=70
-[COMM ] TX @ 54000.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.5 SNR:  6.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 54000.0s | IoT_Valve_New_1 | SF12 | RSSI: -97.7 SNR: 25.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 54000.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.9 SNR:  5.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 54000.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.9 SNR:  9.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 54000.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.5 SNR: 45.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 54000.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.7 SNR: 16.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 54000.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 54000.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.4 SNR: 13.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 54000.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.4 SNR: 11.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 54000.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.5 SNR:  4.5 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=75
-[COMM ] TX @ 57600.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.6 SNR:  7.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 57600.0s | IoT_Valve_New_1 | SF12 | RSSI: -92.0 SNR: 31.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 57600.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.2 SNR:  5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 57600.0s | IoT_Valve_New_3 | SF12 | RSSI:-123.3 SNR: -0.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 57600.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.3 SNR: 37.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 57600.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 57600.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.9 SNR: 16.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 57600.0s | IoT_Valve_New_2 | SF12 | RSSI:-100.7 SNR: 22.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 57600.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.1 SNR: 17.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 57600.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.2 SNR:  1.8 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=80
-[COMM ] TX @ 61200.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.3 SNR: 14.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 61200.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.0 SNR: 21.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 61200.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.9 SNR: -2.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 61200.0s | IoT_Valve_New_3 | SF12 | RSSI:-100.1 SNR: 22.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 61200.0s | IoT_Valve_New_4 | SF12 | RSSI: -72.5 SNR: 50.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 61200.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.9 SNR: 10.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 61200.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.5 SNR: 12.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 61200.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.3 SNR: 18.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 61200.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.0 SNR: 16.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 61200.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.8 SNR: -0.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=85
-[COMM ] TX @ 64800.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.3 SNR: 18.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 64800.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.0 SNR: 16.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 64800.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.8 SNR: 16.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 64800.0s | IoT_Valve_New_3 | SF12 | RSSI:-124.4 SNR: -1.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 64800.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.5 SNR: 45.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 64800.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.2 SNR:  8.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 64800.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 64800.0s | IoT_Valve_New_2 | SF12 | RSSI:-102.3 SNR: 20.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 64800.0s | IoT_Valve_New_3 | SF12 | RSSI: -98.9 SNR: 24.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 64800.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.6 SNR: -0.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=90
-[COMM ] TX @ 68400.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.2 SNR: 11.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 68400.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.9 SNR: 15.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 68400.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.6 SNR: 15.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 68400.0s | IoT_Valve_New_3 | SF12 | RSSI:-100.2 SNR: 22.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 68400.0s | IoT_Valve_New_4 | SF12 | RSSI: -75.5 SNR: 47.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 68400.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.5 SNR:  7.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 68400.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.3 SNR: 15.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 68400.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.4 SNR: 17.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 68400.0s | IoT_Valve_New_3 | SF12 | RSSI:-126.8 SNR: -3.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 68400.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=95
-[COMM ] TX @ 72000.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.9 SNR:  4.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 72000.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.7 SNR: 23.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 72000.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.6 SNR:  1.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 72000.0s | IoT_Valve_New_3 | SF12 | RSSI:-128.8 SNR: -5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 72000.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.1 SNR: 33.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 72000.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.4 SNR: 10.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 72000.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.2 SNR: 15.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 72000.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.0 SNR: 10.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 72000.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.8 SNR: 12.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 72000.0s | IoT_Valve_New_4 | SF12 | RSSI:-101.5 SNR: 21.5 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=100
-[COMM ] TX @ 75600.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.2 SNR:  5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 75600.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.5 SNR: 19.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 75600.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 75600.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.6 SNR:  7.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 75600.0s | IoT_Valve_New_4 | SF12 | RSSI: -96.8 SNR: 26.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 75600.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.6 SNR: 16.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 75600.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.1 SNR: 22.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 75600.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.3 SNR: -2.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 75600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.4 SNR:  8.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 75600.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.8 SNR:  1.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=105
-[COMM ] TX @ 79200.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.8 SNR: 19.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 79200.0s | IoT_Valve_New_1 | SF12 | RSSI: -92.2 SNR: 30.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 79200.0s | IoT_Valve_New_2 | SF12 | RSSI: -97.4 SNR: 25.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 79200.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.4 SNR: 10.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 79200.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.3 SNR: 30.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 79200.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.9 SNR:  2.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 79200.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.4 SNR:  9.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 79200.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.6 SNR: 18.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 79200.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.2 SNR: 16.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 79200.0s | IoT_Valve_New_4 | SF12 | RSSI:-126.9 SNR: -3.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=110
 [COMM ] TX @ 82800.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.2 SNR: 12.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 82800.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.7 SNR: 17.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 82800.0s | IoT_Valve_New_2 | SF12 | RSSI:-123.7 SNR: -0.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 82800.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.5 SNR: 18.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 82800.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.7 SNR: 30.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 82800.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.5 SNR:  7.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 82800.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.9 SNR:  0.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 82800.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 82800.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.00% | Total TX=115
-[COMM ] TX @ 86400.0s | IoT_Valve_New_0 | SF12 | RSSI:-136.0 SNR:-13.0 | Air:2793.5ms | LOST(SNR)
-[COMM ] TX @ 86400.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.4 SNR: 23.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 86400.0s | IoT_Valve_New_2 | SF12 | RSSI: -94.5 SNR: 28.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 86400.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.3 SNR: 13.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 86400.0s | IoT_Valve_New_4 | SF12 | RSSI: -86.3 SNR: 36.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.83% | Total TX=120
-[COMM ] TX @ 90000.0s | IoT_Valve_New_0 | SF12 | RSSI: -99.0 SNR: 24.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 90000.0s | IoT_Valve_New_1 | SF12 | RSSI:-122.0 SNR:  1.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 90000.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.1 SNR:  7.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 90000.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.1 SNR: 14.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 90000.0s | IoT_Valve_New_4 | SF12 | RSSI: -98.5 SNR: 24.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.80% | Total TX=125
-[COMM ] TX @ 93600.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.8 SNR: 11.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 93600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 93600.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.8 SNR: 18.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 93600.0s | IoT_Valve_New_3 | SF12 | RSSI: -95.2 SNR: 27.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 93600.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.6 SNR: 37.5 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.77% | Total TX=130
-[COMM ] TX @ 97200.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.4 SNR: 11.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 97200.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.2 SNR: 27.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 97200.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 97200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.7 SNR: 12.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @ 97200.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.4 SNR: 34.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.74% | Total TX=135
-[COMM ] TX @100800.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.4 SNR:  8.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @100800.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.4 SNR: 16.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @100800.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.6 SNR:  8.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @100800.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @100800.0s | IoT_Valve_New_4 | SF12 | RSSI: -83.8 SNR: 39.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.71% | Total TX=140
-[COMM ] TX @104400.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.6 SNR: 22.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @104400.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @104400.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @104400.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.5 SNR: 10.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @104400.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.3 SNR: 37.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.69% | Total TX=145
-[COMM ] TX @108000.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.3 SNR:  2.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @108000.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.8 SNR:  8.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @108000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.8 SNR:  8.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @108000.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.2 SNR: 15.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @108000.0s | IoT_Valve_New_4 | SF12 | RSSI: -75.8 SNR: 47.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.67% | Total TX=150
-[COMM ] TX @111600.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.0 SNR: 21.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 86400.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.3 SNR:  8.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 86400.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.9 SNR: 16.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 86400.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.2 SNR: -2.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 86400.0s | IoT_Valve_New_3 | SF12 | RSSI:-126.3 SNR: -3.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 86400.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.8 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=120
+[COMM ] TX @ 90000.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.6 SNR: 15.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 90000.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.5 SNR: 19.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 90000.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.8 SNR:  6.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 90000.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 90000.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.7 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=125
+[COMM ] TX @ 93600.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 93600.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.6 SNR: 11.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 93600.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.8 SNR: 11.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 93600.0s | IoT_Valve_New_3 | SF12 | RSSI:-119.1 SNR:  3.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 93600.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.7 SNR:  9.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=130
+[COMM ] TX @ 97200.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.0 SNR: 18.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 97200.0s | IoT_Valve_New_1 | SF12 | RSSI:-122.7 SNR:  0.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 97200.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.3 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 97200.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.2 SNR: 21.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @ 97200.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.6 SNR:  8.4 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=135
+[COMM ] TX @100800.0s | IoT_Valve_New_0 | SF12 | RSSI: -98.1 SNR: 24.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @100800.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.7 SNR: 12.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @100800.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @100800.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.4 SNR:  5.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @100800.0s | IoT_Valve_New_4 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=140
+[COMM ] TX @104400.0s | IoT_Valve_New_0 | SF12 | RSSI: -95.9 SNR: 27.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @104400.0s | IoT_Valve_New_1 | SF12 | RSSI: -96.7 SNR: 26.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @104400.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.6 SNR: -1.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @104400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.6 SNR: 16.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @104400.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.4 SNR: 12.7 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=145
+[COMM ] TX @108000.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.8 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @108000.0s | IoT_Valve_New_1 | SF12 | RSSI:-118.7 SNR:  4.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @108000.0s | IoT_Valve_New_2 | SF12 | RSSI: -98.9 SNR: 24.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @108000.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @108000.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.7 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=150
+[COMM ] TX @111600.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.9 SNR: 12.1 | Air:2793.5ms | SUCCESS
 [COMM ] TX @111600.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.8 SNR: 15.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @111600.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.0 SNR: 10.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @111600.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.5 SNR: 11.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @111600.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.9 SNR: 41.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.65% | Total TX=155
-[COMM ] TX @115200.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.2 SNR: 14.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @115200.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.0 SNR: 12.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @115200.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @115200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.0 SNR: 13.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @115200.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.3 SNR: 46.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.62% | Total TX=160
-[COMM ] TX @118800.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @118800.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.1 SNR: 13.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @118800.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.8 SNR: -2.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @118800.0s | IoT_Valve_New_3 | SF12 | RSSI:-127.8 SNR: -4.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @118800.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.0 SNR: 42.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.61% | Total TX=165
-[COMM ] TX @122400.0s | IoT_Valve_New_0 | SF12 | RSSI: -95.5 SNR: 27.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @122400.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.3 SNR: 20.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @122400.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @122400.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.0 SNR:  5.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @122400.0s | IoT_Valve_New_4 | SF12 | RSSI: -80.1 SNR: 42.9 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.59% | Total TX=170
-[COMM ] TX @126000.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.5 SNR: 16.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @126000.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.0 SNR: 16.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @126000.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.0 SNR: 14.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @126000.0s | IoT_Valve_New_3 | SF12 | RSSI:-119.8 SNR:  3.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @126000.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.8 SNR: 43.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.57% | Total TX=175
-[COMM ] TX @129600.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.4 SNR: 18.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @129600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @129600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @129600.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.5 SNR:  2.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @129600.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.4 SNR: 30.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.56% | Total TX=180
-[COMM ] TX @133200.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.2 SNR: 11.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @133200.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @133200.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.8 SNR:  5.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @133200.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.1 SNR:  5.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @133200.0s | IoT_Valve_New_4 | SF12 | RSSI: -86.1 SNR: 37.0 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.54% | Total TX=185
-[COMM ] TX @136800.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.5 SNR: 18.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @136800.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.3 SNR: 15.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @136800.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.4 SNR:  5.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @136800.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.8 SNR: 14.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @136800.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.6 SNR: 45.5 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.53% | Total TX=190
-[COMM ] TX @140400.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.2 SNR: 11.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @140400.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @140400.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.6 SNR:  9.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @140400.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.3 SNR: 21.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @140400.0s | IoT_Valve_New_4 | SF12 | RSSI: -65.9 SNR: 57.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.51% | Total TX=195
-[COMM ] TX @144000.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.6 SNR:  5.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @144000.0s | IoT_Valve_New_1 | SF12 | RSSI:-118.4 SNR:  4.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @144000.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.0 SNR:  5.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @144000.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.2 SNR:  4.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @144000.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.8 SNR: 40.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.50% | Total TX=200
-[COMM ] TX @147600.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.3 SNR: 20.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @147600.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.1 SNR: 14.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @147600.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.9 SNR: 15.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @147600.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.5 SNR: 12.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @147600.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.8 SNR: 30.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.49% | Total TX=205
-[COMM ] TX @151200.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.4 SNR: 11.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @151200.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.3 SNR:  8.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @151200.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.9 SNR:  5.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @151200.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.5 SNR: 17.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @151200.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.8 SNR: 30.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.48% | Total TX=210
-[COMM ] TX @154800.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.1 SNR:  9.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @154800.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.9 SNR: 12.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @154800.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.3 SNR: 10.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @154800.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.4 SNR: 11.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @154800.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.9 SNR: 45.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.47% | Total TX=215
-[COMM ] TX @158400.0s | IoT_Valve_New_0 | SF12 | RSSI: -89.4 SNR: 33.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @158400.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.9 SNR: 16.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @158400.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.6 SNR: 16.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @158400.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.0 SNR: 19.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @158400.0s | IoT_Valve_New_4 | SF12 | RSSI: -66.0 SNR: 57.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.45% | Total TX=220
-[COMM ] TX @162000.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.0 SNR:  3.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @162000.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.1 SNR: 12.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @162000.0s | IoT_Valve_New_2 | SF12 | RSSI:-103.8 SNR: 19.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @162000.0s | IoT_Valve_New_3 | SF12 | RSSI: -91.6 SNR: 31.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @162000.0s | IoT_Valve_New_4 | SF12 | RSSI: -95.6 SNR: 27.4 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.44% | Total TX=225
-[COMM ] TX @165600.0s | IoT_Valve_New_0 | SF12 | RSSI: -96.4 SNR: 26.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @165600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @165600.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.3 SNR: 15.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @165600.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.5 SNR: 13.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @165600.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.2 SNR: 41.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.43% | Total TX=230
-[COMM ] TX @169200.0s | IoT_Valve_New_0 | SF12 | RSSI: -89.8 SNR: 33.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @169200.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.5 SNR: 12.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @169200.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @169200.0s | IoT_Valve_New_3 | SF12 | RSSI:-123.0 SNR:  0.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @169200.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.7 SNR: 41.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.43% | Total TX=235
-[COMM ] TX @172800.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.9 SNR: 12.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @172800.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.9 SNR: 27.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @172800.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.4 SNR:  9.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @172800.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.3 SNR: 14.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @172800.0s | IoT_Valve_New_4 | SF12 | RSSI: -91.9 SNR: 31.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.42% | Total TX=240
-[COMM ] TX @176400.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.6 SNR: 15.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @176400.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.1 SNR: 14.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @176400.0s | IoT_Valve_New_2 | SF12 | RSSI:-100.1 SNR: 23.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @176400.0s | IoT_Valve_New_3 | SF12 | RSSI: -89.8 SNR: 33.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @176400.0s | IoT_Valve_New_4 | SF12 | RSSI: -80.8 SNR: 42.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.41% | Total TX=245
-[COMM ] TX @180000.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.0 SNR:  3.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @180000.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.4 SNR:  8.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @180000.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.8 SNR: 12.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @180000.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.3 SNR: 21.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @180000.0s | IoT_Valve_New_4 | SF12 | RSSI: -69.7 SNR: 53.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.40% | Total TX=250
-[COMM ] TX @183600.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.4 SNR:  8.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @183600.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.1 SNR: 21.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @183600.0s | IoT_Valve_New_2 | SF12 | RSSI:-129.0 SNR: -5.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @183600.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.4 SNR:  4.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @183600.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.8 SNR: 34.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.39% | Total TX=255
-[COMM ] TX @187200.0s | IoT_Valve_New_0 | SF12 | RSSI: -97.8 SNR: 25.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @187200.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.7 SNR: 24.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @187200.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.4 SNR: 17.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @187200.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.5 SNR:  9.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @187200.0s | IoT_Valve_New_4 | SF12 | RSSI: -91.4 SNR: 31.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.38% | Total TX=260
-[COMM ] TX @190800.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @190800.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.3 SNR: 20.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @190800.0s | IoT_Valve_New_2 | SF12 | RSSI: -96.8 SNR: 26.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @190800.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.3 SNR: 21.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @190800.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.2 SNR: 34.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.38% | Total TX=265
-[COMM ] TX @194400.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.7 SNR:  6.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @194400.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.3 SNR: 16.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @194400.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.7 SNR:  7.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @194400.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.9 SNR: 13.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @194400.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.0 SNR: 45.0 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.37% | Total TX=270
-[COMM ] TX @198000.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.7 SNR: 18.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @198000.0s | IoT_Valve_New_1 | SF12 | RSSI: -94.8 SNR: 28.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @198000.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.1 SNR:  4.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @198000.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @198000.0s | IoT_Valve_New_4 | SF12 | RSSI: -96.6 SNR: 26.4 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.36% | Total TX=275
-[COMM ] TX @201600.0s | IoT_Valve_New_0 | SF12 | RSSI:-122.9 SNR:  0.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @201600.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.9 SNR: 12.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @201600.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.4 SNR:  0.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @201600.0s | IoT_Valve_New_3 | SF12 | RSSI: -94.1 SNR: 28.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @201600.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.2 SNR: 41.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.36% | Total TX=280
-[COMM ] TX @205200.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.5 SNR:  2.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @205200.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.8 SNR:  8.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @205200.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @205200.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.6 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @205200.0s | IoT_Valve_New_4 | SF12 | RSSI: -72.9 SNR: 50.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.35% | Total TX=285
-[COMM ] TX @208800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.8 SNR: 13.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @208800.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.4 SNR: 12.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @208800.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.0 SNR:  9.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @208800.0s | IoT_Valve_New_3 | SF12 | RSSI:-126.2 SNR: -3.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @208800.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.0 SNR: 47.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.34% | Total TX=290
-[COMM ] TX @212400.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.6 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @212400.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.9 SNR: 16.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @212400.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.4 SNR:  6.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @212400.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.2 SNR:  4.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @212400.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.1 SNR: 40.9 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.34% | Total TX=295
-[COMM ] TX @216000.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.4 SNR: 15.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @216000.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.2 SNR: 19.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @216000.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.5 SNR: 10.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @216000.0s | IoT_Valve_New_3 | SF12 | RSSI:-124.2 SNR: -1.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @216000.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.4 SNR: 34.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.33% | Total TX=300
-[COMM ] TX @219600.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.0 SNR: 20.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @219600.0s | IoT_Valve_New_1 | SF12 | RSSI:-120.0 SNR:  3.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @219600.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @219600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.1 SNR:  8.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @219600.0s | IoT_Valve_New_4 | SF12 | RSSI: -69.0 SNR: 54.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @111600.0s | IoT_Valve_New_2 | SF12 | RSSI:-128.4 SNR: -5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @111600.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.1 SNR: 18.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @111600.0s | IoT_Valve_New_4 | SF12 | RSSI:-116.3 SNR:  6.8 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=155
+[COMM ] TX @115200.0s | IoT_Valve_New_0 | SF12 | RSSI: -88.0 SNR: 35.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @115200.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.7 SNR: 16.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @115200.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.7 SNR: 12.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @115200.0s | IoT_Valve_New_3 | SF12 | RSSI:-123.6 SNR: -0.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @115200.0s | IoT_Valve_New_4 | SF12 | RSSI:-107.5 SNR: 15.5 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=160
+[COMM ] TX @118800.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @118800.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.5 SNR: 16.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @118800.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.3 SNR: 16.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @118800.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.6 SNR: 16.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @118800.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.4 SNR:  5.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=165
+[COMM ] TX @122400.0s | IoT_Valve_New_0 | SF12 | RSSI: -94.0 SNR: 29.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @122400.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.6 SNR: 13.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @122400.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.0 SNR: -2.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @122400.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.6 SNR: 13.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @122400.0s | IoT_Valve_New_4 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=170
+[COMM ] TX @126000.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.4 SNR: 10.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @126000.0s | IoT_Valve_New_1 | SF12 | RSSI:-120.6 SNR:  2.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @126000.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.8 SNR: 16.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @126000.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @126000.0s | IoT_Valve_New_4 | SF12 | RSSI:-105.0 SNR: 18.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=175
+[COMM ] TX @129600.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.0 SNR: 18.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @129600.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.6 SNR: 18.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @129600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.5 SNR:  7.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @129600.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @129600.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.9 SNR:  3.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=180
+[COMM ] TX @133200.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.6 SNR: 18.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @133200.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.2 SNR: 23.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @133200.0s | IoT_Valve_New_2 | SF12 | RSSI:-123.3 SNR: -0.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @133200.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.3 SNR: 19.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @133200.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.8 SNR:  1.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=185
+[COMM ] TX @136800.0s | IoT_Valve_New_0 | SF12 | RSSI:-119.7 SNR:  3.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @136800.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.6 SNR: 23.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @136800.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @136800.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.7 SNR:  2.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @136800.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.2 SNR: 10.8 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=190
+[COMM ] TX @140400.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.6 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @140400.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.9 SNR:  5.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @140400.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.4 SNR:  5.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @140400.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.1 SNR: 10.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @140400.0s | IoT_Valve_New_4 | SF12 | RSSI:-106.0 SNR: 17.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=195
+[COMM ] TX @144000.0s | IoT_Valve_New_0 | SF12 | RSSI:-130.3 SNR: -7.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @144000.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.7 SNR: 24.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @144000.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.3 SNR:  3.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @144000.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.6 SNR: 10.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @144000.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.6 SNR:  7.4 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=200
+[COMM ] TX @147600.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.5 SNR: 11.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @147600.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.9 SNR: 14.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @147600.0s | IoT_Valve_New_2 | SF12 | RSSI:-128.7 SNR: -5.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @147600.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.5 SNR:  2.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @147600.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.2 SNR:  9.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=205
+[COMM ] TX @151200.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.8 SNR: 12.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @151200.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.6 SNR: 21.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @151200.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.5 SNR:  0.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @151200.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @151200.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.9 SNR:  5.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=210
+[COMM ] TX @154800.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.0 SNR:  6.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @154800.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.8 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @154800.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.3 SNR:  7.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @154800.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.9 SNR:  6.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @154800.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.1 SNR:  1.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=215
+[COMM ] TX @158400.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.5 SNR: 15.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @158400.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.1 SNR: 17.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @158400.0s | IoT_Valve_New_2 | SF12 | RSSI:-101.2 SNR: 21.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @158400.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.5 SNR: 21.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @158400.0s | IoT_Valve_New_4 | SF12 | RSSI:-130.5 SNR: -7.5 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=220
+[COMM ] TX @162000.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.5 SNR: 18.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @162000.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @162000.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.7 SNR:  2.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @162000.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.6 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @162000.0s | IoT_Valve_New_4 | SF12 | RSSI:-127.1 SNR: -4.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=225
+[COMM ] TX @165600.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @165600.0s | IoT_Valve_New_1 | SF12 | RSSI: -92.2 SNR: 30.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @165600.0s | IoT_Valve_New_2 | SF12 | RSSI: -95.9 SNR: 27.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @165600.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.6 SNR: 14.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @165600.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.6 SNR: 12.5 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=230
+[COMM ] TX @169200.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.7 SNR: 11.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @169200.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.3 SNR: 12.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @169200.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.5 SNR: 12.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @169200.0s | IoT_Valve_New_3 | SF12 | RSSI:-124.6 SNR: -1.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @169200.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.9 SNR:  5.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=235
+[COMM ] TX @172800.0s | IoT_Valve_New_0 | SF12 | RSSI: -96.0 SNR: 27.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @172800.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.2 SNR:  6.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @172800.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.4 SNR:  2.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @172800.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.2 SNR: 10.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @172800.0s | IoT_Valve_New_4 | SF12 | RSSI:-126.9 SNR: -3.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=240
+[COMM ] TX @176400.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.3 SNR: 16.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @176400.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.2 SNR: 13.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @176400.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @176400.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.3 SNR:  8.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @176400.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.8 SNR:  4.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=245
+[COMM ] TX @180000.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.7 SNR:  4.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @180000.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @180000.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.6 SNR:  3.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @180000.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.5 SNR:  7.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @180000.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.2 SNR: 12.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=250
+[COMM ] TX @183600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.5 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @183600.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.6 SNR: 13.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @183600.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @183600.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.6 SNR: 10.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @183600.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.7 SNR:  3.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=255
+[COMM ] TX @187200.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.9 SNR: 14.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @187200.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.6 SNR:  7.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @187200.0s | IoT_Valve_New_2 | SF12 | RSSI:-123.8 SNR: -0.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @187200.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.7 SNR: 10.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @187200.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.2 SNR: 10.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=260
+[COMM ] TX @190800.0s | IoT_Valve_New_0 | SF12 | RSSI:-128.5 SNR: -5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @190800.0s | IoT_Valve_New_1 | SF12 | RSSI:-100.3 SNR: 22.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @190800.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.0 SNR:  4.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @190800.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.1 SNR: 18.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @190800.0s | IoT_Valve_New_4 | SF12 | RSSI:-127.0 SNR: -4.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=265
+[COMM ] TX @194400.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.8 SNR:  8.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @194400.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.2 SNR: 21.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @194400.0s | IoT_Valve_New_2 | SF12 | RSSI:-102.2 SNR: 20.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @194400.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.6 SNR:  5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @194400.0s | IoT_Valve_New_4 | SF12 | RSSI:-127.3 SNR: -4.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=270
+[COMM ] TX @198000.0s | IoT_Valve_New_0 | SF12 | RSSI:-119.4 SNR:  3.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @198000.0s | IoT_Valve_New_1 | SF12 | RSSI:-124.0 SNR: -0.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @198000.0s | IoT_Valve_New_2 | SF12 | RSSI:-102.8 SNR: 20.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @198000.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @198000.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.5 SNR: 11.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=275
+[COMM ] TX @201600.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.1 SNR: 13.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @201600.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.8 SNR: 15.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @201600.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.7 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @201600.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.3 SNR: 17.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @201600.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.7 SNR: 12.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=280
+[COMM ] TX @205200.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @205200.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @205200.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.0 SNR: 12.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @205200.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.1 SNR:  7.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @205200.0s | IoT_Valve_New_4 | SF12 | RSSI:-108.9 SNR: 14.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=285
+[COMM ] TX @208800.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.4 SNR:  4.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @208800.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.7 SNR:  7.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @208800.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.1 SNR: 17.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @208800.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.9 SNR:  1.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @208800.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.4 SNR: 10.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=290
+[COMM ] TX @212400.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.6 SNR: 18.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @212400.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.1 SNR: 11.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @212400.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.6 SNR:  4.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @212400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.8 SNR: 16.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @212400.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.4 SNR:  1.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=295
+[COMM ] TX @216000.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.1 SNR: 14.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @216000.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.8 SNR: 17.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @216000.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @216000.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @216000.0s | IoT_Valve_New_4 | SF12 | RSSI:-125.3 SNR: -2.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.00% | Total TX=300
+[COMM ] TX @219600.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.2 SNR:  8.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @219600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @219600.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.3 SNR: 13.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @219600.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.1 SNR:  1.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @219600.0s | IoT_Valve_New_4 | SF12 | RSSI:-137.6 SNR:-14.6 | Air:2793.5ms | LOST(SNR)
 [INFO ] STATS CHECK: PLR=0.33% | Total TX=305
-[COMM ] TX @223200.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.5 SNR: 18.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @223200.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.4 SNR: 15.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @223200.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @223200.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.9 SNR: 15.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @223200.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.3 SNR: 40.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @223200.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.2 SNR: 22.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @223200.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.3 SNR: 18.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @223200.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.7 SNR:  4.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @223200.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.9 SNR: 11.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @223200.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.32% | Total TX=310
-[COMM ] TX @226800.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.0 SNR: 21.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @226800.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @226800.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.7 SNR:  1.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @226800.0s | IoT_Valve_New_3 | SF12 | RSSI:-119.1 SNR:  3.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @226800.0s | IoT_Valve_New_4 | SF12 | RSSI: -73.7 SNR: 49.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @226800.0s | IoT_Valve_New_0 | SF12 | RSSI: -95.1 SNR: 27.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @226800.0s | IoT_Valve_New_1 | SF12 | RSSI: -96.0 SNR: 27.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @226800.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.5 SNR:  0.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @226800.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.8 SNR:  7.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @226800.0s | IoT_Valve_New_4 | SF12 | RSSI:-116.9 SNR:  6.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.32% | Total TX=315
-[COMM ] TX @230400.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.5 SNR: 18.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @230400.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.1 SNR: 24.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @230400.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @230400.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.7 SNR:  5.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @230400.0s | IoT_Valve_New_4 | SF12 | RSSI: -72.4 SNR: 50.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @230400.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.1 SNR: 13.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @230400.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.3 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @230400.0s | IoT_Valve_New_2 | SF12 | RSSI:-126.8 SNR: -3.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @230400.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.0 SNR: 18.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @230400.0s | IoT_Valve_New_4 | SF12 | RSSI:-109.0 SNR: 14.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=320
-[COMM ] TX @234000.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.5 SNR: 18.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @234000.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.1 SNR: 21.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @234000.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.1 SNR: 16.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @234000.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.9 SNR:  7.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @234000.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.6 SNR: 35.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @234000.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.1 SNR: 10.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @234000.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.8 SNR: 21.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @234000.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.0 SNR: 18.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @234000.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.7 SNR:  9.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @234000.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.4 SNR: 10.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=325
-[COMM ] TX @237600.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.6 SNR: 13.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @237600.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.7 SNR: 24.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @237600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.4 SNR:  7.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @237600.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.7 SNR: 18.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @237600.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.0 SNR: 47.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @237600.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.6 SNR:  8.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @237600.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.1 SNR: 22.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @237600.0s | IoT_Valve_New_2 | SF12 | RSSI:-127.7 SNR: -4.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @237600.0s | IoT_Valve_New_3 | SF12 | RSSI:-124.5 SNR: -1.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @237600.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.7 SNR:  3.4 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.30% | Total TX=330
-[COMM ] TX @241200.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.8 SNR: 17.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @241200.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.4 SNR: 11.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @241200.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.6 SNR:  9.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @241200.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.8 SNR: 10.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @241200.0s | IoT_Valve_New_4 | SF12 | RSSI: -74.4 SNR: 48.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @241200.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @241200.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @241200.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @241200.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @241200.0s | IoT_Valve_New_4 | SF12 | RSSI:-131.8 SNR: -8.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.30% | Total TX=335
-[COMM ] TX @244800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.5 SNR: 13.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @244800.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.4 SNR: 18.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @244800.0s | IoT_Valve_New_2 | SF12 | RSSI: -98.7 SNR: 24.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @244800.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @244800.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.5 SNR: 32.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @244800.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.6 SNR: 16.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @244800.0s | IoT_Valve_New_1 | SF12 | RSSI:-118.0 SNR:  5.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @244800.0s | IoT_Valve_New_2 | SF12 | RSSI:-101.1 SNR: 21.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @244800.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @244800.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.3 SNR: 11.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=340
-[COMM ] TX @248400.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.4 SNR: 18.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @248400.0s | IoT_Valve_New_1 | SF12 | RSSI:-118.3 SNR:  4.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @248400.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.3 SNR:  4.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @248400.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.9 SNR:  4.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @248400.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.6 SNR: 40.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @248400.0s | IoT_Valve_New_0 | SF12 | RSSI:-122.0 SNR:  1.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @248400.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.0 SNR: 13.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @248400.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.8 SNR: 15.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @248400.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.4 SNR:  2.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @248400.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.0 SNR:  5.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=345
-[COMM ] TX @252000.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.4 SNR:  9.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @252000.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.3 SNR:  5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @252000.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.3 SNR:  4.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @252000.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.5 SNR:  7.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @252000.0s | IoT_Valve_New_4 | SF12 | RSSI: -83.2 SNR: 39.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @252000.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.1 SNR: 19.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @252000.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.9 SNR: 18.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @252000.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.3 SNR: -1.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @252000.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.9 SNR:  4.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @252000.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.7 SNR:  1.4 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=350
-[COMM ] TX @255600.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.4 SNR: 15.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @255600.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.7 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @255600.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.3 SNR: 11.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @255600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.8 SNR:  8.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @255600.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.2 SNR: 40.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @255600.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.5 SNR: 15.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @255600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.3 SNR: 10.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @255600.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.7 SNR: -1.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @255600.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.3 SNR: 15.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @255600.0s | IoT_Valve_New_4 | SF12 | RSSI:-129.7 SNR: -6.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.28% | Total TX=355
-[COMM ] TX @259200.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.5 SNR: 13.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @259200.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.2 SNR: 27.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @259200.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.9 SNR:  4.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @259200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.8 SNR: 12.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @259200.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.7 SNR: 32.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @259200.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @259200.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.5 SNR: 11.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @259200.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @259200.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @259200.0s | IoT_Valve_New_4 | SF12 | RSSI:-102.6 SNR: 20.4 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.28% | Total TX=360
-[COMM ] TX @262800.0s | IoT_Valve_New_0 | SF12 | RSSI: -95.5 SNR: 27.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @262800.0s | IoT_Valve_New_1 | SF12 | RSSI: -93.2 SNR: 29.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @262800.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.2 SNR:  2.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @262800.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.2 SNR:  6.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @262800.0s | IoT_Valve_New_4 | SF12 | RSSI: -74.5 SNR: 48.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @262800.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.6 SNR: 18.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @262800.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.3 SNR: 17.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @262800.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.7 SNR:  4.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @262800.0s | IoT_Valve_New_3 | SF12 | RSSI:-123.0 SNR:  0.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @262800.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.9 SNR:  5.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.27% | Total TX=365
-[COMM ] TX @266400.0s | IoT_Valve_New_0 | SF12 | RSSI: -98.0 SNR: 25.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @266400.0s | IoT_Valve_New_1 | SF12 | RSSI:-100.3 SNR: 22.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @266400.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.5 SNR: 14.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @266400.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.1 SNR: 18.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @266400.0s | IoT_Valve_New_4 | SF12 | RSSI: -84.5 SNR: 38.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @266400.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.1 SNR:  9.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @266400.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.8 SNR: 17.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @266400.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @266400.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.6 SNR: 12.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @266400.0s | IoT_Valve_New_4 | SF12 | RSSI:-126.1 SNR: -3.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.27% | Total TX=370
-[COMM ] TX @270000.0s | IoT_Valve_New_0 | SF12 | RSSI:-123.7 SNR: -0.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @270000.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.1 SNR: 13.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @270000.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.0 SNR: 10.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @270000.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.9 SNR:  5.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @270000.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.2 SNR: 34.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @270000.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.4 SNR: 10.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @270000.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.0 SNR: 19.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @270000.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.8 SNR: 15.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @270000.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.1 SNR:  6.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @270000.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.8 SNR:  9.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.27% | Total TX=375
-[COMM ] TX @273600.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.0 SNR:  7.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @273600.0s | IoT_Valve_New_1 | SF12 | RSSI:-100.0 SNR: 23.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @273600.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.6 SNR: 16.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @273600.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.2 SNR: 16.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @273600.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.4 SNR: 45.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.26% | Total TX=380
-[COMM ] TX @277200.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.2 SNR:  2.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @277200.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.9 SNR: 13.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @277200.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.6 SNR:  9.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @277200.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.4 SNR: 21.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @277200.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.9 SNR: 32.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.26% | Total TX=385
-[COMM ] TX @280800.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.4 SNR: 19.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @280800.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.5 SNR: 13.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @280800.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.7 SNR: 12.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @280800.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.6 SNR:  7.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @280800.0s | IoT_Valve_New_4 | SF12 | RSSI: -89.7 SNR: 33.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.26% | Total TX=390
-[COMM ] TX @284400.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.1 SNR: 11.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @284400.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.7 SNR: 11.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @284400.0s | IoT_Valve_New_2 | SF12 | RSSI:-103.1 SNR: 19.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @284400.0s | IoT_Valve_New_3 | SF12 | RSSI: -94.5 SNR: 28.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @284400.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.3 SNR: 35.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.25% | Total TX=395
-[COMM ] TX @288000.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @288000.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.9 SNR: 21.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @288000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.5 SNR:  8.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @288000.0s | IoT_Valve_New_3 | SF12 | RSSI: -98.9 SNR: 24.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @288000.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.3 SNR: 40.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.25% | Total TX=400
-[COMM ] TX @291600.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.9 SNR: 13.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @291600.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.4 SNR: 21.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @291600.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @273600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.7 SNR: 14.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @273600.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.7 SNR: 13.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @273600.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.8 SNR: -1.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @273600.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @273600.0s | IoT_Valve_New_4 | SF12 | RSSI:-134.0 SNR:-10.9 | Air:2793.5ms | LOST(SNR)
+[INFO ] STATS CHECK: PLR=0.53% | Total TX=380
+[COMM ] TX @277200.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.4 SNR: 20.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @277200.0s | IoT_Valve_New_1 | SF12 | RSSI: -93.5 SNR: 29.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @277200.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.4 SNR: -1.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @277200.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.1 SNR: 12.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @277200.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.1 SNR:  9.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.52% | Total TX=385
+[COMM ] TX @280800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.1 SNR: 14.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @280800.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.4 SNR: 19.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @280800.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.3 SNR: 15.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @280800.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.1 SNR:  9.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @280800.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.51% | Total TX=390
+[COMM ] TX @284400.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.9 SNR:  4.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @284400.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @284400.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.1 SNR:  7.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @284400.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.9 SNR:  9.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @284400.0s | IoT_Valve_New_4 | SF12 | RSSI:-109.8 SNR: 13.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.51% | Total TX=395
+[COMM ] TX @288000.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.8 SNR: 19.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @288000.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.3 SNR: 12.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @288000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.9 SNR:  8.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @288000.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.3 SNR:  9.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @288000.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.7 SNR:  8.4 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.50% | Total TX=400
+[COMM ] TX @291600.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.0 SNR: 19.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @291600.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.1 SNR: 11.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @291600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.9 SNR:  7.1 | Air:2793.5ms | SUCCESS
 [COMM ] TX @291600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.1 SNR:  8.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @291600.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.5 SNR: 43.5 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.25% | Total TX=405
-[COMM ] TX @295200.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.7 SNR: 16.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @295200.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.5 SNR: 10.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @295200.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.2 SNR:  1.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @295200.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @295200.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.1 SNR: 44.9 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.24% | Total TX=410
-[COMM ] TX @298800.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.4 SNR: 18.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @298800.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.9 SNR:  6.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @298800.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.9 SNR: 14.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @298800.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.9 SNR: 10.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @298800.0s | IoT_Valve_New_4 | SF12 | RSSI: -91.0 SNR: 32.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.24% | Total TX=415
-[COMM ] TX @302400.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.4 SNR: 16.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @302400.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.8 SNR:  6.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @302400.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.9 SNR: 14.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @302400.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.3 SNR: 14.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @302400.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.6 SNR: 32.4 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.24% | Total TX=420
-[COMM ] TX @306000.0s | IoT_Valve_New_0 | SF12 | RSSI: -99.3 SNR: 23.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @306000.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.4 SNR: 11.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @306000.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @306000.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.7 SNR:  2.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @306000.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.7 SNR: 30.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.24% | Total TX=425
-[COMM ] TX @309600.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.8 SNR:  8.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @309600.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.5 SNR: 15.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @309600.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.2 SNR:  5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @309600.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.7 SNR: 10.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @309600.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.4 SNR: 40.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.23% | Total TX=430
-[COMM ] TX @313200.0s | IoT_Valve_New_0 | SF12 | RSSI:-119.4 SNR:  3.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @313200.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.5 SNR: 23.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @313200.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.1 SNR: -1.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @313200.0s | IoT_Valve_New_3 | SF12 | RSSI: -96.8 SNR: 26.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @313200.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.0 SNR: 44.1 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.23% | Total TX=435
-[COMM ] TX @316800.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.4 SNR: 16.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @316800.0s | IoT_Valve_New_1 | SF12 | RSSI:-119.5 SNR:  3.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @316800.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.5 SNR:  8.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @316800.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.5 SNR: 19.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @316800.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.3 SNR: 34.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.23% | Total TX=440
-[COMM ] TX @320400.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.8 SNR: 14.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @320400.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.1 SNR: 18.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @320400.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.9 SNR:  9.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @320400.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.9 SNR:  4.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @320400.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.4 SNR: 44.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.22% | Total TX=445
-[COMM ] TX @324000.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.6 SNR:  7.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @324000.0s | IoT_Valve_New_1 | SF12 | RSSI: -89.9 SNR: 33.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @324000.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.0 SNR: 15.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @324000.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.7 SNR: 18.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @324000.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.4 SNR: 37.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.22% | Total TX=450
-[COMM ] TX @327600.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.9 SNR: 15.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @327600.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.0 SNR: 16.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @327600.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.8 SNR:  4.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @327600.0s | IoT_Valve_New_3 | SF12 | RSSI:-125.0 SNR: -2.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @327600.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.7 SNR: 40.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.22% | Total TX=455
-[COMM ] TX @331200.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.7 SNR: 17.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @331200.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.8 SNR: 13.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @331200.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.9 SNR:  0.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @331200.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.9 SNR: 14.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @331200.0s | IoT_Valve_New_4 | SF12 | RSSI: -94.4 SNR: 28.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.22% | Total TX=460
-[COMM ] TX @334800.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.3 SNR: 17.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @334800.0s | IoT_Valve_New_1 | SF12 | RSSI:-132.3 SNR: -9.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @334800.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @334800.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.3 SNR: 14.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @334800.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.8 SNR: 40.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.22% | Total TX=465
-[COMM ] TX @338400.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @338400.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.7 SNR: 15.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @338400.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.4 SNR:  5.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @338400.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.5 SNR: 19.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @338400.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.8 SNR: 43.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.21% | Total TX=470
-[COMM ] TX @342000.0s | IoT_Valve_New_0 | SF12 | RSSI: -88.4 SNR: 34.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @342000.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.8 SNR: 19.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @342000.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.3 SNR:  9.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @342000.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.9 SNR: 19.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @342000.0s | IoT_Valve_New_4 | SF12 | RSSI: -75.0 SNR: 48.0 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.21% | Total TX=475
-[COMM ] TX @345600.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.9 SNR: 17.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @345600.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.5 SNR:  9.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @345600.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.6 SNR: 13.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @345600.0s | IoT_Valve_New_3 | SF12 | RSSI:-127.3 SNR: -4.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @345600.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.8 SNR: 37.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.21% | Total TX=480
-[COMM ] TX @349200.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.3 SNR: 17.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @349200.0s | IoT_Valve_New_1 | SF12 | RSSI:-100.0 SNR: 23.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @349200.0s | IoT_Valve_New_2 | SF12 | RSSI: -96.9 SNR: 26.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @349200.0s | IoT_Valve_New_3 | SF12 | RSSI:-122.0 SNR:  1.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @349200.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.6 SNR: 35.4 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.21% | Total TX=485
-[COMM ] TX @352800.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.7 SNR: 11.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @352800.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.1 SNR:  8.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @352800.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.9 SNR:  3.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @352800.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.6 SNR: 11.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @352800.0s | IoT_Valve_New_4 | SF12 | RSSI: -91.6 SNR: 31.5 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.20% | Total TX=490
-[COMM ] TX @356400.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.3 SNR:  9.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @356400.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.2 SNR: 20.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @356400.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.2 SNR:  2.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @356400.0s | IoT_Valve_New_3 | SF12 | RSSI: -97.8 SNR: 25.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @356400.0s | IoT_Valve_New_4 | SF12 | RSSI: -91.7 SNR: 31.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.20% | Total TX=495
-[COMM ] TX @360000.0s | IoT_Valve_New_0 | SF12 | RSSI:-121.7 SNR:  1.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @360000.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.7 SNR:  7.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @360000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.5 SNR:  8.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @360000.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.9 SNR: 14.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @360000.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.3 SNR: 35.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.20% | Total TX=500
-[COMM ] TX @363600.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.6 SNR: 17.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @363600.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.8 SNR: 14.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @363600.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.1 SNR: 10.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @363600.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.9 SNR: 12.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @363600.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.8 SNR: 43.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.20% | Total TX=505
-[COMM ] TX @367200.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.6 SNR:  6.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @367200.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @367200.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.5 SNR: 15.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @367200.0s | IoT_Valve_New_3 | SF12 | RSSI:-137.1 SNR:-14.1 | Air:2793.5ms | LOST(SNR)
-[COMM ] TX @367200.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.3 SNR: 37.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @291600.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.9 SNR: 12.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.49% | Total TX=405
+[COMM ] TX @295200.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.7 SNR: 13.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @295200.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.1 SNR: 10.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @295200.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.0 SNR: 14.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @295200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @295200.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.7 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.49% | Total TX=410
+[COMM ] TX @298800.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.5 SNR: 11.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @298800.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.9 SNR: 12.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @298800.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.3 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @298800.0s | IoT_Valve_New_3 | SF12 | RSSI:-127.8 SNR: -4.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @298800.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.0 SNR: 13.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=415
+[COMM ] TX @302400.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.2 SNR: 21.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @302400.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @302400.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.0 SNR: 18.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @302400.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.2 SNR:  6.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @302400.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.2 SNR:  4.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.48% | Total TX=420
+[COMM ] TX @306000.0s | IoT_Valve_New_0 | SF12 | RSSI:-128.2 SNR: -5.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @306000.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.6 SNR: 21.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @306000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.2 SNR:  8.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @306000.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.2 SNR:  5.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @306000.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.4 SNR:  3.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.47% | Total TX=425
+[COMM ] TX @309600.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.0 SNR: 16.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @309600.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.7 SNR:  5.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @309600.0s | IoT_Valve_New_2 | SF12 | RSSI:-130.2 SNR: -7.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @309600.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.5 SNR:  1.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @309600.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.7 SNR: 12.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.47% | Total TX=430
+[COMM ] TX @313200.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @313200.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.6 SNR:  8.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @313200.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.0 SNR:  3.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @313200.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.7 SNR:  4.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @313200.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.8 SNR:  7.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.46% | Total TX=435
+[COMM ] TX @316800.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.7 SNR:  9.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @316800.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.7 SNR: 11.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @316800.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.6 SNR: 13.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @316800.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.5 SNR: 10.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @316800.0s | IoT_Valve_New_4 | SF12 | RSSI:-120.1 SNR:  3.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.45% | Total TX=440
+[COMM ] TX @320400.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.5 SNR: 17.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @320400.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.2 SNR: 10.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @320400.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.6 SNR:  1.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @320400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.3 SNR: 16.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @320400.0s | IoT_Valve_New_4 | SF12 | RSSI: -98.8 SNR: 24.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.45% | Total TX=445
+[COMM ] TX @324000.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @324000.0s | IoT_Valve_New_1 | SF12 | RSSI:-122.3 SNR:  0.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @324000.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.6 SNR: 13.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @324000.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.6 SNR: 21.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @324000.0s | IoT_Valve_New_4 | SF12 | RSSI:-132.0 SNR: -9.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=450
+[COMM ] TX @327600.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.5 SNR:  6.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @327600.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.5 SNR: 27.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @327600.0s | IoT_Valve_New_2 | SF12 | RSSI:-103.0 SNR: 20.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @327600.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.2 SNR:  1.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @327600.0s | IoT_Valve_New_4 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.44% | Total TX=455
+[COMM ] TX @331200.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.7 SNR:  5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @331200.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.1 SNR: 25.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @331200.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.9 SNR: 18.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @331200.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.5 SNR: 18.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @331200.0s | IoT_Valve_New_4 | SF12 | RSSI:-128.0 SNR: -5.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=460
+[COMM ] TX @334800.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @334800.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.6 SNR: 11.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @334800.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.6 SNR: 14.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @334800.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.8 SNR: 13.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @334800.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=465
+[COMM ] TX @338400.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @338400.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @338400.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @338400.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.6 SNR:  9.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @338400.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.1 SNR:  8.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.43% | Total TX=470
+[COMM ] TX @342000.0s | IoT_Valve_New_0 | SF12 | RSSI: -96.1 SNR: 27.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @342000.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.1 SNR: 15.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @342000.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.7 SNR: 15.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @342000.0s | IoT_Valve_New_3 | SF12 | RSSI: -97.7 SNR: 25.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @342000.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.1 SNR:  5.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=475
+[COMM ] TX @345600.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.4 SNR:  7.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @345600.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.0 SNR: 25.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @345600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.4 SNR:  7.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @345600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @345600.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.4 SNR: 11.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.42% | Total TX=480
+[COMM ] TX @349200.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @349200.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @349200.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.1 SNR: 14.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @349200.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.3 SNR:  7.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @349200.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.4 SNR: 12.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.41% | Total TX=485
+[COMM ] TX @352800.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.0 SNR:  7.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @352800.0s | IoT_Valve_New_1 | SF12 | RSSI: -97.7 SNR: 25.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @352800.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.9 SNR: 13.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @352800.0s | IoT_Valve_New_3 | SF12 | RSSI: -99.4 SNR: 23.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @352800.0s | IoT_Valve_New_4 | SF12 | RSSI:-107.6 SNR: 15.4 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.41% | Total TX=490
+[COMM ] TX @356400.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.2 SNR: 14.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @356400.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.0 SNR: 25.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @356400.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.2 SNR:  1.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @356400.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.4 SNR:  5.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @356400.0s | IoT_Valve_New_4 | SF12 | RSSI:-122.2 SNR:  0.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=495
+[COMM ] TX @360000.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.0 SNR: 15.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @360000.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.4 SNR: 10.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @360000.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.8 SNR: 11.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @360000.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.5 SNR: 14.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @360000.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.0 SNR:  9.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=500
+[COMM ] TX @363600.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.0 SNR: 13.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @363600.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.3 SNR: 20.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @363600.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @363600.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.0 SNR: 13.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @363600.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.8 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.40% | Total TX=505
+[COMM ] TX @367200.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.7 SNR: 16.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @367200.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.6 SNR: 24.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @367200.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.5 SNR: 11.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @367200.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.4 SNR: 11.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @367200.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.4 SNR:  4.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.39% | Total TX=510
-[COMM ] TX @370800.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.6 SNR: 20.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @370800.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @370800.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.8 SNR:  6.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @370800.0s | IoT_Valve_New_3 | SF12 | RSSI: -97.4 SNR: 25.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @370800.0s | IoT_Valve_New_4 | SF12 | RSSI: -83.0 SNR: 40.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @370800.0s | IoT_Valve_New_0 | SF12 | RSSI:-124.7 SNR: -1.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @370800.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.5 SNR: 16.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @370800.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.6 SNR:  4.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @370800.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.1 SNR:  7.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @370800.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.9 SNR:  1.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.39% | Total TX=515
-[COMM ] TX @374400.0s | IoT_Valve_New_0 | SF12 | RSSI: -96.8 SNR: 26.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @374400.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.7 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @374400.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @374400.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.1 SNR: 19.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @374400.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.5 SNR: 34.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @374400.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.1 SNR: 14.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @374400.0s | IoT_Valve_New_1 | SF12 | RSSI:-100.2 SNR: 22.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @374400.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.0 SNR:  5.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @374400.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.4 SNR: 10.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @374400.0s | IoT_Valve_New_4 | SF12 | RSSI:-104.6 SNR: 18.5 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.38% | Total TX=520
-[COMM ] TX @378000.0s | IoT_Valve_New_0 | SF12 | RSSI:-122.6 SNR:  0.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @378000.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.6 SNR: 12.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @378000.0s | IoT_Valve_New_2 | SF12 | RSSI:-128.4 SNR: -5.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @378000.0s | IoT_Valve_New_3 | SF12 | RSSI:-119.4 SNR:  3.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @378000.0s | IoT_Valve_New_4 | SF12 | RSSI: -84.5 SNR: 38.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @378000.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.3 SNR: 19.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @378000.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.7 SNR:  6.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @378000.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.4 SNR:  9.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @378000.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.2 SNR:  2.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @378000.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.8 SNR:  7.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.38% | Total TX=525
-[COMM ] TX @381600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.8 SNR: 14.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @381600.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.6 SNR: 16.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @381600.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @381600.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.8 SNR:  2.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @381600.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.8 SNR: 40.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @381600.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.3 SNR: 22.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @381600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.7 SNR: 10.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @381600.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.7 SNR:  1.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @381600.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.0 SNR:  8.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @381600.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.0 SNR:  5.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.38% | Total TX=530
-[COMM ] TX @385200.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.7 SNR:  7.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @385200.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.2 SNR: 10.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @385200.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.8 SNR:  6.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @385200.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.2 SNR:  1.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @385200.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.1 SNR: 35.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @385200.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @385200.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @385200.0s | IoT_Valve_New_2 | SF12 | RSSI:-131.9 SNR: -8.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @385200.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.4 SNR: 19.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @385200.0s | IoT_Valve_New_4 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.37% | Total TX=535
-[COMM ] TX @388800.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.6 SNR:  9.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @388800.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.1 SNR: 20.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @388800.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.0 SNR:  3.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @388800.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.8 SNR: 19.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @388800.0s | IoT_Valve_New_4 | SF12 | RSSI: -72.9 SNR: 50.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @388800.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.2 SNR:  2.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @388800.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.7 SNR: 17.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @388800.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.5 SNR:  1.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @388800.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.9 SNR:  9.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @388800.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.1 SNR:  5.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.37% | Total TX=540
-[COMM ] TX @392400.0s | IoT_Valve_New_0 | SF12 | RSSI: -98.6 SNR: 24.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @392400.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.5 SNR: 21.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @392400.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.9 SNR: 23.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @392400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.3 SNR: 16.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @392400.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.4 SNR: 40.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @392400.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.5 SNR: 17.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @392400.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.8 SNR: 11.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @392400.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.0 SNR: -2.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @392400.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.5 SNR: 11.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @392400.0s | IoT_Valve_New_4 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.37% | Total TX=545
-[COMM ] TX @396000.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.7 SNR: 12.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @396000.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.4 SNR: 15.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @396000.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.7 SNR: -2.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @396000.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @396000.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.0 SNR: 41.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @396000.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.3 SNR: 19.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @396000.0s | IoT_Valve_New_1 | SF12 | RSSI:-121.9 SNR:  1.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @396000.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.6 SNR: 12.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @396000.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.4 SNR: 15.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @396000.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.6 SNR:  3.4 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.36% | Total TX=550
-[COMM ] TX @399600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.6 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @399600.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @399600.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @399600.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.8 SNR:  5.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @399600.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.6 SNR: 41.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @399600.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.9 SNR:  2.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @399600.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.8 SNR: 23.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @399600.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.2 SNR:  9.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @399600.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.7 SNR: 17.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @399600.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.8 SNR:  1.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.36% | Total TX=555
-[COMM ] TX @403200.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.0 SNR:  6.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @403200.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.6 SNR: 20.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @403200.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.8 SNR:  7.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @403200.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.7 SNR: 14.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @403200.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.0 SNR: 35.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @403200.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.3 SNR:  8.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @403200.0s | IoT_Valve_New_1 | SF12 | RSSI:-123.3 SNR: -0.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @403200.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.8 SNR:  2.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @403200.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.9 SNR: 13.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @403200.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.9 SNR: -0.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.36% | Total TX=560
-[COMM ] TX @406800.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.6 SNR: 22.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @406800.0s | IoT_Valve_New_1 | SF12 | RSSI: -97.1 SNR: 25.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @406800.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @406800.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.2 SNR: 16.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @406800.0s | IoT_Valve_New_4 | SF12 | RSSI: -84.2 SNR: 38.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @406800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.3 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @406800.0s | IoT_Valve_New_1 | SF12 | RSSI:-122.1 SNR:  1.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @406800.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.8 SNR: 15.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @406800.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @406800.0s | IoT_Valve_New_4 | SF12 | RSSI:-107.4 SNR: 15.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.35% | Total TX=565
-[COMM ] TX @410400.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.2 SNR: 22.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @410400.0s | IoT_Valve_New_1 | SF12 | RSSI: -96.7 SNR: 26.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @410400.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.3 SNR: 23.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @410400.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @410400.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.4 SNR: 35.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @410400.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.9 SNR:  4.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @410400.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.7 SNR: 20.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @410400.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.4 SNR:  3.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @410400.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @410400.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.7 SNR: -0.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.35% | Total TX=570
-[COMM ] TX @414000.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.0 SNR: 15.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @414000.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.0 SNR: 14.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @414000.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.1 SNR:  5.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @414000.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @414000.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.3 SNR: 41.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @414000.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @414000.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.9 SNR:  5.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @414000.0s | IoT_Valve_New_2 | SF12 | RSSI:-123.1 SNR: -0.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @414000.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @414000.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.7 SNR:  4.3 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.35% | Total TX=575
-[COMM ] TX @417600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.7 SNR: 14.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @417600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.9 SNR: 10.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @417600.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @417600.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.2 SNR: 18.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @417600.0s | IoT_Valve_New_4 | SF12 | RSSI: -93.9 SNR: 29.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @417600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.8 SNR: 14.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @417600.0s | IoT_Valve_New_1 | SF12 | RSSI:-122.4 SNR:  0.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @417600.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.0 SNR: 16.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @417600.0s | IoT_Valve_New_3 | SF12 | RSSI:-128.0 SNR: -5.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @417600.0s | IoT_Valve_New_4 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.34% | Total TX=580
-[COMM ] TX @421200.0s | IoT_Valve_New_0 | SF12 | RSSI: -95.2 SNR: 27.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @421200.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.7 SNR: 11.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @421200.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.9 SNR:  6.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @421200.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.9 SNR: 18.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @421200.0s | IoT_Valve_New_4 | SF12 | RSSI: -75.0 SNR: 48.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @421200.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.2 SNR: 20.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @421200.0s | IoT_Valve_New_1 | SF12 | RSSI:-123.1 SNR: -0.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @421200.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.6 SNR:  5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @421200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.2 SNR: 12.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @421200.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.1 SNR: 12.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.34% | Total TX=585
-[COMM ] TX @424800.0s | IoT_Valve_New_0 | SF12 | RSSI:-100.7 SNR: 22.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @424800.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @424800.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.3 SNR: 12.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @424800.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.4 SNR:  9.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @424800.0s | IoT_Valve_New_4 | SF12 | RSSI: -72.5 SNR: 50.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @424800.0s | IoT_Valve_New_0 | SF12 | RSSI: -99.2 SNR: 23.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @424800.0s | IoT_Valve_New_1 | SF12 | RSSI:-119.5 SNR:  3.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @424800.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.2 SNR: -2.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @424800.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.5 SNR: 15.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @424800.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.1 SNR:  4.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.34% | Total TX=590
-[COMM ] TX @428400.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.2 SNR:  4.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @428400.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.0 SNR: 21.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @428400.0s | IoT_Valve_New_2 | SF12 | RSSI:-129.4 SNR: -6.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @428400.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.8 SNR: 21.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @428400.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.7 SNR: 46.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @428400.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.1 SNR: 12.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @428400.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.8 SNR:  7.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @428400.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.7 SNR:  5.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @428400.0s | IoT_Valve_New_3 | SF12 | RSSI:-120.6 SNR:  2.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @428400.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.8 SNR:  8.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.34% | Total TX=595
-[COMM ] TX @432000.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.4 SNR:  6.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @432000.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.9 SNR: 16.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @432000.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.8 SNR: 11.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @432000.0s | IoT_Valve_New_3 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @432000.0s | IoT_Valve_New_4 | SF12 | RSSI: -84.9 SNR: 38.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @432000.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.4 SNR: 16.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @432000.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.3 SNR: 20.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @432000.0s | IoT_Valve_New_2 | SF12 | RSSI:-125.7 SNR: -2.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @432000.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @432000.0s | IoT_Valve_New_4 | SF12 | RSSI:-125.6 SNR: -2.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.33% | Total TX=600
-[COMM ] TX @435600.0s | IoT_Valve_New_0 | SF12 | RSSI:-121.6 SNR:  1.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @435600.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.1 SNR: 16.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @435600.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.6 SNR: 11.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @435600.0s | IoT_Valve_New_3 | SF12 | RSSI: -87.3 SNR: 35.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @435600.0s | IoT_Valve_New_4 | SF12 | RSSI: -73.9 SNR: 49.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @435600.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @435600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @435600.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.7 SNR: 23.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @435600.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.7 SNR: 18.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @435600.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.0 SNR:  2.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.33% | Total TX=605
-[COMM ] TX @439200.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.8 SNR: 21.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @439200.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.2 SNR: 12.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @439200.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.2 SNR:  6.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @439200.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.9 SNR: 13.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @439200.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.6 SNR: 37.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @439200.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.0 SNR: 14.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @439200.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @439200.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.1 SNR: 13.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @439200.0s | IoT_Valve_New_3 | SF12 | RSSI:-127.9 SNR: -4.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @439200.0s | IoT_Valve_New_4 | SF12 | RSSI:-116.5 SNR:  6.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.33% | Total TX=610
-[COMM ] TX @442800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @442800.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.5 SNR: 14.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @442800.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.7 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @442800.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.5 SNR:  7.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @442800.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.8 SNR: 37.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @442800.0s | IoT_Valve_New_0 | SF12 | RSSI: -97.5 SNR: 25.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @442800.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.0 SNR: 16.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @442800.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.8 SNR:  0.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @442800.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.0 SNR: 17.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @442800.0s | IoT_Valve_New_4 | SF12 | RSSI:-122.5 SNR:  0.5 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.33% | Total TX=615
-[COMM ] TX @446400.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.9 SNR: 16.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @446400.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.9 SNR: 19.2 | Air:2793.5ms | SUCCESS
 [COMM ] TX @446400.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.4 SNR: 11.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @446400.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.6 SNR:  7.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @446400.0s | IoT_Valve_New_3 | SF12 | RSSI:-102.0 SNR: 21.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @446400.0s | IoT_Valve_New_4 | SF12 | RSSI:-100.0 SNR: 23.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @446400.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.1 SNR:  6.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @446400.0s | IoT_Valve_New_3 | SF12 | RSSI:-122.6 SNR:  0.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @446400.0s | IoT_Valve_New_4 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.32% | Total TX=620
-[COMM ] TX @450000.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @450000.0s | IoT_Valve_New_1 | SF12 | RSSI:-119.8 SNR:  3.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @450000.0s | IoT_Valve_New_2 | SF12 | RSSI: -92.2 SNR: 30.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @450000.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.6 SNR: 13.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @450000.0s | IoT_Valve_New_4 | SF12 | RSSI: -97.4 SNR: 25.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @450000.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.6 SNR: 18.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @450000.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.9 SNR: 14.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @450000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.6 SNR:  8.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @450000.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.3 SNR:  4.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @450000.0s | IoT_Valve_New_4 | SF12 | RSSI:-127.6 SNR: -4.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.32% | Total TX=625
-[COMM ] TX @453600.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.9 SNR:  6.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @453600.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.6 SNR: 24.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @453600.0s | IoT_Valve_New_2 | SF12 | RSSI:-102.4 SNR: 20.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @453600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @453600.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.9 SNR: 32.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @453600.0s | IoT_Valve_New_0 | SF12 | RSSI: -99.5 SNR: 23.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @453600.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.8 SNR: 11.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @453600.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.7 SNR:  5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @453600.0s | IoT_Valve_New_3 | SF12 | RSSI:-126.2 SNR: -3.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @453600.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.5 SNR:  5.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.32% | Total TX=630
-[COMM ] TX @457200.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @457200.0s | IoT_Valve_New_1 | SF12 | RSSI:-124.8 SNR: -1.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @457200.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.4 SNR: 14.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @457200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.1 SNR: 13.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @457200.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.5 SNR: 43.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @457200.0s | IoT_Valve_New_0 | SF12 | RSSI: -96.7 SNR: 26.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @457200.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.6 SNR: 19.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @457200.0s | IoT_Valve_New_2 | SF12 | RSSI:-130.6 SNR: -7.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @457200.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.7 SNR:  8.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @457200.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.1 SNR:  5.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=635
-[COMM ] TX @460800.0s | IoT_Valve_New_0 | SF12 | RSSI:-123.6 SNR: -0.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @460800.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.6 SNR: 13.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @460800.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.4 SNR:  9.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @460800.0s | IoT_Valve_New_3 | SF12 | RSSI:-125.1 SNR: -2.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @460800.0s | IoT_Valve_New_4 | SF12 | RSSI: -88.3 SNR: 34.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @460800.0s | IoT_Valve_New_0 | SF12 | RSSI: -94.4 SNR: 28.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @460800.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.3 SNR: 14.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @460800.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.7 SNR:  1.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @460800.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.6 SNR: 13.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @460800.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.7 SNR:  1.4 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=640
-[COMM ] TX @464400.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @464400.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.3 SNR:  8.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @464400.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @464400.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @464400.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.3 SNR: 46.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @464400.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @464400.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.6 SNR: 21.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @464400.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.4 SNR: 18.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @464400.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @464400.0s | IoT_Valve_New_4 | SF12 | RSSI:-109.1 SNR: 13.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=645
-[COMM ] TX @468000.0s | IoT_Valve_New_0 | SF12 | RSSI:-111.5 SNR: 11.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @468000.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.8 SNR: 12.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @468000.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.5 SNR: 13.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @468000.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.6 SNR: 15.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @468000.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.7 SNR: 44.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @468000.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.6 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @468000.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.7 SNR:  5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @468000.0s | IoT_Valve_New_2 | SF12 | RSSI:-130.7 SNR: -7.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @468000.0s | IoT_Valve_New_3 | SF12 | RSSI:-102.5 SNR: 20.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @468000.0s | IoT_Valve_New_4 | SF12 | RSSI: -95.0 SNR: 28.1 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=650
-[COMM ] TX @471600.0s | IoT_Valve_New_0 | SF12 | RSSI:-124.1 SNR: -1.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @471600.0s | IoT_Valve_New_1 | SF12 | RSSI:-125.7 SNR: -2.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @471600.0s | IoT_Valve_New_2 | SF12 | RSSI:-102.9 SNR: 20.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @471600.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.8 SNR: 11.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @471600.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.9 SNR: 41.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @471600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.8 SNR: 14.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @471600.0s | IoT_Valve_New_1 | SF12 | RSSI:-121.3 SNR:  1.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @471600.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.0 SNR:  5.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @471600.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.1 SNR: 13.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @471600.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.0 SNR:  4.0 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.31% | Total TX=655
-[COMM ] TX @475200.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.7 SNR:  7.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @475200.0s | IoT_Valve_New_1 | SF12 | RSSI:-122.4 SNR:  0.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @475200.0s | IoT_Valve_New_2 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @475200.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.0 SNR: 13.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @475200.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.8 SNR: 43.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @475200.0s | IoT_Valve_New_0 | SF12 | RSSI: -96.4 SNR: 26.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @475200.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.7 SNR: 16.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @475200.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.5 SNR: 10.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @475200.0s | IoT_Valve_New_3 | SF12 | RSSI:-101.9 SNR: 21.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @475200.0s | IoT_Valve_New_4 | SF12 | RSSI:-108.7 SNR: 14.3 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.30% | Total TX=660
-[COMM ] TX @478800.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.8 SNR:  8.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @478800.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.9 SNR:  6.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @478800.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.1 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @478800.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.7 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @478800.0s | IoT_Valve_New_4 | SF12 | RSSI: -82.8 SNR: 40.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @478800.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.4 SNR:  6.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @478800.0s | IoT_Valve_New_1 | SF12 | RSSI:-108.2 SNR: 14.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @478800.0s | IoT_Valve_New_2 | SF12 | RSSI:-107.7 SNR: 15.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @478800.0s | IoT_Valve_New_3 | SF12 | RSSI:-123.1 SNR: -0.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @478800.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.5 SNR: -0.5 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.30% | Total TX=665
-[COMM ] TX @482400.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @482400.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.2 SNR: 15.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @482400.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.4 SNR: 11.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @482400.0s | IoT_Valve_New_3 | SF12 | RSSI:-117.3 SNR:  5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @482400.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.4 SNR: 44.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @482400.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.1 SNR: 11.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @482400.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.2 SNR: 10.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @482400.0s | IoT_Valve_New_2 | SF12 | RSSI:-124.0 SNR: -1.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @482400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.5 SNR: 16.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @482400.0s | IoT_Valve_New_4 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.30% | Total TX=670
-[COMM ] TX @486000.0s | IoT_Valve_New_0 | SF12 | RSSI:-119.3 SNR:  3.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @486000.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.9 SNR: 27.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @486000.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.8 SNR:  7.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @486000.0s | IoT_Valve_New_3 | SF12 | RSSI:-128.8 SNR: -5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @486000.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.9 SNR: 41.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @486000.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.1 SNR: 22.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @486000.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.8 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @486000.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.7 SNR:  6.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @486000.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.2 SNR:  7.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @486000.0s | IoT_Valve_New_4 | SF12 | RSSI:-109.7 SNR: 13.3 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.30% | Total TX=675
-[COMM ] TX @489600.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.9 SNR: 18.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @489600.0s | IoT_Valve_New_1 | SF12 | RSSI:-116.0 SNR:  7.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @489600.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.8 SNR:  6.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @489600.0s | IoT_Valve_New_3 | SF12 | RSSI: -98.6 SNR: 24.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @489600.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.4 SNR: 44.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @489600.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.8 SNR: 13.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @489600.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.6 SNR: 19.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @489600.0s | IoT_Valve_New_2 | SF12 | RSSI:-129.6 SNR: -6.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @489600.0s | IoT_Valve_New_3 | SF12 | RSSI:-127.9 SNR: -4.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @489600.0s | IoT_Valve_New_4 | SF12 | RSSI:-116.3 SNR:  6.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=680
-[COMM ] TX @493200.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.0 SNR: 15.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @493200.0s | IoT_Valve_New_1 | SF12 | RSSI: -95.6 SNR: 27.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @493200.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.9 SNR: 18.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @493200.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.9 SNR:  4.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @493200.0s | IoT_Valve_New_4 | SF12 | RSSI: -76.8 SNR: 46.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @493200.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.6 SNR: 21.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @493200.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.1 SNR: 23.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @493200.0s | IoT_Valve_New_2 | SF12 | RSSI:-120.9 SNR:  2.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @493200.0s | IoT_Valve_New_3 | SF12 | RSSI:-124.3 SNR: -1.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @493200.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.3 SNR:  9.7 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=685
-[COMM ] TX @496800.0s | IoT_Valve_New_0 | SF12 | RSSI:-105.6 SNR: 17.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @496800.0s | IoT_Valve_New_1 | SF12 | RSSI: -96.7 SNR: 26.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @496800.0s | IoT_Valve_New_2 | SF12 | RSSI: -98.8 SNR: 24.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @496800.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.3 SNR:  7.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @496800.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.9 SNR: 45.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @496800.0s | IoT_Valve_New_0 | SF12 | RSSI:-101.8 SNR: 21.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @496800.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.5 SNR: 23.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @496800.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.4 SNR: 16.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @496800.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.2 SNR: 12.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @496800.0s | IoT_Valve_New_4 | SF12 | RSSI:-121.5 SNR:  1.6 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=690
-[COMM ] TX @500400.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @500400.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.8 SNR: 12.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @500400.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.0 SNR:  4.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @500400.0s | IoT_Valve_New_3 | SF12 | RSSI: -92.9 SNR: 30.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @500400.0s | IoT_Valve_New_4 | SF12 | RSSI: -92.4 SNR: 30.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @500400.0s | IoT_Valve_New_0 | SF12 | RSSI:-102.7 SNR: 20.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @500400.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.7 SNR:  9.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @500400.0s | IoT_Valve_New_2 | SF12 | RSSI:-126.4 SNR: -3.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @500400.0s | IoT_Valve_New_3 | SF12 | RSSI:-122.0 SNR:  1.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @500400.0s | IoT_Valve_New_4 | SF12 | RSSI:-120.1 SNR:  2.9 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=695
-[COMM ] TX @504000.0s | IoT_Valve_New_0 | SF12 | RSSI:-122.1 SNR:  0.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @504000.0s | IoT_Valve_New_1 | SF12 | RSSI: -90.0 SNR: 33.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @504000.0s | IoT_Valve_New_2 | SF12 | RSSI: -89.1 SNR: 34.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @504000.0s | IoT_Valve_New_3 | SF12 | RSSI:-103.9 SNR: 19.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @504000.0s | IoT_Valve_New_4 | SF12 | RSSI: -80.2 SNR: 42.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @504000.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.2 SNR: 19.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @504000.0s | IoT_Valve_New_1 | SF12 | RSSI: -87.7 SNR: 35.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @504000.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.7 SNR: 11.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @504000.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.3 SNR: 12.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @504000.0s | IoT_Valve_New_4 | SF12 | RSSI:-118.8 SNR:  4.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.29% | Total TX=700
-[COMM ] TX @507600.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.2 SNR:  5.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @507600.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.3 SNR: 11.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @507600.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.4 SNR:  4.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @507600.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.5 SNR:  4.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @507600.0s | IoT_Valve_New_4 | SF12 | RSSI: -80.6 SNR: 42.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @507600.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.8 SNR: 13.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @507600.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.3 SNR: 15.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @507600.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.7 SNR:  0.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @507600.0s | IoT_Valve_New_3 | SF12 | RSSI:-114.4 SNR:  8.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @507600.0s | IoT_Valve_New_4 | SF12 | RSSI:-108.9 SNR: 14.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.28% | Total TX=705
-[COMM ] TX @511200.0s | IoT_Valve_New_0 | SF12 | RSSI: -93.4 SNR: 29.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @511200.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.2 SNR: 17.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @511200.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.2 SNR: 14.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @511200.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.5 SNR:  9.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @511200.0s | IoT_Valve_New_4 | SF12 | RSSI: -70.5 SNR: 52.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @511200.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.0 SNR:  6.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @511200.0s | IoT_Valve_New_1 | SF12 | RSSI:-107.2 SNR: 15.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @511200.0s | IoT_Valve_New_2 | SF12 | RSSI:-123.9 SNR: -0.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @511200.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.9 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @511200.0s | IoT_Valve_New_4 | SF12 | RSSI:-105.9 SNR: 17.2 | Air:2793.5ms | SUCCESS
 [INFO ] STATS CHECK: PLR=0.28% | Total TX=710
-[COMM ] TX @514800.0s | IoT_Valve_New_0 | SF12 | RSSI: -98.5 SNR: 24.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @514800.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.9 SNR:  9.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @514800.0s | IoT_Valve_New_2 | SF12 | RSSI:-133.9 SNR:-10.9 | Air:2793.5ms | LOST(SNR)
-[COMM ] TX @514800.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.3 SNR: 16.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @514800.0s | IoT_Valve_New_4 | SF12 | RSSI: -90.8 SNR: 32.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.42% | Total TX=715
-[COMM ] TX @518400.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.0 SNR:  9.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @518400.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.6 SNR:  8.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @518400.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.3 SNR: 23.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @518400.0s | IoT_Valve_New_3 | SF12 | RSSI:-107.2 SNR: 15.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @518400.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.3 SNR: 35.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.42% | Total TX=720
-[COMM ] TX @522000.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.7 SNR:  2.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @522000.0s | IoT_Valve_New_1 | SF12 | RSSI:-109.6 SNR: 13.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @522000.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.8 SNR:  5.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @522000.0s | IoT_Valve_New_3 | SF12 | RSSI:-108.1 SNR: 15.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @522000.0s | IoT_Valve_New_4 | SF12 | RSSI: -89.4 SNR: 33.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.41% | Total TX=725
-[COMM ] TX @525600.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.5 SNR: 14.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @525600.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.2 SNR:  9.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @525600.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.9 SNR:  4.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @525600.0s | IoT_Valve_New_3 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @525600.0s | IoT_Valve_New_4 | SF12 | RSSI: -81.4 SNR: 41.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.41% | Total TX=730
-[COMM ] TX @529200.0s | IoT_Valve_New_0 | SF12 | RSSI: -99.9 SNR: 23.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @529200.0s | IoT_Valve_New_1 | SF12 | RSSI: -98.5 SNR: 24.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @529200.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.0 SNR: 11.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @529200.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.1 SNR: 16.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @529200.0s | IoT_Valve_New_4 | SF12 | RSSI: -67.3 SNR: 55.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.41% | Total TX=735
-[COMM ] TX @532800.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.8 SNR:  7.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @532800.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.7 SNR: 16.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @532800.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.5 SNR:  9.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @532800.0s | IoT_Valve_New_3 | SF12 | RSSI: -93.5 SNR: 29.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @532800.0s | IoT_Valve_New_4 | SF12 | RSSI: -68.4 SNR: 54.7 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.41% | Total TX=740
-[COMM ] TX @536400.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @536400.0s | IoT_Valve_New_1 | SF12 | RSSI:-126.1 SNR: -3.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @536400.0s | IoT_Valve_New_2 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @536400.0s | IoT_Valve_New_3 | SF12 | RSSI:-106.2 SNR: 16.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @536400.0s | IoT_Valve_New_4 | SF12 | RSSI: -80.6 SNR: 42.5 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.40% | Total TX=745
-[COMM ] TX @540000.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.4 SNR:  7.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @540000.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.4 SNR: 10.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @540000.0s | IoT_Valve_New_2 | SF12 | RSSI:-110.8 SNR: 12.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @540000.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.0 SNR: 14.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @540000.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.3 SNR: 43.8 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.40% | Total TX=750
-[COMM ] TX @543600.0s | IoT_Valve_New_0 | SF12 | RSSI:-127.7 SNR: -4.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @543600.0s | IoT_Valve_New_1 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @543600.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.4 SNR:  5.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @543600.0s | IoT_Valve_New_3 | SF12 | RSSI: -96.5 SNR: 26.5 | Air:2793.5ms | SUCCESS
-[COMM ] TX @543600.0s | IoT_Valve_New_4 | SF12 | RSSI: -80.5 SNR: 42.5 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.40% | Total TX=755
-[COMM ] TX @547200.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.6 SNR: 14.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @547200.0s | IoT_Valve_New_1 | SF12 | RSSI:-113.4 SNR:  9.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @547200.0s | IoT_Valve_New_2 | SF12 | RSSI:-106.4 SNR: 16.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @547200.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.8 SNR:  6.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @547200.0s | IoT_Valve_New_4 | SF12 | RSSI: -87.7 SNR: 35.4 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.39% | Total TX=760
-[COMM ] TX @550800.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.4 SNR: 10.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @550800.0s | IoT_Valve_New_1 | SF12 | RSSI:-118.8 SNR:  4.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @550800.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.8 SNR:  9.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @550800.0s | IoT_Valve_New_3 | SF12 | RSSI:-125.9 SNR: -2.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @550800.0s | IoT_Valve_New_4 | SF12 | RSSI: -78.0 SNR: 45.0 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.39% | Total TX=765
-[COMM ] TX @554400.0s | IoT_Valve_New_0 | SF12 | RSSI:-119.7 SNR:  3.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @554400.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.9 SNR: 17.1 | Air:2793.5ms | SUCCESS
-[COMM ] TX @554400.0s | IoT_Valve_New_2 | SF12 | RSSI:-116.1 SNR:  6.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @554400.0s | IoT_Valve_New_3 | SF12 | RSSI: -94.7 SNR: 28.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @554400.0s | IoT_Valve_New_4 | SF12 | RSSI: -79.8 SNR: 43.3 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.39% | Total TX=770
-[COMM ] TX @558000.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.2 SNR: 10.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @558000.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.7 SNR: 21.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @558000.0s | IoT_Valve_New_2 | SF12 | RSSI:-108.2 SNR: 14.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @558000.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @558000.0s | IoT_Valve_New_4 | SF12 | RSSI: -77.4 SNR: 45.6 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.39% | Total TX=775
-[COMM ] TX @561600.0s | IoT_Valve_New_0 | SF12 | RSSI:-113.3 SNR:  9.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @561600.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.4 SNR: 16.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @561600.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @561600.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.7 SNR: 11.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @561600.0s | IoT_Valve_New_4 | SF12 | RSSI: -75.1 SNR: 47.9 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.38% | Total TX=780
-[COMM ] TX @565200.0s | IoT_Valve_New_0 | SF12 | RSSI:-116.5 SNR:  6.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @565200.0s | IoT_Valve_New_1 | SF12 | RSSI:-110.2 SNR: 12.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @565200.0s | IoT_Valve_New_2 | SF12 | RSSI:-109.2 SNR: 13.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @565200.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.3 SNR: 10.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @565200.0s | IoT_Valve_New_4 | SF12 | RSSI: -85.0 SNR: 38.0 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.38% | Total TX=785
-[COMM ] TX @568800.0s | IoT_Valve_New_0 | SF12 | RSSI:-108.1 SNR: 14.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @568800.0s | IoT_Valve_New_1 | SF12 | RSSI:-104.1 SNR: 18.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @568800.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.8 SNR:  9.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @568800.0s | IoT_Valve_New_3 | SF12 | RSSI:-109.4 SNR: 13.6 | Air:2793.5ms | SUCCESS
-[COMM ] TX @568800.0s | IoT_Valve_New_4 | SF12 | RSSI: -72.8 SNR: 50.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.38% | Total TX=790
-[COMM ] TX @572400.0s | IoT_Valve_New_0 | SF12 | RSSI: -98.1 SNR: 24.9 | Air:2793.5ms | SUCCESS
-[COMM ] TX @572400.0s | IoT_Valve_New_1 | SF12 | RSSI: -97.7 SNR: 25.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @572400.0s | IoT_Valve_New_2 | SF12 | RSSI:-126.4 SNR: -3.3 | Air:2793.5ms | SUCCESS
-[COMM ] TX @572400.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.3 SNR: 18.7 | Air:2793.5ms | SUCCESS
-[COMM ] TX @572400.0s | IoT_Valve_New_4 | SF12 | RSSI: -83.8 SNR: 39.2 | Air:2793.5ms | SUCCESS
-[INFO ] STATS CHECK: PLR=0.38% | Total TX=795
-[COMM ] TX @576000.0s | IoT_Valve_New_0 | SF12 | RSSI:-117.0 SNR:  6.0 | Air:2793.5ms | SUCCESS
-[COMM ] TX @576000.0s | IoT_Valve_New_1 | SF12 | RSSI:-111.9 SNR: 11.2 | Air:2793.5ms | SUCCESS
-[COMM ] TX @576000.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.3 SNR:  4.8 | Air:2793.5ms | SUCCESS
-[COMM ] TX @576000.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.6 SNR:  9.4 | Air:2793.5ms | SUCCESS
-[COMM ] TX @576000.0s | IoT_Valve_New_4 | SF12 | RSSI: -70.1 SNR: 53.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @514800.0s | IoT_Valve_New_0 | SF12 | RSSI:-114.5 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @514800.0s | IoT_Valve_New_1 | SF12 | RSSI: -99.3 SNR: 23.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @514800.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.9 SNR: 23.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @514800.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.8 SNR: 10.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @514800.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.2 SNR:  3.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=715
+[COMM ] TX @518400.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.9 SNR: 13.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @518400.0s | IoT_Valve_New_1 | SF12 | RSSI: -94.0 SNR: 29.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @518400.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.6 SNR:  5.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @518400.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.6 SNR: 10.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @518400.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.1 SNR:  4.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=720
+[COMM ] TX @522000.0s | IoT_Valve_New_0 | SF12 | RSSI:-118.2 SNR:  4.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @522000.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.2 SNR: 19.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @522000.0s | IoT_Valve_New_2 | SF12 | RSSI:-115.0 SNR:  8.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @522000.0s | IoT_Valve_New_3 | SF12 | RSSI:-118.3 SNR:  4.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @522000.0s | IoT_Valve_New_4 | SF12 | RSSI:-103.9 SNR: 19.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.28% | Total TX=725
+[COMM ] TX @525600.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.2 SNR: 19.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @525600.0s | IoT_Valve_New_1 | SF12 | RSSI: -93.6 SNR: 29.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @525600.0s | IoT_Valve_New_2 | SF12 | RSSI:-104.8 SNR: 18.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @525600.0s | IoT_Valve_New_3 | SF12 | RSSI:-110.2 SNR: 12.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @525600.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.9 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=730
+[COMM ] TX @529200.0s | IoT_Valve_New_0 | SF12 | RSSI:-110.0 SNR: 13.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @529200.0s | IoT_Valve_New_1 | SF12 | RSSI: -96.1 SNR: 26.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @529200.0s | IoT_Valve_New_2 | SF12 | RSSI:-126.6 SNR: -3.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @529200.0s | IoT_Valve_New_3 | SF12 | RSSI:-116.1 SNR:  7.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @529200.0s | IoT_Valve_New_4 | SF12 | RSSI:-123.2 SNR: -0.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=735
+[COMM ] TX @532800.0s | IoT_Valve_New_0 | SF12 | RSSI:-115.2 SNR:  7.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @532800.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.8 SNR:  5.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @532800.0s | IoT_Valve_New_2 | SF12 | RSSI:-122.9 SNR:  0.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @532800.0s | IoT_Valve_New_3 | SF12 | RSSI: -97.9 SNR: 25.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @532800.0s | IoT_Valve_New_4 | SF12 | RSSI:-119.0 SNR:  4.0 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=740
+[COMM ] TX @536400.0s | IoT_Valve_New_0 | SF12 | RSSI:-112.5 SNR: 10.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @536400.0s | IoT_Valve_New_1 | SF12 | RSSI:-105.7 SNR: 17.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @536400.0s | IoT_Valve_New_2 | SF12 | RSSI:-111.4 SNR: 11.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @536400.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.5 SNR:  1.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @536400.0s | IoT_Valve_New_4 | SF12 | RSSI:-117.9 SNR:  5.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=745
+[COMM ] TX @540000.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.9 SNR: 16.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @540000.0s | IoT_Valve_New_1 | SF12 | RSSI:-102.2 SNR: 20.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @540000.0s | IoT_Valve_New_2 | SF12 | RSSI:-114.2 SNR:  8.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @540000.0s | IoT_Valve_New_3 | SF12 | RSSI:-125.0 SNR: -2.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @540000.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.9 SNR: 12.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.27% | Total TX=750
+[COMM ] TX @543600.0s | IoT_Valve_New_0 | SF12 | RSSI:-128.1 SNR: -5.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @543600.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.7 SNR: 16.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @543600.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.1 SNR:  5.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @543600.0s | IoT_Valve_New_3 | SF12 | RSSI:-121.8 SNR:  1.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @543600.0s | IoT_Valve_New_4 | SF12 | RSSI:-105.1 SNR: 17.9 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=755
+[COMM ] TX @547200.0s | IoT_Valve_New_0 | SF12 | RSSI:-122.0 SNR:  1.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @547200.0s | IoT_Valve_New_1 | SF12 | RSSI:-103.5 SNR: 19.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @547200.0s | IoT_Valve_New_2 | SF12 | RSSI:-119.6 SNR:  3.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @547200.0s | IoT_Valve_New_3 | SF12 | RSSI:-122.5 SNR:  0.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @547200.0s | IoT_Valve_New_4 | SF12 | RSSI:-114.6 SNR:  8.5 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=760
+[COMM ] TX @550800.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.2 SNR: 13.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @550800.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.1 SNR: 16.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @550800.0s | IoT_Valve_New_2 | SF12 | RSSI:-123.2 SNR: -0.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @550800.0s | IoT_Valve_New_3 | SF12 | RSSI:-119.8 SNR:  3.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @550800.0s | IoT_Valve_New_4 | SF12 | RSSI: -97.7 SNR: 25.4 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=765
+[COMM ] TX @554400.0s | IoT_Valve_New_0 | SF12 | RSSI:-106.4 SNR: 16.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @554400.0s | IoT_Valve_New_1 | SF12 | RSSI:-101.0 SNR: 22.0 | Air:2793.5ms | SUCCESS
+[COMM ] TX @554400.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @554400.0s | IoT_Valve_New_3 | SF12 | RSSI:-123.3 SNR: -0.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @554400.0s | IoT_Valve_New_4 | SF12 | RSSI:-113.9 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=770
+[COMM ] TX @558000.0s | IoT_Valve_New_0 | SF12 | RSSI:-103.4 SNR: 19.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @558000.0s | IoT_Valve_New_1 | SF12 | RSSI:-106.8 SNR: 16.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @558000.0s | IoT_Valve_New_2 | SF12 | RSSI:-117.5 SNR:  5.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @558000.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.9 SNR: 11.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @558000.0s | IoT_Valve_New_4 | SF12 | RSSI:-104.4 SNR: 18.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=775
+[COMM ] TX @561600.0s | IoT_Valve_New_0 | SF12 | RSSI:-107.7 SNR: 15.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @561600.0s | IoT_Valve_New_1 | SF12 | RSSI:-118.6 SNR:  4.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @561600.0s | IoT_Valve_New_2 | SF12 | RSSI: -99.1 SNR: 23.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @561600.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.9 SNR:  9.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @561600.0s | IoT_Valve_New_4 | SF12 | RSSI:-107.4 SNR: 15.6 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.26% | Total TX=780
+[COMM ] TX @565200.0s | IoT_Valve_New_0 | SF12 | RSSI:-104.9 SNR: 18.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @565200.0s | IoT_Valve_New_1 | SF12 | RSSI:-114.9 SNR:  8.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @565200.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.1 SNR:  9.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @565200.0s | IoT_Valve_New_3 | SF12 | RSSI:-112.1 SNR: 10.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @565200.0s | IoT_Valve_New_4 | SF12 | RSSI:-102.6 SNR: 20.4 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=785
+[COMM ] TX @568800.0s | IoT_Valve_New_0 | SF12 | RSSI:-127.9 SNR: -4.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @568800.0s | IoT_Valve_New_1 | SF12 | RSSI:-117.4 SNR:  5.7 | Air:2793.5ms | SUCCESS
+[COMM ] TX @568800.0s | IoT_Valve_New_2 | SF12 | RSSI:-121.7 SNR:  1.3 | Air:2793.5ms | SUCCESS
+[COMM ] TX @568800.0s | IoT_Valve_New_3 | SF12 | RSSI:-111.2 SNR: 11.8 | Air:2793.5ms | SUCCESS
+[COMM ] TX @568800.0s | IoT_Valve_New_4 | SF12 | RSSI:-110.8 SNR: 12.2 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=790
+[COMM ] TX @572400.0s | IoT_Valve_New_0 | SF12 | RSSI:-120.9 SNR:  2.1 | Air:2793.5ms | SUCCESS
+[COMM ] TX @572400.0s | IoT_Valve_New_1 | SF12 | RSSI:-120.6 SNR:  2.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @572400.0s | IoT_Valve_New_2 | SF12 | RSSI:-118.1 SNR:  4.9 | Air:2793.5ms | SUCCESS
+[COMM ] TX @572400.0s | IoT_Valve_New_3 | SF12 | RSSI:-113.6 SNR:  9.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @572400.0s | IoT_Valve_New_4 | SF12 | RSSI:-101.9 SNR: 21.1 | Air:2793.5ms | SUCCESS
+[INFO ] STATS CHECK: PLR=0.25% | Total TX=795
+[COMM ] TX @576000.0s | IoT_Valve_New_0 | SF12 | RSSI:-109.9 SNR: 13.2 | Air:2793.5ms | SUCCESS
+[COMM ] TX @576000.0s | IoT_Valve_New_1 | SF12 | RSSI:-115.7 SNR:  7.4 | Air:2793.5ms | SUCCESS
+[COMM ] TX @576000.0s | IoT_Valve_New_2 | SF12 | RSSI:-113.5 SNR:  9.5 | Air:2793.5ms | SUCCESS
+[COMM ] TX @576000.0s | IoT_Valve_New_3 | SF12 | RSSI:-104.4 SNR: 18.6 | Air:2793.5ms | SUCCESS
+[COMM ] TX @576000.0s | IoT_Valve_New_4 | SF12 | RSSI:-122.4 SNR:  0.6 | Air:2793.5ms | SUCCESS

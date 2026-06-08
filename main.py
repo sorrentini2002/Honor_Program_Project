@@ -546,7 +546,7 @@ class WaterNetworkManager:
                     log_file.write("[MODE: PRESERVE DEMAND PATTERNS]\n\n")
                     
                     # Check if the network has the 'USER_1' flag defined on any node
-                    has_user_tags = any(self.wn.get_node(n).tag == 'USER_1' for n in self.wn.junction_name_list)
+                    has_user_tags = any(self.wn.get_node(n).tag in ['USER_1', 'USER_1_P'] for n in self.wn.junction_name_list)
 
                     for i, j_name in enumerate(self.wn.junction_name_list):
                         junction = self.wn.get_node(j_name)
@@ -554,7 +554,7 @@ class WaterNetworkManager:
                         # If tags are defined, use them. Otherwise, fallback: all are users
                         is_user = False
                         if has_user_tags:
-                            is_user = (junction.tag == 'USER_1')
+                            is_user = (junction.tag in ['USER_1', 'USER_1_P'])
                         else:
                             is_user = True
 
@@ -1136,11 +1136,9 @@ def _is_real_user_node(node_name, wn=None):
     
     try:
         node = wn.get_node(node_name)
-        return node.tag == 'USER_1'
+        return node.tag == 'USER_1' or node.tag == 'USER_1_P'
     except (KeyError, AttributeError):
         return False
-
-
 
 class CoSimulationEngine:
     def __init__(self, network_file, duration_hours=24, step_min=5,
@@ -1240,6 +1238,7 @@ class CoSimulationEngine:
         self.stats = {
             'time': [],
             'satisfaction': [],
+            'satisfaction_priority': [],
             'packet_loss': [],
             'tanks': [],
             'tank_activation_ever': [],
@@ -1264,6 +1263,23 @@ class CoSimulationEngine:
             f.write("-" * 65 + "\n")
             f.write(f"MODE | STEP | RATIO | VALUE (Head/Coeff) | REDUCTION\n")
             f.write("-" * 65 + "\n")
+
+    def _get_priority_nodes(self):
+        """
+        Restituisce la lista fissa dei nodi prioritari basata sui tag.
+        Viene calcolata UNA SOLA VOLTA e cacheata.
+        """
+        if not hasattr(self, '_cached_priority_nodes'):
+            self._cached_priority_nodes = []
+            for node_name in self.water_net.wn.junction_name_list:
+                try:
+                    node = self.water_net.wn.get_node(node_name)
+                    if hasattr(node, 'tag') and node.tag == 'USER_1_P':
+                        self._cached_priority_nodes.append(node_name)
+                except:
+                    pass
+            print(f"[INFO] Nodi prioritari identificati (fissi): {self._cached_priority_nodes}")
+        return self._cached_priority_nodes
 
     def run_simulation(self):
 
@@ -1291,14 +1307,11 @@ class CoSimulationEngine:
 
         self.sim.init_simulation()
 
-
         t = 0.0
 
         demand_log_path = "Log_review/demand_distribution.csv"
         with open(demand_log_path, "w") as f:
             f.write("step,time_hours,expected_demand,actual_demand,satisfaction_pct\n")
-
-
 
         # --- EXPORT TOPOLOGY ---
         topology = {
@@ -1402,7 +1415,7 @@ class CoSimulationEngine:
                 self.water_net.apply_crisis_reduction(self.sim, current_ratio, step, mode=self.crisis_mode_name)
 
             # Il cuore della co-simulazione
-            s_current = self.stats['satisfaction'][-1] / 100.0 if self.stats['satisfaction'] else 1.0
+            s_current = self.stats['satisfaction_priority'][-1] / 100.0 if self.stats['satisfaction_priority'] else 1.0
             pl = self.lora_net.get_packet_loss_rate()
             act = self.agent.decide_action(step, t, s_current, sim=self.sim)
             self.agent.apply_mitigation(act, self.sim, self.lora_net, t)
@@ -1429,6 +1442,16 @@ class CoSimulationEngine:
                         print(f"  Valve {v_name}: status={valve.status.name}, setting={valve.setting:.2f}, flow={valve.flow:.4f} m³/s")
                     except Exception as e:
                         print(f"  Valve {v_name}: ERROR - {e}")
+
+                # AGGIUNGI QUESTO BLOCCO PER LE VALVOLE DI ISOLAMENTO
+                print(f"\n[STEP {step}] Isolation Valves Status:")
+                isolation_valves = ["10147", "10193", "10203"]
+                for v_name in isolation_valves:
+                    try:
+                        valve = self.sim._wn.get_link(v_name)
+                        print(f"  Valve {v_name}: status={valve.status.name}, setting={valve.setting:.2f}, flow={valve.flow:.4f} m³/s")
+                    except Exception as e:
+                        print(f"  Valve {v_name}: ERROR - {e}")                       
                 
                 for p_name in self.water_net.iot_pumps:
                     try:
@@ -1516,29 +1539,47 @@ class CoSimulationEngine:
 
                 node_demands_dict[j_name] = {'expected': float(exp_val), 'actual': float(act_val)}
 
-                exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
-                act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
+            # --- CALCOLO SODDISFAZIONE (FUORI DAL LOOP) ---
+            # 1. Soddisfazione Globale (Tutti gli utenti: USER_1 + USER_1_P)
+            exp_t = sum(item['expected'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
+            act_t = sum(item['actual'] for name, item in node_demands_dict.items() if _is_real_user_node(name, self.water_net.wn))
+
+            # 2. Soddisfazione Prioritaria (Lista fissa dai tag)
+            priority_nodes = self._get_priority_nodes()
+            
+            exp_p = 0.0
+            act_p = 0.0
+            for n in priority_nodes:
+                if n in node_demands_dict:
+                    exp_p += node_demands_dict[n]['expected']
+                    act_p += node_demands_dict[n]['actual']
+
+            # Calcolo percentuali
+            MIN_EXP_THRESHOLD = 1e-4
+            sat_p = min((act_t / exp_t) * 100.0, 100.0) if exp_t > MIN_EXP_THRESHOLD else 100.0
+            
+            # Se nessun nodo prioritario ha domanda attiva in questo step,
+            # considera la soddisfazione come 100% (non c'è nulla da soddisfare)
+            if exp_p < MIN_EXP_THRESHOLD:
+                sat_p_priority = 100.0
+            else:
+                sat_p_priority = min((act_p / exp_p) * 100.0, 100.0)
                 
-                # Clamp fisico: actual non può superare expected
-                act_t = min(act_t, exp_t)
-                
-                # Soglia minima: se expected è trascurabile (< 1e-4 L/s), 
-                # la satisfaction è indefinibile → usa 100%
-                MIN_EXP_THRESHOLD = 1e-4
-                if exp_t < MIN_EXP_THRESHOLD:
-                    sat_p = 100.0
-                else:
-                    sat_p = (act_t / exp_t) * 100.0
-                
-                # Safety clamp finale: mai sopra 100%
-                sat_p = min(sat_p, 100.0)
+            s_real = sat_p / 100.0
+            s_real_priority = sat_p_priority / 100.0
+            
+            # DEBUG: mostra sempre la lista completa
+            active_priority_count = sum(1 for n in priority_nodes if n in node_demands_dict and node_demands_dict[n]['expected'] > MIN_EXP_THRESHOLD)
+            print(f"[DEBUG] Nodi Prioritari (fissi): {len(priority_nodes)} | "
+                  f"Attivi con domanda>0: {active_priority_count} | "
+                  f"exp_p={exp_p:.4f} | act_p={act_p:.4f} | SAT_PRI={sat_p_priority:.2f}%")
+            # -------------------------------------------------
             
             # Scrittura su file standard
             with open("Log_review/demand_distribution.csv", "a") as f:
                 f.write(f"{step},{t/3600:.2f},{exp_t:.2f},{act_t:.2f},{sat_p:.2f}\n")
 
             diff = exp_t - act_t
-            s_real = sat_p / 100.0
             fa = self.agent.compute_objective(s_real, self.lora_net.tx_interval_s)
 
             with open("Log_review/network_metrics.txt", "a") as f:
@@ -1547,6 +1588,7 @@ class CoSimulationEngine:
 
             self.stats['time'].append(t)
             self.stats['satisfaction'].append(s_real * 100)
+            self.stats['satisfaction_priority'].append(s_real_priority * 100)
             self.stats['packet_loss'].append(pl)
             self.stats['reward'].append(fa)
             current_open_valves = {
@@ -1675,10 +1717,11 @@ class CoSimulationEngine:
                     for vname in active_wn.valve_name_list:
                         try:
                             vobj = active_wn.get_link(vname)
-                            init_set = float(getattr(vobj, 'initial_setting', float('nan')))
-                            status = getattr(vobj, 'initial_status', getattr(vobj, 'status', 'UNKNOWN'))
+                            current_set = float(getattr(vobj, '_setting', getattr(vobj, 'initial_setting', float('nan'))))
+                            status = getattr(vobj, '_user_status', getattr(vobj, 'status', 'UNKNOWN'))
                             status_str = str(status.name).upper() if hasattr(status, 'name') else str(status)
-                            vf2.write(f"{step},{t/3600:.3f},{vname},{init_set:.6f},{status_str}\n")
+                            
+                            vf2.write(f"{step},{t/3600:.3f},{vname},{current_set:.6f},{status_str}\n")
                         except Exception:
                             pass
             except Exception:
@@ -1693,7 +1736,6 @@ class CoSimulationEngine:
         print("\n✓ Generated Dashobard/data.js - Ready to use without server!")
 
         return self.sim.get_results()
-
 
     
     # Inizializzazione del motore di co-simulazione con parametri dal file di configurazione
