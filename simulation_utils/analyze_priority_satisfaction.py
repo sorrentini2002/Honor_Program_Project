@@ -176,8 +176,6 @@ def plot_comparison(sim_data, output_path="Log_review/priority_satisfaction_comp
     
     plt.show()
     return sat1, sat2, sat3
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # ESECUZIONE
 # ─────────────────────────────────────────────────────────────────────────────

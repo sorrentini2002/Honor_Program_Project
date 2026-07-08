@@ -38,9 +38,6 @@ env/
 Thumbs.db
 
 Log_review/
-setup.py
 Dyn-WNTR/
-LoRaSim-master/
-ANALISI_CORRISPONDENZA.md
-config.py
-Network/Net1.inp
+LoRaSimPlus-main/
+Network_INP/
