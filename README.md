@@ -26,7 +26,7 @@ The project code is organized as follows:
 Honor_Program_Project/
 ├── main.py                    # Entry point & co-simulation orchestrator
 ├── Configurations/            # Simulation profile configurations
-│   ├── config_CSA.py          # Configuration for Cagliari Sub-Area (CSA)
+│   ├── config_CSA.py          # Configuration for CSA Network
 │   └── config_NET30.py        # Configuration for Net-30 network
 ├── Agents/                    # Control agent logic and decision algorithms
 │   ├── base_agent.py          # BaseAgent interface definition
@@ -64,7 +64,7 @@ Honor_Program_Project/
 ### Core Components Details
 
 *   **`main.py`**: Coordinates the entire simulation loop. It loads the requested configuration, instantiates the `CoSimulationEngine`, executes the step-by-step simulation loop, logs diagnostic data, and triggers the generation of plots and dashboard files.
-*   **`Configurations/`**: Centralizes all parameters. Each file acts as a separate simulation scenario profile (e.g., Cagliari Cagliari Sub-Area `config_CSA.py` vs. Net-30 network `config_NET30.py`).
+*   **`Configurations/`**: Centralizes all parameters. Each file acts as a separate simulation scenario profile.
 *   **`Agents/`**: Contains the controller logic. `priority_agent.py` implements the algorithms that decide how much to open/close valves (valvole TCV) and start/stop pumps based on incoming telemetry. The `models/gnn.py` houses Graph Neural Networks for learning-based agents.
 *   **`Crises/`**: Models the physical crisis. Over time, it reduces the reservoir head or junction coefficients according to decay models defined in `deterministic_crises.py`.
 *   **`Network/`**: Bridges the physical and cyber models. `lora_system.py` uses the external `LoRaSimPlus-main` library to schedule uplink/downlink packets, assign Spreading Factors, compute SNR/RSSI, and count collisions. `water_manager.py` uses the external `Dyn-WNTR` framework to build/modify the EPANET model, place IoT tanks, and update valve status.
@@ -84,7 +84,7 @@ These folders are external repositories required to run the code:
 To run a simulation, execute `main.py` from the project root and specify the configuration tag name (which matches the suffix of a configuration file in `Configurations/config_<tag>.py`):
 
 ```bash
-# Run simulation using Cagliari Cagliari Sub-Area config (Configurations/config_CSA.py)
+# Run simulation using CSA config (Configurations/config_CSA.py)
 python main.py CSA
 
 # Run simulation using NET-30 network config (Configurations/config_NET30.py)
