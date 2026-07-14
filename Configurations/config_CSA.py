@@ -10,7 +10,7 @@ from pathlib import Path
 # CONFIGURAZIONE DEI PERCORSI
 # ============================================================================
 BASE_DIR = Path(__file__).resolve().parent.parent
-NETWORK_FILE = BASE_DIR / "Network_INP" / "CSA_Base_reduced.inp"
+NETWORK_FILE = BASE_DIR / "Network_INP" / "CSA_Base_reduced_Priority.inp"
 LOG_DIR = BASE_DIR / "Log_review"          # Cartella centralizzata per tutti i log
 
 # ============================================================================

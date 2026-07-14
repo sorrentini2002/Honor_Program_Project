@@ -15,9 +15,9 @@ def parse_js_sim_data(filepath):
     return json.loads(sim_data_str)
 
 # 1. Configurazione dei percorsi dei file
-file_baseline = "baseline.js"
-file_equalitario = "scenario_equalitario.js"
-file_prioritario = "scenario_prioritario.js"
+file_baseline = "N30_baseline.js"
+file_equalitario = "N30_scenario_equalitario.js"
+file_prioritario = "N30_scenario_prioritario.js"
 
 # 2. Caricamento dei dati di simulazione
 print("Caricamento e parsing dei file di simulazione...")
@@ -118,9 +118,9 @@ def parse_js_sim_data(filepath):
     return json.loads(sim_data_str)
 
 # 1. Configurazione dei percorsi dei file
-file_equalitario = "scenario_equalitario.js"
-file_gateway2 = "gateway_2.js"
-file_gateway3 = "gateway_3.js"
+file_equalitario = "N30_scenario_prioritario.js"
+file_gateway2 = "N30_Prior_gateway_2.js"
+file_gateway3 = "N30_Prior_gateway_3.js"
 
 # 2. Caricamento dei dati di simulazione
 print("Caricamento e parsing dei file in corso...")
@@ -145,7 +145,7 @@ print("Generazione del grafico delle percentuali assolute...")
 plt.figure(figsize=(12, 6))
 
 # Plot delle 3 linee con i valori reali/assoluti
-plt.plot(times_e, packet_loss_e, label='Scenario Equalitario', color='#2980b9', linewidth=2)
+plt.plot(times_e, packet_loss_e, label='Scenario Prioritario', color='#2980b9', linewidth=2)
 plt.plot(times_g2, packet_loss_g2, label='Configurazione 2 Gateway', color='#e67e22', linewidth=2)
 plt.plot(times_g3, packet_loss_g3, label='Configurazione 3 Gateway', color='#27ae60', linewidth=2)
 
@@ -186,9 +186,9 @@ def parse_js_sim_data(filepath):
     return json.loads(sim_data_str)
 
 # 1. Configurazione dei percorsi dei file
-file_baseline = "baseline.js"
-file_equalitario = "scenario_equalitario.js"
-file_gateway3 = "gateway_3.js"
+file_baseline = "N30_baseline.js"
+file_equalitario = "N30_scenario_prioritario.js"
+file_gateway3 = "N30_Prior_gateway_3.js"
 
 # 2. Caricamento dei dati di simulazione
 print("Caricamento e parsing dei file di simulazione...")
@@ -215,7 +215,7 @@ plt.figure(figsize=(12, 6))
 # Plot delle 3 curve richieste
 plt.plot(times_b, obj_b, label='Baseline', color='#7f8c8d', linestyle='--', linewidth=2)
 plt.plot(times_e, obj_e, label='Configurazione 3 Gateway', color='#2980b9', linewidth=2)
-plt.plot(times_g3, obj_g3, label='Scenario Equalitario', color='#27ae60', linewidth=2)
+plt.plot(times_g3, obj_g3, label='Scenario Prioritario', color='#27ae60', linewidth=2)
 
 # Personalizzazione ed estetica del grafico
 plt.title('Andamento della Funzione Obiettivo nel Tempo', fontsize=14, fontweight='bold', pad=15)
@@ -234,3 +234,78 @@ plt.legend(fontsize=11, loc='best')
 # Ottimizzazione del layout e visualizzazione
 plt.tight_layout()
 plt.show()
+
+# =============================================================================
+# 4. GRAFICO 4: Differenza di Packet Loss (Egualitario vs Prioritario per 1 e 3 Gateway)
+# =============================================================================
+print("\nGenerazione del quarto grafico (Confronto Packet Loss: Egualitario vs Prioritario)...")
+
+file_eq_1g = "N30_scenario_equalitario.js"
+file_prio_1g = "N30_scenario_prioritario.js"
+file_eq_3g = "N30_gateway_2.js"  
+file_prio_3g = "N30_Prior_gateway_2.js" 
+
+try:
+    # Caricamento dei dati
+    data_eq_1g = parse_js_sim_data(file_eq_1g)
+    data_prio_1g = parse_js_sim_data(file_prio_1g)
+    data_eq_3g = parse_js_sim_data(file_eq_3g)
+    data_prio_3g = parse_js_sim_data(file_prio_3g)
+
+    # Creazione mappe per i dati Egualitari per avere i riferimenti temporali corretti.
+    # Questa volta estraiamo 'packet_loss' invece di 'satisfaction_pct'
+    map_eq_1g = {step['time_hours']: step['global_metrics']['packet_loss'] for step in data_eq_1g}
+    map_eq_3g = {step['time_hours']: step['global_metrics']['packet_loss'] for step in data_eq_3g}
+
+    # Calcolo delle differenze (Egualitario - Prioritario) per 1 Gateway
+    times_diff_1g = []
+    diff_1g = []
+    for step in data_prio_1g:
+        t = step['time_hours']
+        if t in map_eq_1g:
+            times_diff_1g.append(t)
+            # Calcolo delta: Packet Loss Egualitario - Packet Loss Prioritario
+            delta = map_eq_1g[t] - step['global_metrics']['packet_loss']
+            diff_1g.append(delta)
+
+    # Calcolo delle differenze (Egualitario - Prioritario) per 3 Gateway
+    times_diff_3g = []
+    diff_3g = []
+    for step in data_prio_3g:
+        t = step['time_hours']
+        if t in map_eq_3g:
+            times_diff_3g.append(t)
+            # Calcolo delta: Packet Loss Egualitario - Packet Loss Prioritario
+            delta = map_eq_3g[t] - step['global_metrics']['packet_loss']
+            diff_3g.append(delta)
+
+    # Creazione del grafico
+    plt.figure(figsize=(12, 6))
+
+    # Linea di riferimento a 0 (indica che le perdite di pacchetti sono uguali)
+    plt.axhline(0, color='#7f8c8d', linestyle='--', linewidth=2, label='Nessuna Differenza (Eq = Prio)')
+
+    # Plot dei due Delta
+    plt.plot(times_diff_1g, diff_1g, label='Δ (Egualitario - Prioritario) - 1 Gateway', color='#8e44ad', linewidth=2)
+    plt.plot(times_diff_3g, diff_3g, label='Δ (Egualitario - Prioritario) - 2 Gateway', color='#c0392b', linewidth=2)
+
+    # Personalizzazione del grafico
+    plt.title('Differenza di Packet Loss nel Tempo (Egualitario vs Prioritario)', fontsize=14, fontweight='bold', pad=15)
+    plt.xlabel('Tempo (ore)', fontsize=12)
+    plt.ylabel('Delta Packet Loss (Punti Percentuali %)', fontsize=12)
+    
+    # Imposta i limiti sull'asse X basati sui dati con 1 gateway
+    if times_diff_1g:
+        plt.xlim(min(times_diff_1g), max(times_diff_1g))
+
+    # Griglia e legenda
+    plt.grid(True, linestyle=':', alpha=0.6)
+    plt.legend(fontsize=11, loc='best')
+
+    # Ottimizzazione e visualizzazione
+    plt.tight_layout()
+    plt.show()
+
+except FileNotFoundError as e:
+    print(f"\n[ATTENZIONE] Impossibile generare il quarto grafico: {e}")
+    print("Assicurati di aver impostato correttamente i nomi dei file per i casi a 3 Gateway nel blocco 4.")
